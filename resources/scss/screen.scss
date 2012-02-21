@@ -1,0 +1,146 @@
+@import "compass/reset";
+@import "compass/css3";
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+body {
+	background: #f2f4f6;
+	font-family: "Lucida Grande", "Segoe UI", Tahoma, Arial, sans-serif;
+	font-size: 12px;
+	overflow: hidden;
+}
+
+pre, code, textarea {
+	font-family: Menlo, Consolas, "Droid Sans Mono", monospace;
+	font-size: inherit;
+}
+pre {
+	background-color: #fafafa;
+}
+textarea {
+	resize: none;
+}
+
+a {
+	color: #1525ab;
+	text-decoration: none;
+}
+a:visited {
+	color: #680094;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+.access-key {
+	font-weight: bold;
+}
+
+#viewport {
+	@include display-box;
+	@include box-orient(vertical);
+	height: 100%;
+	width: 100%;
+}
+
+.container {
+	@include display-box;
+	@include box-orient(vertical);
+	margin: 0;
+	position: relative;
+	border: 0;
+	background: transparent;
+	min-height: 100px;
+}
+.container.container-results {
+	@include box-flex(1);
+}
+
+.container-title {
+	@include text-shadow(0 1px 0 #ddd);
+	background-color: #ccc;
+	color: #333;
+	display: block;
+	font-size: 13px;
+	font-weight: bold;
+	height: 22px;
+	line-height: 22px;
+	margin: 0;
+	padding: 0 6px;
+}
+
+.container-title .access-key {
+	color: #e6e6e6;
+}
+
+.container > .container-content {
+	@include box-flex(1);
+	background: #fff;
+	border: 0;
+	color: black;
+	display: block;
+	margin: 0;
+	outline: 0;
+	overflow: auto;
+	padding: 3px;
+	z-index: 2;
+}
+
+.container > .container-content:focus {
+	@include box-shadow(
+		0 0 1px 1px #7aadd9 inset
+	);
+}
+
+#pattern {
+	background-color: #f4fff4;
+}
+
+.invalid #pattern {
+	background-color: #fff1f1;
+	color: #f00;
+	@include box-shadow(
+		0 0 1px 1px #ca6465 inset
+	);
+}
+.invalid #pattern:focus {
+	@include box-shadow(
+		0 0 1px 1px #cb060c inset
+	);
+}
+
+#sample {
+	background-color: #fffff3;
+}
+
+#result {
+}
+
+
+#flags {
+	color: #fff;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0 6px;
+	height: 22px;
+	line-height: 22px;
+	@include text-shadow(none);
+}
+#flags label {
+	background: transparent;
+	display: block;
+	float: left;
+	padding: 0;
+	margin-right: 4px;
+	white-space: nowrap;
+}
+
+.empty-group {
+	color: GrayText;
+}
