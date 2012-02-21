@@ -3,11 +3,21 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<title>hold on to your regex</title>
+	<title>Regex Tool</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="apple-mobile-web-app-capable" content="yes">
+	
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
-	<link type="text/css" rel="stylesheet" href="resources/css/screen.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/screen.css">
+
+	<link rel="shortcut icon" href="resources/images/icon-16.png">
+	<link rel="icon" type="image/png" href="resources/images/icon-16.png">
+	<link rel="apple-touch-icon" href="resources/images/icon-512.png">
+	
+	<!--[if lte IE 8]>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
+	<![endif]-->
+	
 	<script src="lib/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
 	<script src="lib/jquery/jquery.storage.js" type="text/javascript"></script>
 	<script src="lib/xregexp/xregexp-1.5.0.min.js" type="text/javascript"></script>
@@ -22,47 +32,36 @@
 		});
 	</script>
 
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-12612599-1']);
-		_gaq.push(['_trackPageview']);
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
-
 </head>
 <body>
 
-	<div id="viewport">
+	<div class="viewport">
 
-		<div class="container container-pattern">
-			<h2 class="container-title">
+		<section class="section-pattern">
+			<h2 class="section-title">
 				<label for="pattern"><span class="access-key">P</span>attern</label>
 			</h2>
-			<div id="flags">
-				<label tabindex="3"><input type="checkbox" id="flag-global" accesskey="g" tabindex="0"><span class="access-key">g</span>lobal</label>
-				<label tabindex="4"><input type="checkbox" id="flag-multiline" accesskey="m"><span class="access-key">m</span>ultiline</label>
-				<label tabindex="5"><input type="checkbox" id="flag-ignorecase" accesskey="i"><span class="access-key">i</span>gnore case</label>
-			</div>
-			<textarea id="pattern" class="container-content" tabindex="1" accesskey="p"></textarea>
-		</div>
+			<ul id="flags">
+				<li><label tabindex="3"><input type="checkbox" id="flag-global" accesskey="g"><span class="checkbox-label"><span class="access-key">g</span>lobal</span></label></li>
+				<li><label tabindex="4"><input type="checkbox" id="flag-multiline" accesskey="m"><span class="checkbox-label"><span class="access-key">m</span>ultiline</span></label></li>
+				<li><label tabindex="5"><input type="checkbox" id="flag-ignorecase" accesskey="i"><span class="checkbox-label"><span class="access-key">i</span>gnore case</span></label></li>
+			</ul>
+			<textarea id="pattern" class="section-content" tabindex="1" accesskey="p"></textarea>
+		</section>
 
-		<div class="container container-sample">
-			<h2 class="container-title">
+		<section class="section-sample">
+			<h2 class="section-title">
 				<label for="sample"><span class="access-key">S</span>ample</label>
 			</h2>
-			<textarea id="sample" class="container-content" tabindex="2" accesskey="s"></textarea>
-		</div>
+			<textarea id="sample" class="section-content" tabindex="2" accesskey="s"></textarea>
+		</section>
 
-		<div class="container container-results">
-			<h2 class="container-title">
+		<section class="section-results">
+			<h2 class="section-title">
 				<span>Result</span>
 			</h2>
-			<div id="result" class="container-content"></div>
-		</div>
+			<div id="result" class="section-content"></div>
+		</section>
 
 	</div>
 
