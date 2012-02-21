@@ -1,5 +1,6 @@
 @import "compass/reset";
 @import "compass/css3";
+@import "compass/typography";
 
 html, body {
 	height: 100%;
@@ -9,23 +10,15 @@ html, body {
 }
 
 body {
-	background: #f2f4f6;
-	font-family: "Lucida Grande", "Segoe UI", Tahoma, Arial, sans-serif;
+	font-family: "Open Sans", "Lucida Grande", "Segoe UI", Tahoma, Arial, sans-serif;
 	font-size: 12px;
+	line-height: normal;
 	overflow: hidden;
 }
-
 pre, code, textarea {
 	font-family: Menlo, Consolas, "Droid Sans Mono", monospace;
 	font-size: inherit;
 }
-pre {
-	background-color: #fafafa;
-}
-textarea {
-	resize: none;
-}
-
 a {
 	color: #1525ab;
 	text-decoration: none;
@@ -35,6 +28,41 @@ a:visited {
 }
 a:hover {
 	text-decoration: underline;
+}
+
+input[type='checkbox'] {
+	@include appearance(none);
+	@include background-image(linear-gradient(top, #fafafa, #dcdcdc));
+	@include border-radius(3px);
+	border: 1px solid #a0a0a0;
+	display: inline-block;
+	height: 14px;
+	margin: 0 3px;
+	position: relative;
+	top: 3px;
+	vertical-align: baseline;
+	width: 14px;
+}
+input[type='checkbox']:disabled {
+	opacity: .75;
+}
+input[type='checkbox']:not(:disabled):not(:active):hover {
+	@include background-image(linear-gradient(top, #fff, #e6e6e6));
+	@include text-shadow(0 1px 0 rgba(255, 255, 255, 1));
+}
+input[type='checkbox']:not(:disabled):active {
+	@include box-shadow(0 1px 3px rgba(0, 0, 0, .2) inset);
+	@include background-image(linear-gradient(top, #f0f0f0, #bebebe));
+	border: 1px solid #808080;
+	@include text-shadow(0 1px 0 rgba(255, 255, 255, .25));
+}
+
+input[type='checkbox']:checked::before {
+	color: #000;
+	content: image-url("tick.png");
+	left: 2px;
+	top: -1px;
+	position: absolute;
 }
 
 .access-key {
@@ -55,63 +83,62 @@ a:hover {
 	position: relative;
 	border: 0;
 	background: transparent;
-	min-height: 100px;
+	min-height: 80px;
 }
 .container.container-results {
 	@include box-flex(1);
 }
 
 .container-title {
-	@include text-shadow(0 1px 0 #ddd);
-	background-color: #ccc;
-	color: #333;
+	@include background-image(linear-gradient(top, rgba(0,0,0,.05), rgba(0,0,0,0)));
+	@include box-shadow(0 1px 0 rgba(0,0,0,.1));
+	@include box-sizing(border-box);
+	@include text-shadow(0 1px 0 #fff);
+	background-color: #eee;
+	border-bottom: 1px solid #bbb;
+	border-top: 1px solid #bbb;
+	color: #000;
 	display: block;
 	font-size: 13px;
-	font-weight: bold;
+	font-weight: 600;
 	height: 22px;
-	line-height: 22px;
+	line-height: 20px;
 	margin: 0;
-	padding: 0 6px;
+	padding: 0 4px;
+	position: relative;
+	z-index: 10;
 }
 
-.container-title .access-key {
-	color: #e6e6e6;
-}
-
-.container > .container-content {
+.container-content {
 	@include box-flex(1);
+	@include box-sizing(border-box);
 	background: #fff;
 	border: 0;
-	color: black;
+	color: #000;
 	display: block;
 	margin: 0;
+	max-width: 100%;
 	outline: 0;
 	overflow: auto;
 	padding: 3px;
 	z-index: 2;
 }
 
-.container > .container-content:focus {
-	@include box-shadow(
-		0 0 1px 1px #7aadd9 inset
-	);
+.container-content:focus {
+	@include box-shadow(0 0 0 2px rgba(63,154,232,.75) inset);
 }
 
 #pattern {
 	background-color: #f4fff4;
 }
 
-.invalid #pattern {
+#pattern.invalid {
 	background-color: #fff1f1;
 	color: #f00;
-	@include box-shadow(
-		0 0 1px 1px #ca6465 inset
-	);
+	@include box-shadow(0 0 1px 0px rgba(232,63,63,.75) inset);
 }
-.invalid #pattern:focus {
-	@include box-shadow(
-		0 0 1px 1px #cb060c inset
-	);
+#pattern.invalid:focus {
+	@include box-shadow(0 0 0 2px rgba(232,63,63,.75) inset);
 }
 
 #sample {
@@ -119,28 +146,60 @@ a:hover {
 }
 
 #result {
+	background-color: #fff;
+	padding: 0;
 }
 
+#result li,
+#result span {
+	min-height: 18px;
+}
+#result > ol > li {
+	@include border-radius(2px);
+	background-color: #eee;
+	border: 1px solid #ddd;
+	color: #000;
+	margin: 5px;
+}
+#result > ol > li > span {
+	@include border-radius(2px);
+	background-position: 4px 3px;
+	background-repeat: no-repeat;
+	display: block;
+	padding: 0 3px;
+}
+#result > ol > li.parent > span {
+	@include background-image(image-url("arrow-down.png"));
+	@include ellipsis;
+	padding: 0 3px 0 20px;
+}
+#result > ol > li.parent.hidden > span {
+	@include background-image(image-url("arrow-right.png"));
+}
+#result > ol > li.parent > span:hover {
+	background-color: #e0f0ff;
+	cursor: pointer;
+}
+#result > ol > li ol {
+	margin: 0;
+}
+#result > ol > li ol li {
+	border-top: 1px solid #ccc;
+	padding: 0 4px;
+}
 
 #flags {
-	color: #fff;
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 0 6px;
+	@include text-shadow(none);
 	height: 22px;
 	line-height: 22px;
-	@include text-shadow(none);
+	padding: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 10;
 }
 #flags label {
 	background: transparent;
-	display: block;
-	float: left;
-	padding: 0;
 	margin-right: 4px;
 	white-space: nowrap;
-}
-
-.empty-group {
-	color: GrayText;
 }

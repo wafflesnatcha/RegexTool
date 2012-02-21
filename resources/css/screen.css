@@ -62,23 +62,15 @@ html, body {
 }
 
 body {
-  background: #f2f4f6;
-  font-family: "Lucida Grande", "Segoe UI", Tahoma, Arial, sans-serif;
+  font-family: "Open Sans", "Lucida Grande", "Segoe UI", Tahoma, Arial, sans-serif;
   font-size: 12px;
+  line-height: normal;
   overflow: hidden;
 }
 
 pre, code, textarea {
   font-family: Menlo, Consolas, "Droid Sans Mono", monospace;
   font-size: inherit;
-}
-
-pre {
-  background-color: #fafafa;
-}
-
-textarea {
-  resize: none;
 }
 
 a {
@@ -92,6 +84,69 @@ a:visited {
 
 a:hover {
   text-decoration: underline;
+}
+
+input[type='checkbox'] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fafafa), color-stop(100%, #dcdcdc));
+  background-image: -webkit-linear-gradient(top, #fafafa, #dcdcdc);
+  background-image: -moz-linear-gradient(top, #fafafa, #dcdcdc);
+  background-image: -o-linear-gradient(top, #fafafa, #dcdcdc);
+  background-image: -ms-linear-gradient(top, #fafafa, #dcdcdc);
+  background-image: linear-gradient(top, #fafafa, #dcdcdc);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #a0a0a0;
+  display: inline-block;
+  height: 14px;
+  margin: 0 3px;
+  position: relative;
+  top: 3px;
+  vertical-align: baseline;
+  width: 14px;
+}
+
+input[type='checkbox']:disabled {
+  opacity: .75;
+}
+
+input[type='checkbox']:not(:disabled):not(:active):hover {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(top, #ffffff, #e6e6e6);
+  text-shadow: 0 1px 0 white;
+}
+
+input[type='checkbox']:not(:disabled):active {
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f0f0f0), color-stop(100%, #bebebe));
+  background-image: -webkit-linear-gradient(top, #f0f0f0, #bebebe);
+  background-image: -moz-linear-gradient(top, #f0f0f0, #bebebe);
+  background-image: -o-linear-gradient(top, #f0f0f0, #bebebe);
+  background-image: -ms-linear-gradient(top, #f0f0f0, #bebebe);
+  background-image: linear-gradient(top, #f0f0f0, #bebebe);
+  border: 1px solid #808080;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+input[type='checkbox']:checked::before {
+  color: #000;
+  content: url('../images/tick.png?1329797887');
+  left: 2px;
+  top: -1px;
+  position: absolute;
 }
 
 .access-key {
@@ -124,7 +179,7 @@ a:hover {
   position: relative;
   border: 0;
   background: transparent;
-  min-height: 100px;
+  min-height: 80px;
 }
 
 .container.container-results {
@@ -135,89 +190,165 @@ a:hover {
 }
 
 .container-title {
-  text-shadow: 0 1px 0 #dddddd;
-  background-color: #ccc;
-  color: #333;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.05)), color-stop(100%, rgba(0, 0, 0, 0)));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
+  -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  text-shadow: 0 1px 0 white;
+  background-color: #eee;
+  border-bottom: 1px solid #bbb;
+  border-top: 1px solid #bbb;
+  color: #000;
   display: block;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 600;
   height: 22px;
-  line-height: 22px;
+  line-height: 20px;
   margin: 0;
-  padding: 0 6px;
+  padding: 0 4px;
+  position: relative;
+  z-index: 10;
 }
 
-.container-title .access-key {
-  color: #e6e6e6;
-}
-
-.container > .container-content {
+.container-content {
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
   -ms-box-flex: 1;
   box-flex: 1;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
   background: #fff;
   border: 0;
-  color: black;
+  color: #000;
   display: block;
   margin: 0;
+  max-width: 100%;
   outline: 0;
   overflow: auto;
   padding: 3px;
   z-index: 2;
 }
 
-.container > .container-content:focus {
-  -moz-box-shadow: 0 0 1px 1px #7aadd9 inset;
-  -webkit-box-shadow: 0 0 1px 1px #7aadd9 inset;
-  -o-box-shadow: 0 0 1px 1px #7aadd9 inset;
-  box-shadow: 0 0 1px 1px #7aadd9 inset;
+.container-content:focus {
+  -moz-box-shadow: 0 0 0 2px rgba(63, 154, 232, 0.75) inset;
+  -webkit-box-shadow: 0 0 0 2px rgba(63, 154, 232, 0.75) inset;
+  -o-box-shadow: 0 0 0 2px rgba(63, 154, 232, 0.75) inset;
+  box-shadow: 0 0 0 2px rgba(63, 154, 232, 0.75) inset;
 }
 
 #pattern {
   background-color: #f4fff4;
 }
 
-.invalid #pattern {
+#pattern.invalid {
   background-color: #fff1f1;
   color: #f00;
-  -moz-box-shadow: 0 0 1px 1px #ca6465 inset;
-  -webkit-box-shadow: 0 0 1px 1px #ca6465 inset;
-  -o-box-shadow: 0 0 1px 1px #ca6465 inset;
-  box-shadow: 0 0 1px 1px #ca6465 inset;
+  -moz-box-shadow: 0 0 1px 0px rgba(232, 63, 63, 0.75) inset;
+  -webkit-box-shadow: 0 0 1px 0px rgba(232, 63, 63, 0.75) inset;
+  -o-box-shadow: 0 0 1px 0px rgba(232, 63, 63, 0.75) inset;
+  box-shadow: 0 0 1px 0px rgba(232, 63, 63, 0.75) inset;
 }
 
-.invalid #pattern:focus {
-  -moz-box-shadow: 0 0 1px 1px #cb060c inset;
-  -webkit-box-shadow: 0 0 1px 1px #cb060c inset;
-  -o-box-shadow: 0 0 1px 1px #cb060c inset;
-  box-shadow: 0 0 1px 1px #cb060c inset;
+#pattern.invalid:focus {
+  -moz-box-shadow: 0 0 0 2px rgba(232, 63, 63, 0.75) inset;
+  -webkit-box-shadow: 0 0 0 2px rgba(232, 63, 63, 0.75) inset;
+  -o-box-shadow: 0 0 0 2px rgba(232, 63, 63, 0.75) inset;
+  box-shadow: 0 0 0 2px rgba(232, 63, 63, 0.75) inset;
 }
 
 #sample {
   background-color: #fffff3;
 }
 
+#result {
+  background-color: #fff;
+  padding: 0;
+}
+
+#result li,
+#result span {
+  min-height: 18px;
+}
+
+#result > ol > li {
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -khtml-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  color: #000;
+  margin: 5px;
+}
+
+#result > ol > li > span {
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -khtml-border-radius: 2px;
+  border-radius: 2px;
+  background-position: 4px 3px;
+  background-repeat: no-repeat;
+  display: block;
+  padding: 0 3px;
+}
+
+#result > ol > li.parent > span {
+  background-image: url('../images/arrow-down.png?1329794486');
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  padding: 0 3px 0 20px;
+}
+
+#result > ol > li.parent.hidden > span {
+  background-image: url('../images/arrow-right.png?1329794510');
+}
+
+#result > ol > li.parent > span:hover {
+  background-color: #e0f0ff;
+  cursor: pointer;
+}
+
+#result > ol > li ol {
+  margin: 0;
+}
+
+#result > ol > li ol li {
+  border-top: 1px solid #ccc;
+  padding: 0 4px;
+}
+
 #flags {
-  color: #fff;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0 6px;
+  text-shadow: none;
   height: 22px;
   line-height: 22px;
-  text-shadow: none;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
 }
 
 #flags label {
   background: transparent;
-  display: block;
-  float: left;
-  padding: 0;
   margin-right: 4px;
   white-space: nowrap;
-}
-
-.empty-group {
-  color: GrayText;
 }
