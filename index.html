@@ -6,7 +6,7 @@
 	<title>Regex Tool</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+	<!-- <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700"> -->
 	<link rel="stylesheet" type="text/css" href="resources/css/screen.css">
 
 	<link rel="shortcut icon" href="resources/images/icon-16.png">
@@ -34,17 +34,17 @@
 
 </head>
 <body>
-
-	<div class="viewport">
+	
+	<form class="regextool">
 
 		<section class="section-pattern">
 			<h2 class="section-title">
 				<label for="pattern"><span class="access-key">P</span>attern</label>
 			</h2>
 			<ul id="flags">
-				<li><label tabindex="3"><input type="checkbox" id="flag-global" accesskey="g"><span class="checkbox-label"><span class="access-key">g</span>lobal</span></label></li>
-				<li><label tabindex="4"><input type="checkbox" id="flag-multiline" accesskey="m"><span class="checkbox-label"><span class="access-key">m</span>ultiline</span></label></li>
-				<li><label tabindex="5"><input type="checkbox" id="flag-ignorecase" accesskey="i"><span class="checkbox-label"><span class="access-key">i</span>gnore case</span></label></li>
+				<li><label for="flag-global" tabindex="3"><input type="checkbox" id="flag-global" accesskey="g"><span class="checkbox-label"><span class="access-key">g</span>lobal</span></label></li>
+				<li><label for="flag-multiline" tabindex="4"><input type="checkbox" id="flag-multiline" accesskey="m"><span class="checkbox-label"><span class="access-key">m</span>ultiline</span></label></li>
+				<li><label for="flag-ignorecase" tabindex="5"><input type="checkbox" id="flag-ignorecase" accesskey="i"><span class="checkbox-label"><span class="access-key">i</span>gnore case</span></label></li>
 			</ul>
 			<textarea id="pattern" class="section-content" tabindex="1" accesskey="p"></textarea>
 		</section>
@@ -63,7 +63,7 @@
 			<div id="result" class="section-content"></div>
 		</section>
 
-	</div>
+	</form>
 
 </body>
 </html>

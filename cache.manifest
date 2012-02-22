@@ -1,4 +1,8 @@
 CACHE MANIFEST
+# Tue Feb 21 20:16:58 PST 2012
 
 CACHE:
-style.css
+index.html
+lib/*
+resources/css/*
+resources/images/*

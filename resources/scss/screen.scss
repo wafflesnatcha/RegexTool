@@ -1,20 +1,28 @@
-$color_pattern_bg: #f4fff4;
-$color_pattern_invalid: #f00;
-$color_pattern_invalid_bg: #fff1f1;
-$color_pattern_invalid_focus: #cc2323;
+
+$input_focus: #2182cc;
+
+$pattern_bg: #f4fff4;
+$pattern_invalid: #f00;
+$pattern_invalid_bg: #fff1f1;
+$pattern_invalid_focus: #cc2323;
+
 $color_sample_bg: #fffff3;
-$color_textarea_focus: #2182cc;
+
+$section_title_height: 24px;
+$section_title_bg: #eaeaea;
+
+$contrasted-lightness-threshold: 50%;
 
 @mixin user-select($policy) {
 	-moz-user-select: $policy;
-    -ms-user-select: $policy;
-    -webkit-user-select: $policy;
+	-ms-user-select: $policy;
+	-webkit-user-select: $policy;
 }
-
 
 @import "compass/reset";
 @import "compass/css3";
 @import "compass/typography";
+@import "compass/utilities";
 
 html, body {
 	height: 100%;
@@ -24,7 +32,7 @@ html, body {
 }
 
 body {
-	font-family: "Open Sans", "Lucida Grande", "Segoe UI", Tahoma, Arial, sans-serif;
+	font-family: "Lucida Sans", "Segoe UI", Tahoma, Arial, sans-serif;
 	font-size: 12px;
 	line-height: normal;
 	overflow: hidden;
@@ -49,49 +57,52 @@ textarea {
 	outline: 0;
 }
 textarea:focus {
-	@include box-shadow(0 0 0 1px $color_textarea_focus inset);
+	@include box-shadow(0 0 1px 1px $input_focus inset);
 }
 
 .access-key {
 	font-weight: bold;
 }
 
-.viewport {
+.regextool {
 	@include display-box;
 	@include box-orient(vertical);
 	height: 100%;
 	width: 100%;
-}
 
-.viewport section {
-	@include display-box;
-	@include box-orient(vertical);
-	margin: 0;
-	position: relative;
-	border: 0;
-	background: transparent;
-	min-height: 80px;
-}
-.viewport section.section-results {
-	@include box-flex(1);
+	section {
+		@include display-box;
+		@include box-orient(vertical);
+		margin: 0;
+		position: relative;
+		border: 0;
+		background: transparent;
+		min-height: 80px;
+	}
+
+	section.section-results {
+		@include box-flex(1);
+	}
 }
 
 .section-title {
-	@include background-image(linear-gradient(top, rgba(0,0,0,.05), rgba(0,0,0,0)));
-	@include box-shadow(0 1px 0 rgba(0,0,0,.1));
+	@include background-image(linear-gradient(top, lighten($section_title_bg, 5%), $section_title_bg));
+	@include box-shadow(
+		0 -1px 0 rgba(255,255,255,.75) inset,
+		0 1px 0 rgba(0,0,0,.1)
+	);
 	@include box-sizing(border-box);
-	@include text-shadow(0 1px 0 #fff);
-	background-color: #eee;
+	@include text-shadow(0 1px 0 rgba(255,255,255,.5));
+	@include contrasted($section_title_bg);
 	border: {
-		bottom: 1px solid #bbb;
-		top: 1px solid #bbb;
+		bottom: 1px solid darken($section_title_bg, 25%);
+		top: 1px solid darken($section_title_bg, 15%);
 	}
-	color: #000;
 	display: block;
 	font-size: 13px;
 	font-weight: 600;
-	min-height: 22px;
-	line-height: 20px;
+	min-height: $section_title_height;
+	line-height: $section_title_height - 2;
 	margin: 0;
 	padding: 0 4px;
 	position: relative;
@@ -111,15 +122,15 @@ textarea:focus {
 }
 
 #pattern {
-	background-color: $color_pattern_bg;
+	background-color: $pattern_bg;
 }
 
 #pattern.invalid {
-	background-color: $color_pattern_invalid_bg;
-	color: $color_pattern_invalid;
+	background-color: $pattern_invalid_bg;
+	color: $pattern_invalid;
 }
 #pattern.invalid:focus {
-	@include box-shadow(0 0 0 1px $color_pattern_invalid_focus inset);
+	@include box-shadow(0 0 0 1px $pattern_invalid_focus inset);
 }
 
 #sample {
@@ -129,7 +140,11 @@ textarea:focus {
 #result {
 	padding: 0;
 }
-
+#result ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
 #result li,
 #result span {
 	min-height: 18px;
@@ -171,35 +186,47 @@ textarea:focus {
 #flags {
 	@include box-sizing(border-box);
 	@include user-select(none);
-	height: 22px;
-	line-height: 22px;
-	margin: 0;
-	padding: 0 4px 0 0;
+	font-size: 11px;
+	list-style: none;
+	margin-right: 6px;
 	position: absolute;
 	right: 0;
 	top: 0;
 	z-index: 10;
-	white-space: nowrap;
-	
+
 	li {
 		display: inline;
 	}
 	label {
-		@include box-sizing(border-box);
 		display: block;
 		float: left;
-		height: 22px;
-		line-height: 22px;
-		margin: 0;
+		height: $section_title_height - 7;
+		line-height: $section_title_height - 8;
+		margin: 3px 1px 0;
 		padding: 0;
 	}
 	input[type='checkbox'] {
-		
+		@include appearance(none);
+		display: inline;
+		position: absolute;
+		visibility: hidden;
 	}
 	.checkbox-label {
-		color: #888;
+		@include border-radius(2px);
+		@include inline-block;
+		@include text-shadow(0 1px 0 rgba(255,255,255,.4));
+		color: contrast-color($section_title_bg, #444, #ccc);
+		height: $section_title_height - 7;
+		line-height: $section_title_height - 8;
+		margin: 0;
+		padding: 0 6px;
+		vertical-align: baseline
 	}
 	input[type='checkbox']:checked + .checkbox-label {
-		color: #000;
+		@include box-shadow(
+			0 0 1px rgba(0,0,0,.75) inset,
+			0 1px 0 rgba(255,255,255,.5)
+		);
+		@include contrasted(darken($section_title_bg, 6%));
 	}
 }
