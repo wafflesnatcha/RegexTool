@@ -25,10 +25,9 @@ $contrasted-lightness-threshold: 50%;
 @import "compass/utilities";
 
 html, body {
-	height: 100%;
 	margin: 0;
 	padding: 0;
-	width: 100%;
+	height: 100%;
 }
 
 body {
@@ -101,7 +100,7 @@ textarea:focus {
 	display: block;
 	font-size: 13px;
 	font-weight: 600;
-	min-height: $section_title_height;
+	min-height: 8px;
 	line-height: $section_title_height - 2;
 	margin: 0;
 	padding: 0 4px;
@@ -130,7 +129,7 @@ textarea:focus {
 	color: $pattern_invalid;
 }
 #pattern.invalid:focus {
-	@include box-shadow(0 0 0 1px $pattern_invalid_focus inset);
+	@include box-shadow(0 0 1px 1px $pattern_invalid_focus inset);
 }
 
 #sample {
@@ -147,33 +146,32 @@ textarea:focus {
 }
 #result li,
 #result span {
-	min-height: 18px;
+	min-height: 14px;
 }
 #result > ol > li {
 	@include border-radius(2px);
 	background-color: #eee;
 	border: 1px solid #ddd;
 	color: #000;
-	margin: 5px;
+	margin: 8px;
 }
 #result > ol > li > span {
 	@include border-radius(2px);
-	background-position: 4px 3px;
-	background-repeat: no-repeat;
 	display: block;
 	padding: 0 3px;
 }
 #result > ol > li.parent > span {
 	@include background-image(image-url("arrow-down.png"));
 	@include ellipsis;
-	padding: 0 3px 0 20px;
+	background-position: 3px center;
+	background-repeat: no-repeat;
+	padding-left: 20px;
 }
 #result > ol > li.parent.hidden > span {
 	@include background-image(image-url("arrow-right.png"));
 }
 #result > ol > li.parent > span:hover {
 	background-color: #e0f0ff;
-	cursor: pointer;
 }
 #result > ol > li ol {
 	margin: 0;

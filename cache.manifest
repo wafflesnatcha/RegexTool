@@ -1,8 +1,12 @@
 CACHE MANIFEST
-# Tue Feb 21 20:16:58 PST 2012
+# 2012-02-22 01:29:52
 
 CACHE:
+favicon.ico
 index.html
-lib/*
-resources/css/*
-resources/images/*
+lib/script.js
+resources/css/screen.css
+resources/images/arrow-down.png
+resources/images/arrow-right.png
+resources/images/icon-16.png
+resources/images/icon-512.png
