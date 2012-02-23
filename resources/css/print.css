@@ -1,0 +1,60 @@
+html, body {
+  height: auto;
+}
+
+body {
+  background: none;
+  color: #000;
+}
+
+a {
+  text-decoration: underline;
+}
+
+textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  outline: 0;
+  resize: none;
+  width: auto;
+}
+
+.access-key {
+  font-weight: inherit;
+}
+
+.regextool {
+  display: inline;
+  height: auto;
+  width: auto;
+}
+.regextool section {
+  display: block;
+  position: static;
+}
+
+.section-title {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: normal;
+  min-height: 0;
+  line-height: normal;
+  margin: 1em 0;
+  position: static;
+}
+
+.section-content {
+  background: none;
+  max-width: none;
+  overflow: auto;
+  padding: 3px;
+}
+
+#pattern,
+#pattern.invalid,
+#sample {
+  background: none;
+}

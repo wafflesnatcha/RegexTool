@@ -1,5 +1,6 @@
 
 $input_focus: #2182cc;
+$input_focus_bg: #f4faff;
 
 $pattern_bg: #f4fff4;
 $pattern_invalid: #f00;
@@ -51,19 +52,11 @@ a:hover {
 	text-decoration: underline;
 }
 
-textarea {
-	border: 0;
-	outline: 0;
-}
-textarea:focus {
-	@include box-shadow(0 0 1px 1px $input_focus inset);
-}
-
 .access-key {
 	font-weight: bold;
 }
 
-.regextool {
+#regextool {
 	@include display-box;
 	@include box-orient(vertical);
 	height: 100%;
@@ -76,7 +69,7 @@ textarea:focus {
 		position: relative;
 		border: 0;
 		background: transparent;
-		min-height: 80px;
+//		min-height: 80px;
 	}
 
 	section.section-results {
@@ -98,12 +91,14 @@ textarea:focus {
 		top: 1px solid darken($section_title_bg, 15%);
 	}
 	display: block;
-	font-size: 13px;
-	font-weight: 600;
+	font: {
+		size: 13px;
+		weight: 600;
+	}
 	min-height: 8px;
 	line-height: $section_title_height - 2;
 	margin: 0;
-	padding: 0 4px;
+	padding: 0 6px;
 	position: relative;
 	z-index: 10;
 }
@@ -111,25 +106,39 @@ textarea:focus {
 .section-content {
 	@include box-flex(1);
 	@include box-sizing(border-box);
-	background: #fff;
+	background-color: #fff;
 	color: #000;
 	display: block;
 	margin: 0;
 	max-width: 100%;
+	min-height: 40px;
 	overflow: auto;
 	padding: 3px;
 }
 
-#pattern {
-	background-color: $pattern_bg;
+textarea.section-content {
+	@include box-shadow(0 0 1px 1px transparent inset);
+	@include transition(box-shadow, .15s);
+	border: 0;
+	outline: 0;
 }
 
-#pattern.invalid {
-	background-color: $pattern_invalid_bg;
-	color: $pattern_invalid;
+textarea.section-content:focus {
+	@include box-shadow(0 0 1px 1px $input_focus inset);
 }
-#pattern.invalid:focus {
-	@include box-shadow(0 0 1px 1px $pattern_invalid_focus inset);
+
+#pattern {
+	background-color: $pattern_bg;
+	white-space: pre;
+
+	&.invalid {
+		background-color: $pattern_invalid_bg;
+		color: $pattern_invalid;
+	}
+
+	&.invalid:focus {
+		@include box-shadow(0 0 1px 1px $pattern_invalid_focus inset);
+	}
 }
 
 #sample {
@@ -138,93 +147,108 @@ textarea:focus {
 
 #result {
 	padding: 0;
-}
-#result ol {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-#result li,
-#result span {
-	min-height: 14px;
-}
-#result > ol > li {
-	@include border-radius(2px);
-	background-color: #eee;
-	border: 1px solid #ddd;
-	color: #000;
-	margin: 8px;
-}
-#result > ol > li > span {
-	@include border-radius(2px);
-	display: block;
-	padding: 0 3px;
-}
-#result > ol > li.parent > span {
-	@include background-image(image-url("arrow-down.png"));
-	@include ellipsis;
-	background-position: 3px center;
-	background-repeat: no-repeat;
-	padding-left: 20px;
-}
-#result > ol > li.parent.hidden > span {
-	@include background-image(image-url("arrow-right.png"));
-}
-#result > ol > li.parent > span:hover {
-	background-color: #e0f0ff;
-}
-#result > ol > li ol {
-	margin: 0;
-}
-#result > ol > li ol li {
-	border-top: 1px solid #ccc;
-	padding: 0 4px;
+
+	ol {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li, span {
+		min-height: 14px;
+	}
+
+	& > ol > li {
+		@include border-radius(2px);
+		background-color: #eee;
+		border: 1px solid #ddd;
+		color: #000;
+		margin: 8px;
+
+		span {
+			@include border-radius(2px);
+			display: block;
+			padding: 0 3px;
+		}
+
+		&.parent > span {
+			@include background-image(image-url("arrow-down.png"));
+			@include ellipsis;
+			background-position: 3px center;
+			background-repeat: no-repeat;
+			padding-left: 20px;
+		}
+
+		&.parent.hidden > span {
+			@include background-image(image-url("arrow-right.png"));
+		}
+
+		&.parent > span:hover {
+			background-color: #e0f0ff;
+		}
+
+		ol li {
+			border-top: 1px solid #ccc;
+			padding: 0 4px;
+		}
+	}
 }
 
 #flags {
 	@include box-sizing(border-box);
 	@include user-select(none);
 	font-size: 11px;
-	list-style: none;
 	margin-right: 6px;
 	position: absolute;
 	right: 0;
 	top: 0;
 	z-index: 10;
 
-	li {
-		display: inline;
+	h3 {
+		display: none;
 	}
-	label {
-		display: block;
-		float: left;
-		height: $section_title_height - 7;
-		line-height: $section_title_height - 8;
-		margin: 3px 1px 0;
-		padding: 0;
-	}
-	input[type='checkbox'] {
-		@include appearance(none);
-		display: inline;
-		position: absolute;
-		visibility: hidden;
-	}
-	.checkbox-label {
-		@include border-radius(2px);
-		@include inline-block;
-		@include text-shadow(0 1px 0 rgba(255,255,255,.4));
-		color: contrast-color($section_title_bg, #444, #ccc);
-		height: $section_title_height - 7;
-		line-height: $section_title_height - 8;
-		margin: 0;
-		padding: 0 6px;
-		vertical-align: baseline
-	}
-	input[type='checkbox']:checked + .checkbox-label {
-		@include box-shadow(
-			0 0 1px rgba(0,0,0,.75) inset,
-			0 1px 0 rgba(255,255,255,.5)
-		);
-		@include contrasted(darken($section_title_bg, 6%));
+
+	ul {
+		list-style: none;
+
+		li {
+			display: inline;
+		}
+
+		label {
+			display: block;
+			float: left;
+			height: $section_title_height - 7;
+			line-height: $section_title_height - 8;
+			margin: 3px 1px 0;
+			padding: 0;
+		}
+
+		input[type='checkbox'] {
+			@include appearance(none);
+			display: inline;
+			position: absolute;
+			visibility: hidden;
+		}
+
+		.checkbox-label {
+			@include border-radius(2px);
+			@include inline-block;
+			@include text-shadow(0 1px 0 rgba(255,255,255,.4));
+			color: contrast-color($section_title_bg, #444, #ccc);
+			height: $section_title_height - 7;
+			line-height: $section_title_height - 8;
+			margin: 0;
+			padding: 0 6px;
+			vertical-align: baseline
+		}
+
+		input[type='checkbox']:checked + .checkbox-label {
+			@include box-shadow(
+				0 0 1px rgba(0,0,0,.75) inset,
+				0 1px 0 rgba(255,255,255,.5)
+			);
+			@include contrasted(darken($section_title_bg, 6%));
+		}
 	}
 }
