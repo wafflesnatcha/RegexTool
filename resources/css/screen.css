@@ -1,3 +1,4 @@
+/* line 17, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -19,47 +20,57 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
+/* line 20, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
+/* line 22, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
+/* line 24, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
+/* line 26, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
+/* line 28, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
+/* line 101, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
+/* line 30, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
+/* line 114, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.11.7/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
+/* line 75, ../scss/screen.scss */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
+/* line 81, ../scss/screen.scss */
 body {
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -71,44 +82,85 @@ body {
   font-size: 12px;
   line-height: normal;
   overflow: hidden;
+  -webkit-text-size-adjust: none;
 }
 
+/* line 94, ../scss/screen.scss */
 pre, code, textarea {
   font-family: Menlo, Consolas, "Droid Sans Mono", monospace;
   font-size: inherit;
 }
 
+/* line 101, ../scss/screen.scss */
 textarea {
   resize: none;
 }
 
+/* line 105, ../scss/screen.scss */
+input, select, textarea, button {
+  background-color: white;
+  border: 0;
+  -moz-box-shadow: 0 0 1px 1px transparent inset;
+  -webkit-box-shadow: 0 0 1px 1px transparent inset;
+  -o-box-shadow: 0 0 1px 1px transparent inset;
+  box-shadow: 0 0 1px 1px transparent inset;
+  color: black;
+  outline: 0;
+  -moz-transition: box-shadow 0.1s;
+  -webkit-transition: box-shadow 0.1s;
+  -o-transition: box-shadow 0.1s;
+  transition: box-shadow 0.1s;
+}
+/* line 113, ../scss/screen.scss */
+input:focus, select:focus, textarea:focus, button:focus {
+  background-color: #f4faff;
+  -moz-box-shadow: 0 0 1px 1px #2182cc inset;
+  -webkit-box-shadow: 0 0 1px 1px #2182cc inset;
+  -o-box-shadow: 0 0 1px 1px #2182cc inset;
+  box-shadow: 0 0 1px 1px #2182cc inset;
+}
+
+/* line 119, ../scss/screen.scss */
 a {
   color: #1525ab;
   text-decoration: none;
 }
+/* line 123, ../scss/screen.scss */
 a:visited {
   color: #680094;
 }
+/* line 127, ../scss/screen.scss */
 a:hover {
   text-decoration: underline;
 }
 
+/* line 132, ../scss/screen.scss */
 .access-key {
   font-weight: bold;
 }
 
+/* line 136, ../scss/screen.scss */
 #regextool {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
 
+/* line 145, ../scss/screen.scss */
 section {
   position: relative;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
 }
+/* line 149, ../scss/screen.scss */
 section .section-title {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f2f2f2), color-stop(100%, #e5e5e5));
   background-image: -webkit-linear-gradient(top, #f2f2f2, #e5e5e5);
@@ -134,83 +186,64 @@ section .section-title {
   font-weight: 600;
   line-height: 22px;
   margin: 0;
+  max-height: 24px;
   padding: 0 6px;
   position: relative;
   z-index: 2;
 }
+/* line 173, ../scss/screen.scss */
 section .section-content {
+  background-color: white;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  background-color: white;
   display: block;
   margin: 0;
   max-width: 100%;
-  min-height: 50px;
+  min-height: 20px;
   min-width: 100%;
   overflow: auto;
   padding: 3px;
-}
-section textarea.section-content {
-  -moz-box-shadow: 0 0 1px 1px transparent inset;
-  -webkit-box-shadow: 0 0 1px 1px transparent inset;
-  -o-box-shadow: 0 0 1px 1px transparent inset;
-  box-shadow: 0 0 1px 1px transparent inset;
-  -moz-transition-property: box-shadow;
-  -webkit-transition-property: box-shadow;
-  -o-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -moz-transition-duration: 0.1s;
-  -webkit-transition-duration: 0.1s;
-  -o-transition-duration: 0.1s;
-  transition-duration: 0.1s;
   -moz-user-select: text;
   -khtml-user-select: text;
   -ms-user-select: text;
   -webkit-user-select: text;
-  border: 0;
-  outline: 0;
-}
-section textarea.section-content:focus {
-  -moz-box-shadow: 0 0 1px 1px #2182cc inset;
-  -webkit-box-shadow: 0 0 1px 1px #2182cc inset;
-  -o-box-shadow: 0 0 1px 1px #2182cc inset;
-  box-shadow: 0 0 1px 1px #2182cc inset;
 }
 
-#pattern {
+/* line 188, ../scss/screen.scss */
+#section-pattern .section-content {
   background-color: #f4fff4;
   white-space: pre;
 }
-#pattern.invalid {
+/* line 192, ../scss/screen.scss */
+#section-pattern .section-content.invalid {
   background-color: #fff1f1;
   color: red;
 }
-#pattern.invalid:focus {
+/* line 197, ../scss/screen.scss */
+#section-pattern .section-content.invalid:focus {
   -moz-box-shadow: 0 0 1px 1px #cc2323 inset;
   -webkit-box-shadow: 0 0 1px 1px #cc2323 inset;
   -o-box-shadow: 0 0 1px 1px #cc2323 inset;
   box-shadow: 0 0 1px 1px #cc2323 inset;
 }
 
+/* line 203, ../scss/screen.scss */
 #flags {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
   font-size: 11px;
   position: absolute;
   right: 0;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   top: 0;
   white-space: nowrap;
   z-index: 10;
 }
+/* line 213, ../scss/screen.scss */
 #flags h3 {
   border: 0 solid #b7b7b7;
   border-right-width: 1px;
@@ -222,33 +255,31 @@ section textarea.section-content:focus {
   color: black;
   float: left;
   font-weight: bold;
-  line-height: 22px;
-  margin: 1px 3px;
-  padding: 0 6px;
+  line-height: 18px;
+  margin: 0px 3px;
+  padding: 3px 6px;
   text-transform: uppercase;
 }
+/* line 226, ../scss/screen.scss */
 #flags ul {
   display: inline;
   list-style: none;
 }
+/* line 230, ../scss/screen.scss */
 #flags ul li {
-  display: inline;
-}
-#flags ul label {
-  display: block;
   float: left;
+  overflow: hidden;
   line-height: 18px;
-  margin: 3px 1px;
+  padding: 3px 2px 3px 1px;
 }
-#flags ul input[type='checkbox'] {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  display: inline;
-  position: absolute;
-  visibility: hidden;
+/* line 236, ../scss/screen.scss */
+#flags ul li input {
+  float: left;
+  margin: -30px 0 0 -30px;
+  outline: none;
 }
-#flags ul .checkbox-label {
+/* line 242, ../scss/screen.scss */
+#flags ul li label {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   -o-border-radius: 2px;
@@ -256,188 +287,234 @@ section textarea.section-content:focus {
   -khtml-border-radius: 2px;
   border-radius: 2px;
   color: #555555;
+  display: block;
   float: left;
+  outline: none;
   padding: 0 6px;
 }
-#flags ul .checkbox-label .access-key {
+/* line 250, ../scss/screen.scss */
+#flags ul li label .access-key {
   color: #222;
 }
-#flags ul input[type='checkbox']:checked + .checkbox-label {
+/* line 256, ../scss/screen.scss */
+#flags ul li input:checked + label {
+  background-color: rgba(183, 183, 183, 0.5);
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
   -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
-  background-color: rgba(183, 183, 183, 0.5);
   color: black;
 }
-#flags ul input[type='checkbox']:checked + .checkbox-label .access-key {
+/* line 261, ../scss/screen.scss */
+#flags ul li input:checked + label .access-key {
   color: black;
+}
+/* line 266, ../scss/screen.scss */
+#flags ul li input:focus + label {
+  -moz-box-shadow: 0 0 1px 1px #2182cc inset;
+  -webkit-box-shadow: 0 0 1px 1px #2182cc inset;
+  -o-box-shadow: 0 0 1px 1px #2182cc inset;
+  box-shadow: 0 0 1px 1px #2182cc inset;
+}
+/* line 270, ../scss/screen.scss */
+#flags ul li input:checked:focus + label {
+  -moz-box-shadow: 0 0 1px 1px #2182cc inset, 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0 0 1px 1px #2182cc inset, 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
+  -o-box-shadow: 0 0 1px 1px #2182cc inset, 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 1px 1px #2182cc inset, 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
+/* line 278, ../scss/screen.scss */
 #section-sample {
+  border-bottom: 1px solid #aaaaaa;
   -moz-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 2px 0 0 rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 2px 0 0 rgba(0, 0, 0, 0.05);
   -o-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 2px 0 0 rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 2px 0 0 rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid #aaaaaa;
   z-index: 2;
 }
-
-#sample {
+/* line 283, ../scss/screen.scss */
+#section-sample .section-content {
   background-color: #fffff3;
 }
 
+/* line 289, ../scss/screen.scss */
 #section-results .section-title {
   display: none;
 }
 
-#result {
+/* line 294, ../scss/screen.scss */
+#section-results .section-content {
+  height: 100%;
   padding: 0 0 8px;
 }
-#result ol {
+/* line 298, ../scss/screen.scss */
+#section-results .section-content ol {
   margin: 0;
   padding: 0;
 }
-#result .match {
+/* line 306, ../scss/screen.scss */
+#section-results .section-content .match {
   border-right: 1px solid #ddd;
   list-style: none;
   margin: 8px;
   min-height: 14px;
   position: relative;
 }
-#result .match .match-index {
-  -moz-border-radius: 2px 0 0 2px;
-  -webkit-border-radius: 2px 0 0 2px;
-  -o-border-radius: 2px 0 0 2px;
-  -ms-border-radius: 2px 0 0 2px;
-  -khtml-border-radius: 2px 0 0 2px;
-  border-radius: 2px 0 0 2px;
-  -moz-box-shadow: -2px 0 2px -2px rgba(0, 0, 0, 0.5) inset;
-  -webkit-box-shadow: -2px 0 2px -2px rgba(0, 0, 0, 0.5) inset;
-  -o-box-shadow: -2px 0 2px -2px rgba(0, 0, 0, 0.5) inset;
-  box-shadow: -2px 0 2px -2px rgba(0, 0, 0, 0.5) inset;
+/* line 313, ../scss/screen.scss */
+#section-results .section-content .match .match-index {
+  background-color: #ededed;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  -moz-border-radius: 3px 0 0 3px;
+  -webkit-border-radius: 3px 0 0 3px;
+  -o-border-radius: 3px 0 0 3px;
+  -ms-border-radius: 3px 0 0 3px;
+  -khtml-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+  -moz-box-shadow: -2px 0 2px -2px rgba(0, 0, 0, 0.3) inset, -43px 0 43px -43px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: -2px 0 2px -2px rgba(0, 0, 0, 0.3) inset, -43px 0 43px -43px rgba(0, 0, 0, 0.1) inset;
+  -o-box-shadow: -2px 0 2px -2px rgba(0, 0, 0, 0.3) inset, -43px 0 43px -43px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: -2px 0 2px -2px rgba(0, 0, 0, 0.3) inset, -43px 0 43px -43px rgba(0, 0, 0, 0.1) inset;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  background-color: #ededed;
   color: black;
   float: left;
   font-size: 11px;
   font-weight: bold;
   height: 100%;
-  padding: 2px 6px;
+  padding: 2px 5px;
   position: absolute;
   text-align: right;
   text-decoration: none;
   width: 30px;
 }
-#result .match .match-index:hover {
-  background-color: #dbdbdb;
+/* line 334, ../scss/screen.scss */
+#section-results .section-content .match .match-index:hover {
+  background-color: #d5d5d5;
 }
-#result .match .match-result {
+/* line 339, ../scss/screen.scss */
+#section-results .section-content .match.parent .match-index:hover {
+  background-image: url('../images/arrow-up-light.png?1331288940');
+  background-position: 1px bottom;
+  background-repeat: no-repeat;
+}
+/* line 345, ../scss/screen.scss */
+#section-results .section-content .match.parent.hidden .match-index:hover {
+  background-image: url('../images/arrow-down-light.png?1331288944');
+  background-position: 1px top;
+}
+/* line 350, ../scss/screen.scss */
+#section-results .section-content .match .match-result {
   margin-left: 30px;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-#result .match-result-match {
+/* line 357, ../scss/screen.scss */
+#section-results .section-content .match-result-match {
   background-color: #eee;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
-#result .match-string-index {
+/* line 365, ../scss/screen.scss */
+#section-results .section-content .match-string-index {
   float: right;
   font-size: 11px;
   font-weight: bold;
-  margin: 0 4px;
+  padding: 1px 2px;
 }
-#result .match-string {
+/* line 374, ../scss/screen.scss */
+#section-results .section-content .match-string {
   display: block;
   overflow: hidden;
   padding: 1px 2px;
 }
-#result .match-string.empty,
-#result .submatch-string.empty {
+/* line 381, ../scss/screen.scss */
+#section-results .section-content .match-string.empty,
+#section-results .section-content .submatch-string.empty {
   color: #999;
 }
-#result .match.hidden .match-string {
+/* line 385, ../scss/screen.scss */
+#section-results .section-content .match.hidden .match-string {
   white-space: nowrap;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
-#result .submatch {
+/* line 389, ../scss/screen.scss */
+#section-results .section-content .submatch {
   border-bottom: 1px solid #ddd;
   padding: 2px;
 }
-#result .submatch .submatch-index {
+/* line 393, ../scss/screen.scss */
+#section-results .section-content .submatch .submatch-index {
   display: none;
 }
 
-html.no-flexbox #regextool {
-  position: relative;
-}
-html.no-flexbox #section-results {
-  position: absolute;
-  top: 148px;
-  bottom: 0px;
-  height: auto;
-}
-html.no-flexbox #section-results #result {
-  height: 100%;
-}
-
+/* line 405, ../scss/screen.scss */
 html.flexbox textarea {
   resize: vertical;
 }
-html.flexbox #regextool {
+/* line 409, ../scss/screen.scss */
+html.flexbox #regextool, html.flexbox section {
   display: -moz-box;
   display: -webkit-box;
   display: -ms-box;
   display: box;
+  -moz-box-pack: justify;
+  -webkit-box-pack: justify;
+  -ms-box-pack: justify;
+  box-pack: justify;
+  -moz-box-align: stretch;
+  -webkit-box-align: stretch;
+  -ms-box-align: stretch;
+  box-align: stretch;
   -moz-box-orient: vertical;
   -webkit-box-orient: vertical;
   -ms-box-orient: vertical;
   box-orient: vertical;
 }
-html.flexbox section {
-  display: -moz-box;
-  display: -webkit-box;
-  display: -ms-box;
-  display: box;
-  -moz-box-orient: vertical;
-  -webkit-box-orient: vertical;
-  -ms-box-orient: vertical;
-  box-orient: vertical;
-}
+/* line 416, ../scss/screen.scss */
 html.flexbox .section-content {
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
   -ms-box-flex: 1;
   box-flex: 1;
 }
+/* line 420, ../scss/screen.scss */
 html.flexbox #section-results {
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
   -ms-box-flex: 1;
   box-flex: 1;
+  position: static;
+  width: auto;
 }
 
-body.jquery-layout .ui-layout-resizer {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f2f2f2), color-stop(100%, #e5e5e5));
-  background-image: -webkit-linear-gradient(top, #f2f2f2, #e5e5e5);
-  background-image: -moz-linear-gradient(top, #f2f2f2, #e5e5e5);
-  background-image: -o-linear-gradient(top, #f2f2f2, #e5e5e5);
-  background-image: -ms-linear-gradient(top, #f2f2f2, #e5e5e5);
-  background-image: linear-gradient(top, #f2f2f2, #e5e5e5);
-  border-bottom: 3px solid transparent;
-  border-top: 3px solid transparent;
-  cursor: ns-resize !important;
-  cursor: row-resize !important;
-  height: 6px !important;
-  z-index: 50 !important;
+/* line 429, ../scss/screen.scss */
+html.no-flexbox #section-results {
+  bottom: 0;
+  height: auto;
+  position: absolute;
+  top: 151px;
+  width: 100%;
 }
-body.jquery-layout .ui-layout-toggler {
-  background-color: #c4c4c4;
+
+/* line 438, ../scss/screen.scss */
+body.layout-mobile {
+  height: auto;
+  overflow: auto;
+}
+/* line 442, ../scss/screen.scss */
+body.layout-mobile #regextool, body.layout-mobile section {
+  display: block;
+  height: auto;
+}
+/* line 447, ../scss/screen.scss */
+body.layout-mobile #section-results {
+  position: relative;
+  top: auto;
+  left: auto;
 }

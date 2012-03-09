@@ -1,14 +1,18 @@
 @import "compass/css3";
+
 html, body {
 	height: auto;
 }
+
 body {
 	background: none;
 	color: #000;
 }
+
 a {
 	text-decoration: underline;
 }
+
 textarea {
 	@include appearance(none);
 	border: none;
@@ -25,6 +29,7 @@ textarea {
 	display: inline;
 	height: auto;
 	width: auto;
+	
 	section {
 		display: block;
 		position: static;
@@ -49,10 +54,4 @@ textarea {
 	max-width: none;
 	overflow: auto;
 	padding: 3px;
-}
-
-#pattern,
-#pattern.invalid,
-#sample {
-	background: none;
 }

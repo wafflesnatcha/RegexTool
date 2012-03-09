@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en-US">  <!-- manifest="cache.manifest" -->
+<html>
+<!-- <html manifest="cache.manifest"> -->
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 	<title>Regex Tool</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 
 	<link rel="stylesheet" type="text/css" href="resources/css/screen.css" media="screen, projection">
 	<link rel="stylesheet" type="text/css" href="resources/css/print.css" media="print">
@@ -13,63 +15,33 @@
 
 	<link rel="shortcut icon" href="resources/images/icon-16.png">
 	<link rel="icon" type="image/png" href="resources/images/icon-16.png">
-	<link rel="apple-touch-icon" href="resources/images/icon-512.png">
+	<link rel="apple-touch-icon" href="resources/images/icon-256.png">
 
-	<!--[if lte IE 8]>
-		<link rel="stylesheet" type="text/css" href="resources/css/ie.css" media="screen, projection">
-		<link rel="shortcut icon" href="favicon.ico">
-		<link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
-	<![endif]-->
+<!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="resources/css/ie.css" media="screen, projection">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
+<![endif]-->
 
 	<script src="lib/modernizr/modernizr-2.5.3.js" type="text/javascript"></script>
+	<!-- <script src="lib/modernizr/modernizr-custom.js" type="text/javascript"></script> -->
 	<script src="lib/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
-
-<!--
-	<script src="lib/jquery/jquery-ui-1.8.18.min.js" type="text/javascript"></script>
-	<script src="lib/jquery/jquery.layout-1.2.0.min.js" type="text/javascript"></script>
--->
-
-	<script src="lib/jquery/jquery.storage-0.3.js" type="text/javascript"></script>
+	<!-- <script src="lib/jquery/jquery-ui-1.8.18.min.js" type="text/javascript"></script> -->
 	<script src="lib/xregexp/xregexp-1.5.1.min.js" type="text/javascript"></script>
 	<script src="lib/regextool/regextool.js" type="text/javascript"></script>
-	<script src="lib/regextool/regextool.pattern.js" type="text/javascript"></script>
 	<script src="lib/regextool/regextool.result.js" type="text/javascript"></script>
 	<script src="lib/regextool/regextool.storage.js" type="text/javascript"></script>
+	<script src="lib/regextool/regextool.ui.js" type="text/javascript"></script>
 
 	<script type="text/javascript">
 		$(function() {
-			if ($('body').layout) {
-				$('body').addClass('jquery-layout');
-				$('body').layout({
-					// applyDefaultStyles: true,
-					defaults: {
-						closable: false,
-						contentSelector: ".section-content",
-						minSize: 70,
-					},
-					north: {
-						size: 100,
-						paneSelector: "#section-pattern",
-					},
-					center: {
-						size: 100,
-						paneSelector: "#section-sample",
-					},
-					south: {
-						size: 'auto',
-						paneSelector: "#section-results",
-					}
-				});
-			}
 			RegexTool.init();
 		});
 	</script>
 
 </head>
 <body>
-
 	<form id="regextool">
-
 		<section id="section-pattern">
 			<h2 class="section-title">
 				<label for="pattern"><span class="access-key">P</span>attern</label>
@@ -77,16 +49,26 @@
 			<div id="flags">
 				<h3>Flags</h3>
 				<ul>
-					<li><label for="flag-g" tabindex="3" title="All matches">
-						<input type="checkbox" id="flag-g" name="flag-g" accesskey="g"><span class="checkbox-label"><span class="access-key">g</span>lobal</span></label></li>
-					<li><label for="flag-m" tabindex="4" title="^ and $ match at newlines">
-						<input type="checkbox" id="flag-m" name="flag-m" accesskey="m"><span class="checkbox-label"><span class="access-key">m</span>ultiline</span></label></li>
-					<li><label for="flag-i" tabindex="5" title="Case insensitive">
-						<input type="checkbox" id="flag-i" name="flag-i" accesskey="i"><span class="checkbox-label"><span class="access-key">i</span>gnore case</span></label></li>
-					<li><label for="flag-s" tabindex="5" title="Dot matches all (aka dotall)">
-						<input type="checkbox" id="flag-s" name="flag-s" accesskey="s"><span class="checkbox-label"><span class="access-key">s</span>ingleline mode</span></label></li>
-					<li><label for="flag-x" tabindex="5" title="Free-spacing and line comments">
-						<input type="checkbox" id="flag-x" name="flag-x" accesskey="x"><span class="checkbox-label">e<span class="access-key">x</span>tended mode</span></label></li>
+					<li>
+						<input type="checkbox" id="flag-g" name="flag-g" accesskey="g">
+						<label for="flag-g" tabindex="3" title="All matches"><span class="access-key">g</span>lobal</label>
+					</li>
+					<li>
+						<input type="checkbox" id="flag-m" name="flag-m" accesskey="m">
+						<label for="flag-m" tabindex="4" title="^ and $ match at newlines"><span class="access-key">m</span>ultiline</label>
+					</li>
+					<li>
+						<input type="checkbox" id="flag-i" name="flag-i" accesskey="i">
+						<label for="flag-i" tabindex="5" title="Case insensitive"><span class="access-key">i</span>gnore case</label>
+					</li>
+					<li>
+						<input type="checkbox" id="flag-s" name="flag-s" accesskey="s">
+						<label for="flag-s" tabindex="6" title="Dot matches all (aka dotall)"><span class="access-key">s</span>ingleline</label>
+					</li>
+					<li>
+						<input type="checkbox" id="flag-x" name="flag-x" accesskey="x">
+						<label for="flag-x" tabindex="7" title="Free-spacing and line comments">e<span class="access-key">x</span>tended</label>
+					</li>
 				</ul>
 			</div>
 			<textarea id="pattern" name="pattern" class="section-content" tabindex="1" accesskey="p" placeholder="Pattern" autofocus></textarea>
@@ -101,10 +83,11 @@
 
 		<section id="section-results">
 			<h2 class="section-title"><span>Results</span></h2>
-			<div id="result" class="section-content"></div>
+			<div id="result" class="section-content">
+				<div id="result-list"></div>
+				<div id="result-info"></div>
+			</div>
 		</section>
-
 	</form>
-
 </body>
 </html>
