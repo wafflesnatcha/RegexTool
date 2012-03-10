@@ -63,14 +63,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 75, ../scss/screen.scss */
+/* line 76, ../scss/screen.scss */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
-/* line 81, ../scss/screen.scss */
+/* line 82, ../scss/screen.scss */
 body {
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -78,26 +78,26 @@ body {
   tab-size: 4;
   background: white;
   color: black;
-  font-family: "Lucida Sans", "Segoe UI", Tahoma, Arial, sans-serif;
+  font-family: "Lucida Grande", "Segoe UI", Tahoma, Arial, sans-serif;
   font-size: 12px;
   line-height: normal;
   overflow: hidden;
   -webkit-text-size-adjust: none;
 }
 
-/* line 94, ../scss/screen.scss */
+/* line 95, ../scss/screen.scss */
 pre, code, textarea {
-  font-family: Menlo, Consolas, "Droid Sans Mono", monospace;
+  font-family: Menlo, Consolas, "Courier New", monospace;
   font-size: inherit;
 }
 
-/* line 101, ../scss/screen.scss */
+/* line 102, ../scss/screen.scss */
 textarea {
   resize: none;
 }
 
-/* line 105, ../scss/screen.scss */
-input, select, textarea, button {
+/* line 106, ../scss/screen.scss */
+textarea {
   background-color: white;
   border: 0;
   -moz-box-shadow: 0 0 1px 1px transparent inset;
@@ -111,35 +111,35 @@ input, select, textarea, button {
   -o-transition: box-shadow 0.1s;
   transition: box-shadow 0.1s;
 }
-/* line 113, ../scss/screen.scss */
-input:focus, select:focus, textarea:focus, button:focus {
-  background-color: #f4faff;
+/* line 114, ../scss/screen.scss */
+textarea:focus {
+  background-color: white;
   -moz-box-shadow: 0 0 1px 1px #2182cc inset;
   -webkit-box-shadow: 0 0 1px 1px #2182cc inset;
   -o-box-shadow: 0 0 1px 1px #2182cc inset;
   box-shadow: 0 0 1px 1px #2182cc inset;
 }
 
-/* line 119, ../scss/screen.scss */
+/* line 120, ../scss/screen.scss */
 a {
   color: #1525ab;
   text-decoration: none;
 }
-/* line 123, ../scss/screen.scss */
+/* line 124, ../scss/screen.scss */
 a:visited {
   color: #680094;
 }
-/* line 127, ../scss/screen.scss */
+/* line 128, ../scss/screen.scss */
 a:hover {
   text-decoration: underline;
 }
 
-/* line 132, ../scss/screen.scss */
+/* line 133, ../scss/screen.scss */
 .access-key {
   font-weight: bold;
 }
 
-/* line 136, ../scss/screen.scss */
+/* line 137, ../scss/screen.scss */
 #regextool {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -152,7 +152,7 @@ a:hover {
   width: 100%;
 }
 
-/* line 145, ../scss/screen.scss */
+/* line 146, ../scss/screen.scss */
 section {
   position: relative;
   -moz-user-select: none;
@@ -160,7 +160,7 @@ section {
   -ms-user-select: none;
   -webkit-user-select: none;
 }
-/* line 149, ../scss/screen.scss */
+/* line 150, ../scss/screen.scss */
 section .section-title {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f2f2f2), color-stop(100%, #e5e5e5));
   background-image: -webkit-linear-gradient(top, #f2f2f2, #e5e5e5);
@@ -191,7 +191,7 @@ section .section-title {
   position: relative;
   z-index: 2;
 }
-/* line 173, ../scss/screen.scss */
+/* line 174, ../scss/screen.scss */
 section .section-content {
   background-color: white;
   -moz-box-sizing: border-box;
@@ -211,17 +211,17 @@ section .section-content {
   -webkit-user-select: text;
 }
 
-/* line 188, ../scss/screen.scss */
+/* line 189, ../scss/screen.scss */
 #section-pattern .section-content {
   background-color: #f4fff4;
   white-space: pre;
 }
-/* line 192, ../scss/screen.scss */
+/* line 193, ../scss/screen.scss */
 #section-pattern .section-content.invalid {
   background-color: #fff1f1;
   color: red;
 }
-/* line 197, ../scss/screen.scss */
+/* line 198, ../scss/screen.scss */
 #section-pattern .section-content.invalid:focus {
   -moz-box-shadow: 0 0 1px 1px #cc2323 inset;
   -webkit-box-shadow: 0 0 1px 1px #cc2323 inset;
@@ -229,7 +229,7 @@ section .section-content {
   box-shadow: 0 0 1px 1px #cc2323 inset;
 }
 
-/* line 203, ../scss/screen.scss */
+/* line 204, ../scss/screen.scss */
 #flags {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -243,10 +243,9 @@ section .section-content {
   white-space: nowrap;
   z-index: 10;
 }
-/* line 213, ../scss/screen.scss */
+/* line 214, ../scss/screen.scss */
 #flags h3 {
-  border: 0 solid #b7b7b7;
-  border-right-width: 1px;
+  border-right: 1px solid #b7b7b7;
   -moz-border-image: -moz-linear-gradient(bottom, #c4c4c4, #aaaaaa);
   -webkit-border-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #c4c4c4), color-stop(100%, #aaaaaa));
   -webkit-border-image: -webkit-linear-gradient(bottom, #c4c4c4, #aaaaaa);
@@ -270,7 +269,7 @@ section .section-content {
   float: left;
   overflow: hidden;
   line-height: 18px;
-  padding: 3px 2px 3px 1px;
+  padding: 3px 2px;
 }
 /* line 236, ../scss/screen.scss */
 #flags ul li input {
@@ -296,35 +295,36 @@ section .section-content {
 #flags ul li label .access-key {
   color: #222;
 }
-/* line 256, ../scss/screen.scss */
+/* line 257, ../scss/screen.scss */
 #flags ul li input:checked + label {
-  background-color: rgba(183, 183, 183, 0.5);
-  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
-  -o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
-  color: black;
-}
-/* line 261, ../scss/screen.scss */
-#flags ul li input:checked + label .access-key {
+  background-color: #cbcbcb;
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4) inset, 0 1px 1px rgba(0, 0, 0, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4) inset, 0 1px 1px rgba(0, 0, 0, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
+  -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4) inset, 0 1px 1px rgba(0, 0, 0, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4) inset, 0 1px 1px rgba(0, 0, 0, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
   color: black;
 }
 /* line 266, ../scss/screen.scss */
-#flags ul li input:focus + label {
-  -moz-box-shadow: 0 0 1px 1px #2182cc inset;
-  -webkit-box-shadow: 0 0 1px 1px #2182cc inset;
-  -o-box-shadow: 0 0 1px 1px #2182cc inset;
-  box-shadow: 0 0 1px 1px #2182cc inset;
+#flags ul li input:checked + label .access-key {
+  color: black;
 }
-/* line 270, ../scss/screen.scss */
+/* line 271, ../scss/screen.scss */
+#flags ul li input:focus + label {
+  -moz-box-shadow: 0 0 0 1px #2182cc inset, 0 0 1px 0 rgba(33, 130, 204, 0.8);
+  -webkit-box-shadow: 0 0 0 1px #2182cc inset, 0 0 1px 0 rgba(33, 130, 204, 0.8);
+  -o-box-shadow: 0 0 0 1px #2182cc inset, 0 0 1px 0 rgba(33, 130, 204, 0.8);
+  box-shadow: 0 0 0 1px #2182cc inset, 0 0 1px 0 rgba(33, 130, 204, 0.8);
+  color: black;
+}
+/* line 281, ../scss/screen.scss */
 #flags ul li input:checked:focus + label {
-  -moz-box-shadow: 0 0 1px 1px #2182cc inset, 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
-  -webkit-box-shadow: 0 0 1px 1px #2182cc inset, 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
-  -o-box-shadow: 0 0 1px 1px #2182cc inset, 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 1px 1px #2182cc inset, 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0 0 0 1px #2182cc inset, 0 0 1px 0 rgba(33, 130, 204, 0.8), 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 0 0 0 1px #2182cc inset, 0 0 1px 0 rgba(33, 130, 204, 0.8), 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
+  -o-box-shadow: 0 0 0 1px #2182cc inset, 0 0 1px 0 rgba(33, 130, 204, 0.8), 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 1px #2182cc inset, 0 0 1px 0 rgba(33, 130, 204, 0.8), 0 1px 1px rgba(0, 0, 0, 0.5) inset, 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
-/* line 278, ../scss/screen.scss */
+/* line 293, ../scss/screen.scss */
 #section-sample {
   border-bottom: 1px solid #aaaaaa;
   -moz-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 2px 0 0 rgba(0, 0, 0, 0.05);
@@ -333,109 +333,86 @@ section .section-content {
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 2px 0 0 rgba(0, 0, 0, 0.05);
   z-index: 2;
 }
-/* line 283, ../scss/screen.scss */
+/* line 298, ../scss/screen.scss */
 #section-sample .section-content {
   background-color: #fffff3;
 }
 
-/* line 289, ../scss/screen.scss */
+/* line 304, ../scss/screen.scss */
 #section-results .section-title {
   display: none;
 }
-
-/* line 294, ../scss/screen.scss */
+/* line 308, ../scss/screen.scss */
 #section-results .section-content {
   height: 100%;
-  padding: 0 0 8px;
+  padding: 0;
 }
-/* line 298, ../scss/screen.scss */
+/* line 312, ../scss/screen.scss */
 #section-results .section-content ol {
   margin: 0;
   padding: 0;
 }
-/* line 306, ../scss/screen.scss */
+/* line 320, ../scss/screen.scss */
 #section-results .section-content .match {
-  border-right: 1px solid #ddd;
   list-style: none;
   margin: 8px;
   min-height: 14px;
   position: relative;
 }
-/* line 313, ../scss/screen.scss */
-#section-results .section-content .match .match-index {
-  background-color: #ededed;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-  -moz-border-radius: 3px 0 0 3px;
-  -webkit-border-radius: 3px 0 0 3px;
-  -o-border-radius: 3px 0 0 3px;
-  -ms-border-radius: 3px 0 0 3px;
-  -khtml-border-radius: 3px 0 0 3px;
-  border-radius: 3px 0 0 3px;
-  -moz-box-shadow: -2px 0 2px -2px rgba(0, 0, 0, 0.3) inset, -43px 0 43px -43px rgba(0, 0, 0, 0.1) inset;
-  -webkit-box-shadow: -2px 0 2px -2px rgba(0, 0, 0, 0.3) inset, -43px 0 43px -43px rgba(0, 0, 0, 0.1) inset;
-  -o-box-shadow: -2px 0 2px -2px rgba(0, 0, 0, 0.3) inset, -43px 0 43px -43px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: -2px 0 2px -2px rgba(0, 0, 0, 0.3) inset, -43px 0 43px -43px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  color: black;
-  float: left;
-  font-size: 11px;
-  font-weight: bold;
-  height: 100%;
-  padding: 2px 5px;
-  position: absolute;
-  text-align: right;
-  text-decoration: none;
-  width: 30px;
-}
-/* line 334, ../scss/screen.scss */
-#section-results .section-content .match .match-index:hover {
-  background-color: #d5d5d5;
-}
-/* line 339, ../scss/screen.scss */
-#section-results .section-content .match.parent .match-index:hover {
-  background-image: url('../images/arrow-up-light.png?1331288940');
-  background-position: 1px bottom;
+/* line 327, ../scss/screen.scss */
+#section-results .section-content .match-toggle {
+  background-position: center;
   background-repeat: no-repeat;
+  float: left;
+  height: 18px;
+  opacity: .5;
+  width: 18px;
 }
-/* line 345, ../scss/screen.scss */
-#section-results .section-content .match.parent.hidden .match-index:hover {
-  background-image: url('../images/arrow-down-light.png?1331288944');
-  background-position: 1px top;
+/* line 337, ../scss/screen.scss */
+#section-results .section-content .match-toggle:hover {
+  opacity: 1;
+}
+/* line 342, ../scss/screen.scss */
+#section-results .section-content .match.parent .match-toggle {
+  background-image: url('../images/arrow-down.png?1329794486');
+}
+/* line 346, ../scss/screen.scss */
+#section-results .section-content .match.parent.hidden .match-toggle {
+  background-image: url('../images/arrow-right.png?1329794510');
 }
 /* line 350, ../scss/screen.scss */
-#section-results .section-content .match .match-result {
-  margin-left: 30px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+#section-results .section-content .match-result {
+  background-color: #ededed;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -khtml-border-radius: 2px;
+  border-radius: 2px;
+  margin-left: 18px;
+  min-height: 18px;
 }
 /* line 357, ../scss/screen.scss */
-#section-results .section-content .match-result-match {
-  background-color: #eee;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
-/* line 365, ../scss/screen.scss */
-#section-results .section-content .match-string-index {
+#section-results .section-content .match-character-index {
+  color: #63007b;
   float: right;
   font-size: 11px;
   font-weight: bold;
-  padding: 1px 2px;
+  padding: 2px 4px;
 }
-/* line 374, ../scss/screen.scss */
+/* line 367, ../scss/screen.scss */
 #section-results .section-content .match-string {
   display: block;
   overflow: hidden;
-  padding: 1px 2px;
+  padding: 2px;
 }
-/* line 381, ../scss/screen.scss */
+/* line 374, ../scss/screen.scss */
 #section-results .section-content .match-string.empty,
 #section-results .section-content .submatch-string.empty {
-  color: #999;
+  color: #888;
+  font-style: italic;
 }
-/* line 385, ../scss/screen.scss */
+/* line 379, ../scss/screen.scss */
 #section-results .section-content .match.hidden .match-string {
   white-space: nowrap;
   overflow: hidden;
@@ -443,21 +420,21 @@ section .section-content {
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
-/* line 389, ../scss/screen.scss */
+/* line 383, ../scss/screen.scss */
+#section-results .section-content .submatches {
+  margin-left: 18px;
+}
+/* line 387, ../scss/screen.scss */
 #section-results .section-content .submatch {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #d5d5d5;
   padding: 2px;
 }
-/* line 393, ../scss/screen.scss */
-#section-results .section-content .submatch .submatch-index {
-  display: none;
-}
 
-/* line 405, ../scss/screen.scss */
+/* line 395, ../scss/screen.scss */
 html.flexbox textarea {
   resize: vertical;
 }
-/* line 409, ../scss/screen.scss */
+/* line 399, ../scss/screen.scss */
 html.flexbox #regextool, html.flexbox section {
   display: -moz-box;
   display: -webkit-box;
@@ -476,14 +453,14 @@ html.flexbox #regextool, html.flexbox section {
   -ms-box-orient: vertical;
   box-orient: vertical;
 }
-/* line 416, ../scss/screen.scss */
+/* line 406, ../scss/screen.scss */
 html.flexbox .section-content {
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
   -ms-box-flex: 1;
   box-flex: 1;
 }
-/* line 420, ../scss/screen.scss */
+/* line 410, ../scss/screen.scss */
 html.flexbox #section-results {
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
@@ -493,28 +470,11 @@ html.flexbox #section-results {
   width: auto;
 }
 
-/* line 429, ../scss/screen.scss */
+/* line 418, ../scss/screen.scss */
 html.no-flexbox #section-results {
   bottom: 0;
   height: auto;
   position: absolute;
   top: 151px;
   width: 100%;
-}
-
-/* line 438, ../scss/screen.scss */
-body.layout-mobile {
-  height: auto;
-  overflow: auto;
-}
-/* line 442, ../scss/screen.scss */
-body.layout-mobile #regextool, body.layout-mobile section {
-  display: block;
-  height: auto;
-}
-/* line 447, ../scss/screen.scss */
-body.layout-mobile #section-results {
-  position: relative;
-  top: auto;
-  left: auto;
 }

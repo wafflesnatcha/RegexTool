@@ -5,13 +5,17 @@ $contrasted-lightness-threshold: 50%;
 @import "compass/typography";
 @import "compass/utilities";
 
+$font_family: "Lucida Grande", "Segoe UI", Tahoma, Arial, sans-serif;
+$font_family_monospace: Menlo, Consolas, "Courier New", monospace;
+$font_size: 12px;
+
 $default: #000;
 $default_bg: #fff;
 
 $input: #000;
 $input_bg: #fff;
 $input_focus: #2182cc;
-$input_focus_bg: #f4faff;
+$input_focus_bg: #fff;
 
 $input_invalid: #f00;
 $input_invalid_bg: #fff1f1;
@@ -19,17 +23,14 @@ $input_invalid_focus: #cc2323;
 
 $access_key_active: #000;
 
-$pattern_bg: #f4fff4;
-$sample_bg: #fffff3;
-
 $section_title_height: 24px;
 $section_title_bg: #eaeaea;
 
-$flag_active_bg: transparentize(darken($section_title_bg, 20%), .5);
+$flag_active_bg: darken($section_title_bg, 12%);
 $flag_active: contrast-color($flag_active_bg, #000, #fff);
 
 @mixin color-invert-lightness($color, $property: color) {
-	$property: change-color($color, $lightness: 100% - lightness($color));
+	#{$property}: change-color($color, $lightness: 100% - lightness($color));
 }
 
 @mixin tab-size($integer: 4) {
@@ -83,8 +84,8 @@ body {
 	background: $default_bg;
 	color: $default;
 	font: {
-		family: "Lucida Sans", "Segoe UI", Tahoma, Arial, sans-serif;
-		size: 12px;
+		family: $font_family;
+		size: $font_size;
 	}
 	line-height: normal;
 	overflow: hidden;
@@ -93,7 +94,7 @@ body {
 
 pre, code, textarea {
 	font: {
-		family: Menlo, Consolas, "Droid Sans Mono", monospace;
+		family: $font_family_monospace;
 		size: inherit;
 	}
 }
@@ -102,7 +103,7 @@ textarea {
 	resize: none;
 }
 
-input, select, textarea, button {
+textarea {
 	background-color: $input_bg;
 	border: 0;
 	@include box-shadow(0 0 1px 1px transparent inset);
@@ -159,7 +160,7 @@ section {
 		color: contrast-color($section_title_bg);
 		display: block;
 		font: {
-			size: 13px;
+			size: $font_size + 1;
 			weight: 600;
 		}
 		line-height: $section_title_height - 2;
@@ -186,7 +187,7 @@ section {
 
 #section-pattern {
 	.section-content {
-		background-color: $pattern_bg;
+		background-color: #f4fff4;
 		white-space: pre;
 
 		&.invalid {
@@ -202,7 +203,7 @@ section {
 
 #flags {
 	@include box-sizing(border-box);
-	font-size: 11px;
+	font-size: $font_size - 1;
 	position: absolute;
 	right: 0;
 	@include text-shadow(0 1px 0 transparentize(contrast-color($section_title_bg, #fff, #000), .5));
@@ -211,8 +212,7 @@ section {
 	z-index: 10;
 
 	h3 {
-		border: 0 solid darken($section_title_bg, 20%);
-		border-right-width: 1px;
+		border-right: 1px solid darken($section_title_bg, 20%);
 		@include border-image(linear-gradient(bottom, darken($section_title_bg, 15%), darken($section_title_bg, 25%)));
 		color: contrast-color($section_title_bg);
 		float: left;
@@ -231,7 +231,7 @@ section {
 			float: left;
 			overflow: hidden;
 			line-height: $section_title_height - 6;
-			padding: 3px 2px 3px 1px;
+			padding: 3px 2px;
 
 			input {
 				float: left;
@@ -252,24 +252,39 @@ section {
 				}
 			}
 
-			input {
-				&:checked + label {
-					background-color: $flag_active_bg;
-					@include box-shadow(0 1px 1px rgba(0,0,0,.5) inset, 0 1px 0 rgba(255,255,255,.5));
-					color: $flag_active;
+			// label:active:hover,
+			// input:active + label,
+			input:checked + label {
+				background-color: $flag_active_bg;
+				@include box-shadow(
+					0 0 3px rgba(0,0,0,.4) inset,
+					0 1px 1px rgba(0,0,0,.2) inset,
+					0 1px 0 rgba(255,255,255,.5)
+				);
+				color: $flag_active;
 
-					.access-key {
-						color: $access_key_active;
-					}
+				.access-key {
+					color: $access_key_active;
 				}
+			}
 
-				&:focus + label {
-					@include box-shadow(0 0 1px 1px $input_focus inset);
-				}
+			input:focus + label {
+				@include box-shadow(
+					0 0 0 1px $input_focus inset,
+					0 0 1px 0 transparentize($input_focus, .2)
+				);
+				color: contrast-color($section_title_bg);
+			}
 
-				&:checked:focus + label {
-					@include box-shadow(0 0 1px 1px $input_focus inset, 0 1px 1px rgba(0,0,0,.5) inset, 0 1px 0 rgba(255,255,255,.5));
-				}
+			// input:focus + label:active:hover,
+			// input:focus:active + label,
+			input:checked:focus + label {
+				@include box-shadow(
+					0 0 0 1px $input_focus inset,
+					0 0 1px 0 transparentize($input_focus, .2),
+					0 1px 1px rgba(0,0,0,.5) inset,
+					0 1px 0 rgba(255,255,255,.5)
+				);
 			}
 		}
 	}
@@ -281,125 +296,100 @@ section {
 	z-index: 2;
 
 	.section-content {
-		background-color: $sample_bg;
+		background-color: #fffff3;
 	}
 }
-#section-results {
 
+#section-results {
 	.section-title {
 		display: none;
 	}
-}
 
-#section-results .section-content {
-	height: 100%;
-	padding: 0 0 8px;
-
-	ol {
-		margin: 0;
+	.section-content {
+		height: 100%;
 		padding: 0;
-	}
 
-	.matches {
-	}
+		ol {
+			margin: 0;
+			padding: 0;
+		}
 
-	.match {
-		border-right: 1px solid #ddd;
-		list-style: none;
-		margin: 8px;
-		min-height: 14px;
-		position: relative;
+		.matches {
+		}
 
-		.match-index {
-			background-color: mix(#888, $default_bg, 15%);
-			@include text-shadow(0 1px 0 rgba(255,255,255,.4));
-			@include border-radius(3px 0 0 3px);
-			@include box-shadow(-2px 0 2px -2px rgba(0, 0, 0, 0.3) inset,-43px 0 43px -43px rgba(0, 0, 0, 0.1) inset);
-			@include box-sizing(border-box);
-			color: $default;
+		.match {
+			list-style: none;
+			margin: 8px;
+			min-height: 14px;
+			position: relative;
+		}
+
+		.match-toggle {
+			background: {
+				position: center;
+				repeat: no-repeat;
+			}
 			float: left;
-			font: {
-				size: 11px;
-				weight: bold;
-			}
-			height: 100%;
-			padding: 2px 5px;
-			position: absolute;
-			text: {
-				align: right;
-				decoration: none;
-			}
-			width: 30px;
+			height: 18px;
+			opacity: .5;
+			width: 18px;
 
 			&:hover {
-				background-color: mix(#888, $default_bg, 35%);
+				opacity: 1;
 			}
 		}
 
-		&.parent .match-index:hover {
-			@include background-image(image-url("arrow-up-light.png"));
-			background-position: 1px bottom;
-			background-repeat: no-repeat;
+		.match.parent .match-toggle {
+			background-image: image-url("arrow-down.png");
 		}
 
-		&.parent.hidden .match-index:hover {
-			@include background-image(image-url("arrow-down-light.png"));
-			background-position: 1px top;
+		.match.parent.hidden .match-toggle {
+			background-image: image-url("arrow-right.png");
 		}
 
 		.match-result {
-			margin-left: 30px;
-			white-space: pre-wrap;
-			word-wrap: break-word;
-		}
-	}
-
-	.match-result-match {
-		background-color: #eee;
-		border: {
-			top: 1px solid #ddd;
-			bottom: 1px solid #ddd;
-		}
-	}
-
-	.match-string-index {
-		float: right;
-		font: {
-			size: 11px;
-			weight: bold;
-		}
-		padding: 1px 2px;
-	}
-
-	.match-string {
-		display: block;
-		overflow: hidden;
-		padding: 1px 2px;
-	}
-
-	.match-string.empty,
-	.submatch-string.empty {
-		color: #999;
-	}
-
-	.match.hidden .match-string {
-		@include ellipsis;
-	}
-
-	.submatch {
-		border-bottom: 1px solid #ddd;
-		padding: 2px;
-
-		.submatch-index {
-			display: none;
+			background-color: mix(#888, $default_bg, 15%);
+			@include border-radius(2px);
+			margin-left: 18px;
+			min-height: 18px;
 		}
 
+		.match-character-index {
+			color: #63007b;
+			float: right;
+			font: {
+				size: $font_size - 1;
+				weight: bold;
+			}
+			padding: 2px 4px;
+		}
+
+		.match-string {
+			display: block;
+			overflow: hidden;
+			padding: 2px;
+		}
+
+		.match-string.empty,
+		.submatch-string.empty {
+			color: #888;
+			font-style: italic;
+		}
+
+		.match.hidden .match-string {
+			@include ellipsis;
+		}
+
+		.submatches {
+			margin-left: 18px;
+		}
+
+		.submatch {
+			border-bottom: 1px solid mix(#888, $default_bg, 35%);
+			padding: 2px;
+		}
 	}
 }
-
-//
-// Separate layout rules depending on browser support
-//
 
 html.flexbox {
 	textarea {
@@ -425,28 +415,11 @@ html.flexbox {
 }
 
 html.no-flexbox {
-
 	#section-results {
 		bottom: 0;
 		height: auto;
 		position: absolute;
 		top: 151px;
 		width: 100%;
-	}
-}
-
-body.layout-mobile {
-	height: auto;
-	overflow: auto;
-
-	#regextool, section {
-		display: block;
-		height: auto;
-	}
-
-	#section-results {
-		position: relative;
-		top: auto;
-		left: auto;
 	}
 }

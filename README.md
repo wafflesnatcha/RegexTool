@@ -1,7 +1,7 @@
 # RegexTool
-[http://github.com/wafflesnatcha/RegexTool](http://github.com/wafflesnatcha/RegexTool)
 
-Inspired by [http://erik.eae.net/playground/regexp/regexp.html](http://erik.eae.net/playground/regexp/regexp.html)
+A Web-based regular expression tester.
 
-Copyright (c) 2012 Scott Buchanan
-http://www.gnu.org/licenses/gpl.html
+### [See it in action!](http://holdontoyourbutts.com/RegexTool/)  
+
+### [Source @github.com](http://github.com/wafflesnatcha/RegexTool)
