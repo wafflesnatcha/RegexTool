@@ -5,19 +5,4 @@ NETWORK:
 *
 
 CACHE:
-resources/css/screen.css
-resources/css/print.css
-http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css
-resources/images/icon-16.png
-resources/images/icon-256.png
-resources/css/ie.css
-favicon.ico
-lib/modernizr/modernizr-2.5.3.js
-lib/modernizr/modernizr-custom.js
-lib/jquery/jquery-1.7.1.min.js
-lib/jquery/jquery-ui-1.8.18.min.js
-lib/xregexp/xregexp-1.5.1.min.js
-lib/regextool/regextool.js
-lib/regextool/regextool.result.js
-lib/regextool/regextool.storage.js
-lib/regextool/regextool.ui.js
+

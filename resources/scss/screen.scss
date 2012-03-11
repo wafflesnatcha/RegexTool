@@ -145,7 +145,6 @@ a {
 
 section {
 	position: relative;
-	@include user-select(none);
 
 	.section-title {
 		@include background-image(linear-gradient(top, lighten($section_title_bg, 3%), darken($section_title_bg, 2%)));
@@ -181,7 +180,6 @@ section {
 		min-width: 100%;
 		overflow: auto;
 		padding: 3px;
-		@include user-select(text);
 	}
 }
 
@@ -208,6 +206,7 @@ section {
 	right: 0;
 	@include text-shadow(0 1px 0 transparentize(contrast-color($section_title_bg, #fff, #000), .5));
 	top: 0;
+	@include user-select(none);
 	white-space: nowrap;
 	z-index: 10;
 
@@ -369,7 +368,12 @@ section {
 			overflow: hidden;
 			padding: 2px;
 		}
-
+		
+		.match-string,
+		.submatch-string {
+			white-space: pre;
+		}
+		
 		.match-string.empty,
 		.submatch-string.empty {
 			color: #888;

@@ -38,7 +38,7 @@ task :compress do
 	puts "compressing scripts..."
 
 	text = File.read(File.join(project_path, "index.html"))
-	text = text.gsub(/<\!--((?!-->)[\s\S]*?)-->/i, "")
+	text = text.gsub(/<\!--([\s\S]*?)-->/i, "")
 
 	scripts = text.scan(/<script [^>]*src=(["'])((?!\1).+?)(\1)[^>]*>\s*<\/script>/i)
 
