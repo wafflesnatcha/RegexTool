@@ -40,13 +40,6 @@ $flag_active: contrast-color($flag_active_bg, #000, #fff);
 	tab-size: $integer;
 }
 
-@mixin user-select($policy) {
-	-moz-user-select: $policy;
-	-khtml-user-select: $policy;
-	-ms-user-select: $policy;
-	-webkit-user-select: $policy;
-}
-
 @mixin webkit-scrollbars {
 	&::-webkit-scrollbar {
 		width: 10px;
@@ -99,24 +92,6 @@ pre, code, textarea {
 	}
 }
 
-textarea {
-	resize: none;
-}
-
-textarea {
-	background-color: $input_bg;
-	border: 0;
-	@include box-shadow(0 0 1px 1px transparent inset);
-	color: $input;
-	outline: 0;
-	@include transition(box-shadow .1s);
-
-	&:focus {
-		background-color: $input_focus_bg;
-		@include box-shadow(0 0 1px 1px $input_focus inset);
-	}
-}
-
 a {
 	color: #1525ab;
 	text-decoration: none;
@@ -148,7 +123,10 @@ section {
 
 	.section-title {
 		@include background-image(linear-gradient(top, lighten($section_title_bg, 3%), darken($section_title_bg, 2%)));
-		@include box-shadow(0 1px 0 rgba(0,0,0,.1));
+		@include box-shadow(
+			0 1px 0 rgba(0,0,0,.1),
+			0 -1px 0 rgba(0,0,0,.1)
+		);
 		@include box-sizing(border-box);
 		@include text-shadow(0 1px 0 rgba(255,255,255,.5));
 		background-color: $section_title_bg;
@@ -175,16 +153,34 @@ section {
 		@include box-sizing(border-box);
 		display: block;
 		margin: 0;
-		max-width: 100%;
-		min-height: 20px;
-		min-width: 100%;
 		overflow: auto;
-		padding: 3px;
+		padding: 0;
+		width: 100%;
+	}
+}
+
+#pattern, #sample {
+	background-color: $input_bg;
+	border: 0;
+	@include box-shadow(0 0 1px 1px transparent inset);
+	@include box-sizing(border-box);
+	color: $input;
+	display: block;
+	height: 100%;
+	margin: 0;
+	outline: 0;
+	resize: none;
+	@include transition(box-shadow .1s);
+	width: 100%;
+
+	&:focus {
+		background-color: $input_focus_bg;
+		@include box-shadow(0 0 1px 1px $input_focus inset);
 	}
 }
 
 #section-pattern {
-	.section-content {
+	#pattern {
 		background-color: #f4fff4;
 		white-space: pre;
 
@@ -202,11 +198,12 @@ section {
 #flags {
 	@include box-sizing(border-box);
 	font-size: $font_size - 1;
+	height: $section_title_height;
+	overflow: hidden;
 	position: absolute;
 	right: 0;
-	@include text-shadow(0 1px 0 transparentize(contrast-color($section_title_bg, #fff, #000), .5));
+	@include text-shadow(0 1px 0 transparentize(contrast-color($section_title_bg, #fff, #000), .4));
 	top: 0;
-	@include user-select(none);
 	white-space: nowrap;
 	z-index: 10;
 
@@ -217,15 +214,17 @@ section {
 		float: left;
 		font-weight: bold;
 		line-height: $section_title_height - 6;
-		margin: 0px 3px;
-		padding: 3px 6px;
+		margin: 1px 3px;
+		padding: 2px 6px;
 		text-transform: uppercase;
 	}
 
 	ul {
 		display: inline;
 		list-style: none;
-
+		-ms-user-select: none;
+		-webkit-user-select: none;
+		
 		li {
 			float: left;
 			overflow: hidden;
@@ -245,6 +244,7 @@ section {
 				float: left;
 				outline: none;
 				padding: 0 6px;
+				-moz-user-select: none;
 
 				.access-key {
 					color: #222;
@@ -268,16 +268,14 @@ section {
 			}
 
 			input:focus + label {
-				@include box-shadow(
-					0 0 0 1px $input_focus inset,
-					0 0 1px 0 transparentize($input_focus, .2)
-				);
+				background-color: transparentize($input_focus, .75);
 				color: contrast-color($section_title_bg);
 			}
 
 			// input:focus + label:active:hover,
 			// input:focus:active + label,
 			input:checked:focus + label {
+				background-color: transparentize($input_focus, .65);
 				@include box-shadow(
 					0 0 0 1px $input_focus inset,
 					0 0 1px 0 transparentize($input_focus, .2),
@@ -294,7 +292,7 @@ section {
 	@include box-shadow(0 1px 0 0 rgba(0, 0, 0, 0.1), 0 2px 0 0 rgba(0, 0, 0, 0.05));
 	z-index: 2;
 
-	.section-content {
+	#sample {
 		background-color: #fffff3;
 	}
 }
@@ -368,12 +366,12 @@ section {
 			overflow: hidden;
 			padding: 2px;
 		}
-		
+
 		.match-string,
 		.submatch-string {
 			white-space: pre;
 		}
-		
+
 		.match-string.empty,
 		.submatch-string.empty {
 			color: #888;
