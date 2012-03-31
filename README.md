@@ -1,6 +1,6 @@
 # RegexTool
 
-**RegexTool is a regular expression tester situated entirely within the browser.**
+**RegexTool is a regular expression tester based entirely within the browser.**
 
 Leveraging the power of the [XRegExp][] JavaScript regular expression library, RegexTool
 delivers an efficient and helpful interface to create, diagnose, and test your regular

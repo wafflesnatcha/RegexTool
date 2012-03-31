@@ -303,6 +303,7 @@ $match-toggle_width: 13px;
 		display: block;
 		padding: 2px 4px;
 		white-space: pre-wrap;
+		word-wrap: break-word;
 		
 		.empty {
 			color: #888;
