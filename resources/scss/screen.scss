@@ -309,6 +309,12 @@ $match-toggle_width: 13px;
 			color: #888;
 			font-style: italic;
 		}
+		
+		.invisible {
+			color: #888;
+			font-style: bold;
+			width: 20px;
+		}
 	}
 
 	li.match {
