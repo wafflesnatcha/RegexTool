@@ -1,34 +1,39 @@
+$font_body: "Lucida Grande", "Segoe UI", Tahoma, Arial, sans-serif;
+$font_code: Menlo, Consolas, "DejaVu Sans Mono", "Courier New", monospace;
+$font_size: 12px;
+
+$body: #000;
+$body_dark: #000;
+$body_light: #fff;
+$body__bg: #fff;
+
+$input: #000;
+$input__bg: #fff;
+$input_focus: #2182cc;
+$input_focus__bg: #fff;
+$input_invalid: #f00;
+$input_invalid__bg: #fff1f1;
+$input_invalid_focus: #cc2323;
+
+
+$section_title_height: 24px;
+$section_title__bg: #eaeaea;
+
+$pattern__bg: #f4fff4;
+$sample__bg: #fffff3;
+
+$contrasted-dark-default: $body_dark;
+$contrasted-light-default: $body_light;
 $contrasted-lightness-threshold: 50%;
 
 @import "compass/reset";
 @import "compass/css3";
-@import "compass/typography";
 @import "compass/utilities";
 
-$font_family: "Lucida Grande", "Segoe UI", Tahoma, Arial, sans-serif;
-$font_family_monospace: Menlo, Consolas, "DejaVu Sans Mono", "Courier New", monospace;
-
-$font_size: 12px;
-
-$default: #000;
-$default_bg: #fff;
-
-$input: #000;
-$input_bg: #fff;
-$input_focus: #2182cc;
-$input_focus_bg: #fff;
-
-$input_invalid: #f00;
-$input_invalid_bg: #fff1f1;
-$input_invalid_focus: #cc2323;
-
-$access_key_active: #000;
-
-$section_title_height: 24px;
-$section_title_bg: #eaeaea;
-
-$flag_active_bg: darken($section_title_bg, 12%);
-$flag_active: contrast-color($flag_active_bg, #000, #fff);
+$flag_key: #222;
+$flag_active_key: $body;
+$flag_active__bg: darken($section_title__bg, 12%);
+$flag_active: contrast-color($flag_active__bg);
 
 @mixin tab-size($integer: 8) {
 	-moz-tab-size: $integer;
@@ -44,10 +49,10 @@ html, body {
 }
 
 body {
-	background: $default_bg;
-	color: $default;
+	background: $body__bg;
+	color: $body;
 	font: {
-		family: $font_family;
+		family: $font_body;
 		size: $font_size;
 	}
 	line-height: normal;
@@ -71,7 +76,7 @@ a {
 pre, code, textarea {
 	@include tab-size(4);
 	font: {
-		family: $font_family_monospace;
+		family: $font_code;
 		size: inherit;
 	}
 }
@@ -95,19 +100,16 @@ section {
 	z-index: 10;
 	
 	.section-title {
-		@include background-image(linear-gradient(top, lighten($section_title_bg, 3%), darken($section_title_bg, 2%)));
-		@include box-shadow(
-			0 1px 0 rgba(0,0,0,.1),
-			0 -1px 0 rgba(0,0,0,.1)
-		);
+		@include background-image(linear-gradient(top, lighten($section_title__bg, 3%), darken($section_title__bg, 2%)));
+		@include box-shadow(0 1px 0 rgba(0,0,0,.1), 0 -1px 0 rgba(0,0,0,.1));
 		@include box-sizing(border-box);
 		@include text-shadow(0 1px 0 rgba(255,255,255,.5));
-		background-color: $section_title_bg;
+		background-color: $section_title__bg;
 		border: {
-			bottom: 1px solid darken($section_title_bg, 25%);
-			top: 1px solid darken($section_title_bg, 15%);
+			bottom: 1px solid darken($section_title__bg, 25%);
+			top: 1px solid darken($section_title__bg, 15%);
 		}
-		color: contrast-color($section_title_bg);
+		color: contrast-color($section_title__bg);
 		display: block;
 		font: {
 			size: $font_size + 1;
@@ -122,7 +124,7 @@ section {
 	}
 
 	.section-content {
-		background-color: $default_bg;
+		background-color: $body__bg;
 		@include box-sizing(border-box);
 		display: block;
 		margin: 0;
@@ -133,61 +135,63 @@ section {
 }
 
 #pattern, #sample {
-	background-color: $input_bg;
-	border: 0;
 	@include box-shadow(0 0 1px 1px transparent inset);
 	@include box-sizing(border-box);
+	@include transition(box-shadow .1s);
+	background-color: $input__bg;
+	border: 0;
 	color: $input;
 	display: block;
 	height: 100%;
 	margin: 0;
 	outline: 0;
 	resize: none;
-	@include transition(box-shadow .1s);
 	width: 100%;
 
 	&:focus {
-		background-color: $input_focus_bg;
 		@include box-shadow(0 0 1px 1px $input_focus inset);
+		background-color: $input_focus__bg;
 	}
 }
 
 #section-pattern {
 	#pattern {
-		background-color: #f4fff4;
+		background-color: $pattern__bg;
 		white-space: pre;
 
 		&.invalid {
-			background-color: $input_invalid_bg;
+			background-color: $input_invalid__bg;
 			color: $input_invalid;
 		}
 
 		&.invalid:focus {
 			@include box-shadow(0 0 1px 1px $input_invalid_focus inset);
+			background-color: $pattern__bg;
+			color: $input;
 		}
 	}
 }
 
 #flags {
 	@include box-sizing(border-box);
+	@include text-shadow(0 1px 0 transparentize(contrast-color($section_title__bg, $contrasted-light-default, $contrasted-dark-default), .4));
 	font-size: $font_size - 1;
 	height: $section_title_height;
 	overflow: hidden;
 	position: absolute;
 	right: 0;
-	@include text-shadow(0 1px 0 transparentize(contrast-color($section_title_bg, #fff, #000), .4));
 	top: 0;
 	white-space: nowrap;
 	z-index: 10;
 
 	h3 {
-		border-right: 1px solid darken($section_title_bg, 15%);
-		@include border-image(linear-gradient(bottom, darken($section_title_bg, 15%), darken($section_title_bg, 25%)));
-		color: contrast-color($section_title_bg);
+		@include background-image(linear-gradient(right, darken($section_title__bg, 10%) 0, transparentize(darken($section_title__bg, 10%), 1) 2px));
+		border-right: 1px solid darken($section_title__bg, 25%);
+		color: contrast-color($section_title__bg);
 		float: left;
 		font-weight: bold;
-		line-height: $section_title_height - 6;
-		margin: 1px 3px;
+		line-height: $section_title_height - 5;
+		margin: 0px 3px 1px;
 		padding: 2px 6px;
 		text-transform: uppercase;
 	}
@@ -212,7 +216,7 @@ section {
 
 			label {
 				@include border-radius(2px);
-				color: contrast-color($section_title_bg, #555, #ccc);
+				color: contrast-color($section_title__bg, #555, #ccc);
 				display: block;
 				float: left;
 				outline: none;
@@ -220,12 +224,11 @@ section {
 				-moz-user-select: none;
 
 				.access-key {
-					color: #222;
+					color: $flag_key;
 				}
 			}
 
 			input:checked + label {
-				background-color: $flag_active_bg;
 				@include box-shadow(
 					0 0 3px rgba(0,0,0,.4) inset,
 					0 1px 1px rgba(0,0,0,.2) inset,
@@ -233,20 +236,20 @@ section {
 					-1px 0 0 rgba(255, 255, 255, 0.3),
 					0 1px 0 rgba(255, 255, 255, 0.5)
 				);
+				background-color: $flag_active__bg;
 				color: $flag_active;
 
 				.access-key {
-					color: $access_key_active;
+					color: $flag_active_key;
 				}
 			}
 
 			input:focus + label {
 				background-color: transparentize($input_focus, .65);
-				color: contrast-color($section_title_bg);
+				color: contrast-color($section_title__bg);
 			}
 
 			input:checked:focus + label {
-				background-color: transparentize($input_focus, .65);
 				@include box-shadow(
 					0 0 0 1px $input_focus inset,
 					0 0 3px rgba(0,0,0,.4) inset,
@@ -255,18 +258,19 @@ section {
 					-1px 0 0 rgba(255, 255, 255, 0.3),
 					0 1px 0 rgba(255, 255, 255, 0.5)
 				);
+				background-color: transparentize($input_focus, .65);
 			}
 		}
 	}
 }
 
 #section-sample {
-	border-bottom: 1px solid darken($section_title_bg, 25%);
 	@include box-shadow(0 1px 0 0 rgba(0, 0, 0, 0.1), 0 2px 0 0 rgba(0, 0, 0, 0.05));
+	border-bottom: 1px solid darken($section_title__bg, 25%);
 	z-index: 10;
 
 	#sample {
-		background-color: #fffff3;
+		background-color: $sample__bg;
 	}
 }
 
@@ -289,8 +293,10 @@ section {
 	}
 }
 
+$match-toggle-layout: horizontal;
+$match-toggle-spacing: 2px;
 @import "match-toggle/*.png";
-$match-toggle_width: 13px;
+$toggle_width: match-toggle-sprite-width(expanded);
 
 #result-list {
 	ol {
@@ -298,61 +304,64 @@ $match-toggle_width: 13px;
 		padding: 0;
 	}
 
+	.empty, .unset {
+		// font-size: $font_size - 1;
+		// font-style: italic;
+	}
+	.empty {
+		color: #888;
+	}
+	
+	.unset {
+		color: #b8695a;
+	}
+	
+	.invisible {
+		color: #676a87;
+		font-weight: bold;
+		width: 20px;
+	}
+
 	.match-string,
 	.submatch-string {
 		display: block;
+		overflow: hidden;
 		padding: 2px 4px;
 		white-space: pre-wrap;
 		word-wrap: break-word;
-		
-		.empty {
-			color: #888;
-			font-style: italic;
-		}
-		
-		.invisible {
-			color: #888;
-			font-style: bold;
-			width: 20px;
-		}
 	}
-
-	li.match {
+	
+	.match {
 		list-style: none;
 		margin: 8px;
 		position: relative;
-
-		.match-toggle {
-
+		
+		&.hidden .match-string {
+			@include ellipsis;
 		}
-
+		
 		&.parent .match-toggle {
 			@include match-toggle-sprite(expanded);
+			@include border-radius(2px);
 			background: {
 				color: transparent;
 				repeat: no-repeat;
 			}
-			@include border-radius(2px);
 			cursor: pointer;
 			float: left;
 			min-height: 19px;
-			width: $match-toggle_width;
-
-			&:hover {
-			}
+			width: $toggle_width;
 		}
 
 		&.parent.hidden .match-toggle {
 			@include match-toggle-sprite(collapsed);
 			background-color: #ededed;
-			&:hover {
-			}
 		}
-
+	
 		.match-result {
-			background-color: #ededed;
 			@include border-radius(2px);
-			margin-left: $match-toggle_width + 2;
+			background-color: #ededed;
+			margin-left: $toggle_width + 2;
 			min-height: 19px;
 
 			.match-character-index {
@@ -366,25 +375,16 @@ $match-toggle_width: 13px;
 			}
 		}
 		
-		&.parent .match-result {
-			// @include border-radius(0 2px 2px 0);
+		.submatches {
+			margin-left: $toggle_width + 2;
+		}
+		
+		&.hidden .submatches {
+			display: none;
+		}
+		
+		.submatch {
+			border-bottom: 1px solid #d5d5d5;
 		}
 	}
-	
-	.match .match-string {
-		overflow: hidden;
-	}
-	
-	.match.hidden .match-string {
-		@include ellipsis;
-	}
-
-	ol.submatches {
-		margin-left: $match-toggle_width + 2;
-	}
-
-	li.submatch {
-		border-bottom: 1px solid #d5d5d5;
-	}
-
 }
