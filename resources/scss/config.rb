@@ -5,6 +5,4 @@ images_dir = "../images"
 
 relative_assets = true
 
-# environment = :production
-# environment = :development
 output_style = (environment == :production) ? :compressed : :expanded
