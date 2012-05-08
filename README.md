@@ -11,9 +11,13 @@ test your regular expressions.
 
 ## Features
 
-* The [XRegExp][] library adds new syntax and flags to the standard JavaScript regular expression library.
+* The [XRegExp][] library adds new syntax and flags to the standard JavaScript
+  regular expression library.
 * Offline access via browser application cache.
-* [HTML5 Storage](http://www.html5rocks.com/en/features/storage) to save your data in between sessions.
+* [HTML5 Storage](http://www.html5rocks.com/en/features/storage) to save your
+  data in between sessions.
+
+Dual licensed under the MIT and GPL licenses.
 
 [XRegExp]: http://xregexp.com
 [demo]: http://wafflesnatcha.github.com/RegexTool

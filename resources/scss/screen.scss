@@ -15,12 +15,11 @@ $input_invalid: #f00;
 $input_invalid__bg: #fff1f1;
 $input_invalid_focus: #cc2323;
 
-
 $section_title_height: 24px;
 $section_title__bg: #eaeaea;
 
-$pattern__bg: #f4fff4;
-$sample__bg: #fffff3;
+$pattern__bg: #f6fff6;
+$sample__bg: #fffff7;
 
 $contrasted-dark-default: $body_dark;
 $contrasted-light-default: $body_light;
@@ -35,13 +34,6 @@ $flag_active_key: $body;
 $flag_active__bg: darken($section_title__bg, 12%);
 $flag_active: contrast-color($flag_active__bg);
 
-@mixin tab-size($integer: 8) {
-	-moz-tab-size: $integer;
-	-o-tab-size: $integer;
-	-webkit-tab-size: $integer;
-	tab-size: $integer;
-}
-
 html, body {
 	margin: 0;
 	padding: 0;
@@ -49,6 +41,8 @@ html, body {
 }
 
 body {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
 	background: $body__bg;
 	color: $body;
 	font: {
@@ -57,7 +51,6 @@ body {
 	}
 	line-height: normal;
 	overflow: hidden;
-	-webkit-text-size-adjust: none;
 }
 
 a {
@@ -73,8 +66,17 @@ a {
 	}
 }
 
-pre, code, textarea {
-	@include tab-size(4);
+b, strong {
+	font-weight: 700;
+}
+
+i, em {
+	font-style: italic;
+}
+
+pre, code, kbd, samp, textarea {
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
 	font: {
 		family: $font_code;
 		size: inherit;
@@ -98,40 +100,44 @@ section {
 	@include box-sizing(border-box);
 	position: relative;
 	z-index: 10;
-	
-	.section-title {
-		@include background-image(linear-gradient(top, lighten($section_title__bg, 3%), darken($section_title__bg, 2%)));
-		@include box-shadow(0 1px 0 rgba(0,0,0,.1), 0 -1px 0 rgba(0,0,0,.1));
-		@include box-sizing(border-box);
-		@include text-shadow(0 1px 0 rgba(255,255,255,.5));
-		background-color: $section_title__bg;
-		border: {
-			bottom: 1px solid darken($section_title__bg, 25%);
-			top: 1px solid darken($section_title__bg, 15%);
-		}
-		color: contrast-color($section_title__bg);
-		display: block;
-		font: {
-			size: $font_size + 1;
-			weight: 600;
-		}
-		line-height: $section_title_height - 2;
-		margin: 0;
-		max-height: $section_title_height;
-		padding: 0 6px;
-		position: relative;
-		z-index: 10;
+}
+.section-title {
+	background: {
+		color: darken($section_title__bg, 2%);
+		image: image-url("section-title.png");
+		repeat: repeat-x;
+		position: 0 0;
 	}
+	@include box-shadow(0 1px 0 rgba(0,0,0,.1), 0 -1px 0 rgba(0,0,0,.1));
+	@include box-sizing(border-box);
+	@include text-shadow(0 1px 0 rgba(255,255,255,.5));
+	background-color: $section_title__bg;
+	border: {
+		bottom: 1px solid darken($section_title__bg, 25%);
+		top: 1px solid darken($section_title__bg, 15%);
+	}
+	color: contrast-color($section_title__bg);
+	display: block;
+	font: {
+		size: $font_size + 1;
+		weight: 600;
+	}
+	line-height: $section_title_height - 2;
+	margin: 0;
+	max-height: $section_title_height;
+	padding: 0 6px;
+	position: relative;
+	z-index: 10;
+}
 
-	.section-content {
-		background-color: $body__bg;
-		@include box-sizing(border-box);
-		display: block;
-		margin: 0;
-		overflow: auto;
-		padding: 0;
-		width: 100%;
-	}
+.section-content {
+	background-color: $body__bg;
+	@include box-sizing(border-box);
+	display: block;
+	margin: 0;
+	overflow: auto;
+	padding: 0;
+	width: 100%;
 }
 
 #pattern, #sample {
@@ -185,7 +191,6 @@ section {
 	z-index: 10;
 
 	h3 {
-		@include background-image(linear-gradient(right, darken($section_title__bg, 10%) 0, transparentize(darken($section_title__bg, 10%), 1) 2px));
 		border-right: 1px solid darken($section_title__bg, 25%);
 		color: contrast-color($section_title__bg);
 		float: left;
@@ -197,10 +202,10 @@ section {
 	}
 
 	ul {
-		display: inline;
-		list-style: none;
 		-ms-user-select: none;
 		-webkit-user-select: none;
+		display: inline;
+		list-style: none;
 
 		li {
 			float: left;
@@ -215,13 +220,13 @@ section {
 			}
 
 			label {
+				-moz-user-select: none;
 				@include border-radius(2px);
 				color: contrast-color($section_title__bg, #555, #ccc);
 				display: block;
 				float: left;
 				outline: none;
 				padding: 0 6px;
-				-moz-user-select: none;
 
 				.access-key {
 					color: $flag_key;
@@ -232,7 +237,7 @@ section {
 				@include box-shadow(
 					0 0 3px rgba(0,0,0,.4) inset,
 					0 1px 1px rgba(0,0,0,.2) inset,
-					1px 0 0 rgba(255, 255, 255, 0.3), 
+					1px 0 0 rgba(255, 255, 255, 0.3),
 					-1px 0 0 rgba(255, 255, 255, 0.3),
 					0 1px 0 rgba(255, 255, 255, 0.5)
 				);
@@ -254,7 +259,7 @@ section {
 					0 0 0 1px $input_focus inset,
 					0 0 3px rgba(0,0,0,.4) inset,
 					0 1px 1px rgba(0,0,0,.2) inset,
-					1px 0 0 rgba(255, 255, 255, 0.3), 
+					1px 0 0 rgba(255, 255, 255, 0.3),
 					-1px 0 0 rgba(255, 255, 255, 0.3),
 					0 1px 0 rgba(255, 255, 255, 0.5)
 				);
@@ -282,12 +287,12 @@ section {
 	top: 183px;
 	width: 100%;
 	z-index: 1;
-	
+
 	.section-title {
 		display: none;
 	}
 
-	#result {
+	.section-content {
 		height: 100%;
 		padding: 0;
 	}
@@ -305,17 +310,17 @@ $toggle_width: match-toggle-sprite-width(expanded);
 	}
 
 	.empty, .unset {
-		// font-size: $font_size - 1;
-		// font-style: italic;
+		font-style: italic;
 	}
+
 	.empty {
 		color: #888;
 	}
-	
+
 	.unset {
-		color: #b8695a;
+		color: #b85a5a;
 	}
-	
+
 	.invisible {
 		color: #676a87;
 		font-weight: bold;
@@ -330,16 +335,16 @@ $toggle_width: match-toggle-sprite-width(expanded);
 		white-space: pre-wrap;
 		word-wrap: break-word;
 	}
-	
+
 	.match {
 		list-style: none;
 		margin: 8px;
 		position: relative;
-		
+
 		&.hidden .match-string {
 			@include ellipsis;
 		}
-		
+
 		&.parent .match-toggle {
 			@include match-toggle-sprite(expanded);
 			@include border-radius(2px);
@@ -357,7 +362,7 @@ $toggle_width: match-toggle-sprite-width(expanded);
 			@include match-toggle-sprite(collapsed);
 			background-color: #ededed;
 		}
-	
+
 		.match-result {
 			@include border-radius(2px);
 			background-color: #ededed;
@@ -374,17 +379,60 @@ $toggle_width: match-toggle-sprite-width(expanded);
 				padding: 2px 4px;
 			}
 		}
-		
+
 		.submatches {
 			margin-left: $toggle_width + 2;
 		}
-		
+
 		&.hidden .submatches {
 			display: none;
 		}
-		
+
 		.submatch {
 			border-bottom: 1px solid #d5d5d5;
+			
+			.submatch-index {
+				@include box-sizing(border-box);
+				// @include transition(color .1s .1s);
+				color: #c6c6c6;
+				font-size: $font_size - 1;
+				margin-left: -24px;
+				padding: 3px 2px 0 0;
+				position: absolute;
+				text-align: right;
+				width: 24px;
+			}
+		
+			&:hover .submatch-index {
+				// @include transition(none);
+				color: $body;
+			}
+			
+			&:first-child:last-child .submatch-index {
+				display: none;
+			}
+		}
+	}
+}
+
+#result-info {
+	right: 20px;
+	bottom: 5px;
+	background: rgba(0,0,0,.2);
+	position: absolute;
+	z-index: 100;
+}
+
+/** CSS3 gradient support */
+
+html.cssgradients.multiplebgs {
+	.section-title {
+		@include background-image(linear-gradient(top, lighten($section_title__bg, 3%), darken($section_title__bg, 2%)));
+	}
+
+	#flags {
+		h3 {
+			@include background-image(linear-gradient(right, darken($section_title__bg, 10%) 0, transparentize(darken($section_title__bg, 10%), 1) 2px));
 		}
 	}
 }

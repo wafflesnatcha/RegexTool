@@ -5,15 +5,15 @@ CONFIG = {
 	'index_file' => 'index.html',
 	'manifest_file' => 'cache.manifest',
 	'offline_file' => 'offline.html',
-	'js_file' => 'lib/script.js'
+	'compiledjs_file' => 'lib/script.js'
 }
 
 task :default do
-	exec("rake -f #{__FILE__} -T")
+	exec("rake --rakefile '#{__FILE__}' --tasks")
 end
 
 desc "Make project ready for deployment"
-task :production => ["compass:production", "manifest", "compass:clear_cache"] do
+task :production => ["compass:production", "manifest", "compass:cache"] do
 end
 
 desc "Update cache.manifest with the appropriate content"
@@ -71,26 +71,27 @@ namespace :compass do
 	task :development do
 		system("cd '#{CONFIG['path_scss']}' &>/dev/null && compass compile --time -e development")
 	end
+	
 	task :production do
 		system("cd '#{CONFIG['path_scss']}' &>/dev/null && compass compile --time -e production --force")
 	end
-	task :clear_cache do
-		puts "clearing compass cache..."
-		system('find "' + CONFIG["path_root"] + '" -type d -name ".sass-cache" -prune -exec rm -r \{\} \;')
+	
+	task :cache do
+		system("find '#{CONFIG['path_root']}' -type d -name '.sass-cache' -prune -print -exec rm -r \\{\\} \\;")
 	end
 end
 
 =begin
 desc "Package and compress JavaScripts into a single file"
 task :compress do
-	js_file = File.join(ROOT, CONFIG['js_file'])
+	compiledjs_file = File.join(ROOT, CONFIG['compiledjs_file'])
 	text = File.read(File.join(CONFIG['path_root'], "index.html"))
 	text = text.gsub(/<\!--([\s\S]*?)-->/i, "")
 	scripts = text.scan(/<script [^>]*src=(["'])((?!\1).+?)(\1)[^>]*>\s*<\/script>/i)
 	yuicompressor = `bash -lc "type -p yuicompressor.jar"`
 	puts "yuicompressor.jar: #{yuicompressor}"
 	if (!yuicompressor)
-		f = File.open(js_file, "w")
+		f = File.open(compiledjs_file, "w")
 	end
 	scripts.each do |script|
 		s = File.join(CONFIG['path_root'], script[1])
@@ -98,8 +99,8 @@ task :compress do
 		if (!yuicompressor || !s.match(/.min.js$/i))
 			f.write(File.read(s))
 		else
-			# puts "compressing into #{js_file}..."
-			results = `bash -lc 'java -jar "#{yuicompressor}" --type=js >> "#{js_file}"'`
+			# puts "compressing into #{compiledjs_file}..."
+			results = `bash -lc 'java -jar "#{yuicompressor}" --type=js >> "#{compiledjs_file}"'`
 		end
 	end
 end
