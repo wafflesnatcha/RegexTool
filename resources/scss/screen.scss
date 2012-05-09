@@ -108,6 +108,7 @@ section {
 		repeat: repeat-x;
 		position: 0 0;
 	}
+	@include background-image(linear-gradient(top, lighten($section_title__bg, 3%), darken($section_title__bg, 2%)));
 	@include box-shadow(0 1px 0 rgba(0,0,0,.1), 0 -1px 0 rgba(0,0,0,.1));
 	@include box-sizing(border-box);
 	@include text-shadow(0 1px 0 rgba(255,255,255,.5));
@@ -191,6 +192,7 @@ section {
 	z-index: 10;
 
 	h3 {
+		@include background-image(linear-gradient(right, darken($section_title__bg, 10%) 0, transparentize(darken($section_title__bg, 10%), 1) 2px));
 		border-right: 1px solid darken($section_title__bg, 25%);
 		color: contrast-color($section_title__bg);
 		float: left;
@@ -415,24 +417,10 @@ $toggle_width: match-toggle-sprite-width(expanded);
 	}
 }
 
-#result-info {
-	right: 20px;
-	bottom: 5px;
+#info-bar {
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
 	background: rgba(0,0,0,.2);
-	position: absolute;
-	z-index: 100;
-}
-
-/** CSS3 gradient support */
-
-html.cssgradients.multiplebgs {
-	.section-title {
-		@include background-image(linear-gradient(top, lighten($section_title__bg, 3%), darken($section_title__bg, 2%)));
-	}
-
-	#flags {
-		h3 {
-			@include background-image(linear-gradient(right, darken($section_title__bg, 10%) 0, transparentize(darken($section_title__bg, 10%), 1) 2px));
-		}
-	}
+	z-index: 1000;
 }

@@ -12,22 +12,39 @@ task :default do
 	exec("rake --rakefile '#{__FILE__}' --tasks")
 end
 
-desc "Make project ready for deployment"
+desc "Switch to production environment"
 task :production => ["compass:production", "manifest", "compass:cache"] do
+	# add 'manifest' attribute to the opening html tag
+	path = File.join(CONFIG['path_root'], CONFIG['index_file'])
+	text = File.read(path)
+	f = File.open(path, "w")
+	f.write(text.sub(/(<html.*?)\s*(manifest\=(["'])([^\3]*?)(\3))(>)/i, '\1\6').sub(/(<html[^>]*?)\s*(>)/i, '\1 manifest="' + CONFIG['manifest_file'] + '"\2'));
+	f.close()
 end
 
-desc "Update cache.manifest with the appropriate content"
+desc "Switch to development environment"
+task :dev do
+	# strip <html manifest=... to bypass the application cache
+	path = File.join(CONFIG['path_root'], CONFIG['index_file'])
+	text = File.read(path)
+	f = File.open(path, "w")
+	f.write(text.sub(/(<html.*?)\s*(manifest\=(["'])([^\3]*?)(\3))(>)/i, '\1\6'));
+	f.close()
+end
+
+desc "Update #{CONFIG['manifest_file']}"
 task :manifest do
+	puts "Updating cache.manifest..."
+	
 	def scan_html(filename, root_dir)
 		files = []
 		text = File.read(File.join(root_dir, filename))
-		match = text.scan(/<(?:script [^>]*?src|link [^>]*?href)=["']((?!["']).+?)["'][^>]*\/?>/i)
-		match.each do |m|
+		match = text.scan(/<(?:script [^>]*?src|link [^>]*?href)=["']((?!["']).+?)["'][^>]*\/?>/i) { |m|
 			files.push(m[0])
 			if (m[0].match(/^(?!http).*.css$/i))
 				files += scan_css(m[0], root_dir)
 			end
-		end
+		}
 		return files
 	end
 
@@ -35,25 +52,23 @@ task :manifest do
 		files = []
 		path = File.expand_path(filename, root_dir)
 		text = File.read(path)
-		match = text.scan(/url\(['"]?([^\)]+?)['"]?\)/i)
-		match.each do |m|
+		match = text.scan(/url\(['"]?([^\)]+?)['"]?\)/i) { |m|
 			name = File.expand_path(File.join(File.dirname(path), m[0]), root_dir)
 			files.push(name.sub(File.expand_path(root_dir) + "/", ""))
-		end
+		}
 		return files
 	end
 
-	puts "building manifest..."
 	files = []
 	files += scan_html("index.html", CONFIG['path_root'])
-	date = `date "+%Y-%m-%d %H:%M:%S"`.chomp
 	cache = files.uniq.sort.join("\n")
-	text = <<-EOF
+	f = File.open(File.join(CONFIG['path_root'], CONFIG['manifest_file']), "w")
+	f.write(<<-EOF)
 CACHE MANIFEST
-# #{date}
+# #{`date "+%Y-%m-%d %H:%M:%S"`.chomp}
 
 CACHE:
-#{cache}
+#{files.uniq.sort.join("\n")}
 
 FALLBACK:
 #{CONFIG['offline_file']}
@@ -61,21 +76,21 @@ FALLBACK:
 NETWORK:
 *
 EOF
-
-	f = File.open(File.join(CONFIG['path_root'], CONFIG['manifest_file']), "w")
-	f.write(text);
 	f.close()
 end
 
 namespace :compass do
+	desc "Compass compile -e development"
 	task :development do
 		system("cd '#{CONFIG['path_scss']}' &>/dev/null && compass compile --time -e development")
 	end
 	
+	desc "Compass compile -e production --force"
 	task :production do
 		system("cd '#{CONFIG['path_scss']}' &>/dev/null && compass compile --time -e production --force")
 	end
 	
+	desc "Remove all .sass-cache"
 	task :cache do
 		system("find '#{CONFIG['path_root']}' -type d -name '.sass-cache' -prune -print -exec rm -r \\{\\} \\;")
 	end
