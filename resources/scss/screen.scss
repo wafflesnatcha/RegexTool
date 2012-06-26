@@ -21,6 +21,8 @@ $section_title__bg: #eaeaea;
 $pattern__bg: #f6fff6;
 $sample__bg: #fffff7;
 
+$info-bar_height: 22px;
+
 $contrasted-dark-default: $body_dark;
 $contrasted-light-default: $body_light;
 $contrasted-lightness-threshold: 50%;
@@ -202,8 +204,7 @@ section {
 
 	h3 {
 		// @include background-image(linear-gradient(right, rgba(0,0,0,.2) 0, rgba(0,0,0,0) 2px));
-		@include box-shadow(1px 0 2px rgba(0,0,0,.4));
-		// border-right: 1px solid darken($section_title__bg, 25%);
+		@include box-shadow(1px 0 3px rgba(0,0,0,.4));
 		color: contrast-color($section_title__bg);
 		float: left;
 		font-weight: bold;
@@ -275,7 +276,7 @@ section {
 }
 
 #section-result {
-	bottom: 0;
+	bottom: $info-bar_height;
 	height: auto;
 	left: 0;
 	position: absolute;
@@ -414,9 +415,24 @@ $toggle_width: match-toggle-sprite-width(expanded);
 }
 
 #info-bar {
+	@include text-shadow(0 -1px 0 rgba(0,0,0,.25));
+	background-color: #6c6c6c;
+	bottom: 0;
+	color: #fafafa;
+	font-size: $font_size;
+	left: 0;
+	line-height: $info-bar_height;
+	padding: 0 10px;
 	position: fixed;
-	right: 0px;
-	bottom: 0px;
-	background: rgba(0,0,0,.2);
+	right: 0;
 	z-index: 1000;
+	
+	b {
+		color: #fff;
+	}
+	
+	.current-match {}
+	.total-matches {
+		float: right;
+	}
 }
