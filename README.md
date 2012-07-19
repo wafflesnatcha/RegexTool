@@ -6,7 +6,7 @@ Leveraging the power of the [XRegExp][] JavaScript regular expression library,
 RegexTool delivers an efficient and helpful interface to create, diagnose, and
 test your regular expressions.
 
-**[Live demo][demo]**
+**[Demo][]**
 
 **[source @ github.com][source]**
 
@@ -20,6 +20,6 @@ test your regular expressions.
 
 *Dual licensed under the MIT and GPL licenses.*
 
-[XRegExp]: http://xregexp.com
 [demo]: http://wafflesnatcha.github.com/RegexTool
 [source]: http://github.com/wafflesnatcha/RegexTool
+[XRegExp]: http://xregexp.com
