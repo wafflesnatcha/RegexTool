@@ -1,10 +1,10 @@
 CONFIG = {
 	'root' => File.dirname(__FILE__),
-	'compass_project' => 'resources/scss',
+	'compass_project' => 'assets/scss',
+	'images_dir'      => 'assets/img',
 	'index_file' => 'index.html',
 	'manifest_file' => 'cache.manifest',
 	'offline_file' => 'offline.html',
-	'compiledjs_file' => 'lib.js'
 }
 
 task :default do

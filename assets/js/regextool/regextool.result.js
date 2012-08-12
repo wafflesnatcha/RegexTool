@@ -71,6 +71,7 @@ RegexTool.Result = (function () {
 		clear: function () {
 			listEl = $('<ol class="matches" />').appendTo($('#result-list').empty());
 			counter = 0;
+			this.updateInfo();
 		},
 
 		add: function (result) {
@@ -81,6 +82,7 @@ RegexTool.Result = (function () {
 
 			var parent = $('#template_match').tmpl({
 				'character_index': result.index,
+				'length': result[0].length,
 				'index': counter,
 				'string': RegexTool.Result.sanitize(result[0])
 			}).appendTo(listEl);
@@ -94,7 +96,7 @@ RegexTool.Result = (function () {
 					sublist = $('<ol class="submatches" />').appendTo($(parent));
 
 				// Configure toggle button
-				$('.match-toggle', parent).click(function () {
+				$('.toggle', parent).click(function () {
 					// sublist.toggle();
 					$(this).parent().toggleClass('hidden');
 				});
