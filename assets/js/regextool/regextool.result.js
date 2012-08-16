@@ -1,11 +1,7 @@
-/**
- * RegexTool.Result
- */
+/*global RegexTool*/
 RegexTool.Result = (function () {
-
 	// Invisible character references (full complement)
-	/*
-	var invisible_characters = {
+	/* var invisible_characters = {
 		'0000': "&#x2400;", // null
 		'0001': "&#x2401;", // start of heading
 		'0002': "&#x2402;", // start of text
@@ -40,8 +36,7 @@ RegexTool.Result = (function () {
 		'001f': "&#x241f;", // information separator one
 		'0020': "&#x2420;", // space
 		'0021': "&#x2421;"  // delete
-	};
-*/
+	}; */
 
 	// Invisible character references (just the basics)
 	var invisible_characters = {
@@ -50,19 +45,21 @@ RegexTool.Result = (function () {
 		'000d': "&crarr;"
 	};
 
-	var listEl, invisibles, template_cache = {},
-		counter = 0;
+	var listEl, invisibles, template_cache = {}, counter = 0;
 
 	function getInvisibles() {
 		if (!invisibles) {
 			invisibles = [];
-			for (var prop in invisible_characters) {
+			var prop;
+			for (prop in invisible_characters) {
+				if (invisible_characters.hasOwnProperty(prop)) {
 				invisibles.push([new RegExp('(\\u' + prop + ')', "g"), $('#template_match_string_invisible').tmpl({
 					'char': String.fromCharCode("0x" + prop),
 					'code': prop,
 					'substitute': invisible_characters[prop]
 				}).wrap('<p>').parent().html()]);
 			}
+		}
 		}
 		return invisibles;
 	}

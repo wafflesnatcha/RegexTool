@@ -1,6 +1,4 @@
-/**
- * RegexTool.Storage
- */
+/*global RegexTool*/
 RegexTool.Storage = (function() {
 	var proxy = {},
 		_proxy = "memory";
@@ -184,4 +182,4 @@ RegexTool.Storage = (function() {
 			}
 		}
 	};
-})();
+}());

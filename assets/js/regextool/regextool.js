@@ -7,9 +7,7 @@
  * Dual licensed under the MIT and GPL licenses.
  */
 
-/**
- * RegexTool
- */
+/*global XRegExp*/
 var RegexTool = (function () {
 	var _refresh_timeout, config = {
 		version: 'r1',
@@ -140,4 +138,4 @@ var RegexTool = (function () {
 			return o.join('');
 		}
 	};
-})();
+}());
