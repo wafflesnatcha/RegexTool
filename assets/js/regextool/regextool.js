@@ -74,9 +74,9 @@ var RegexTool = (function () {
 			return config;
 		},
 
-		changeHandler: function (e) {
-			if ($(this).val() != RegexTool.Storage.get(this)) {
-				RegexTool.Storage.saveElement(this);
+		changeHandler: function (event) {
+			if ($(event.target).val() != RegexTool.Storage.get(event.target)) {
+				RegexTool.Storage.saveElement(event.target);
 				RegexTool.triggerRefresh();
 				RegexTool.makeRegex();
 			}
