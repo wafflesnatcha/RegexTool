@@ -1,0 +1,90 @@
+#flags {
+	@include box-sizing(border-box);
+	@include text-shadow(0 1px 0 transparentize(contrast-color($section-title_background, $contrasted-light-default, $contrasted-dark-default), .4));
+	font-size: $flag_font-size;
+	height: $section-title_height;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 0;
+	white-space: nowrap;
+	z-index: 20;
+
+	h3 {
+		// @include background-image(linear-gradient(right, rgba(0,0,0,.2) 0, rgba(0,0,0,0) 2px));
+		@include box-shadow(1px 0 3px rgba(0,0,0,.4));
+		color: contrast-color($section-title_background);
+		float: left;
+		font-weight: bold;
+		line-height: $section-title_height;
+		margin: 0 3px 0 0;
+		padding: 0 6px;
+		text-transform: uppercase;
+	}
+
+	ul {
+		-ms-user-select: none;
+		-webkit-user-select: none;
+		display: inline-block;
+		list-style: none;
+
+		li {
+			float: left;
+			overflow: hidden;
+			padding: 0;
+
+			input {
+				float: left;
+				margin: -30px 0 0 -30px;
+				outline: none;
+			}
+
+			label {
+				-moz-user-select: none;
+				@include border-radius(2px);
+				color: $flag_foreground;
+				display: block;
+				float: left;
+				outline: none;
+				line-height: $section-title_height - 6;
+				margin: 3px 2px;
+				padding: 0 6px;
+
+				.access-key {
+					color: $flag_key_foreground;
+				}
+			}
+
+			$boxshadow:
+				0 0 3px rgba(0,0,0,.4) inset,
+				0 1px 1px rgba(0,0,0,.2) inset,
+				1px 0 0 rgba(255,255,255,.3),
+				-1px 0 0 rgba(255,255,255,.3),
+				0 1px 0 rgba(255,255,255,.5);
+
+			input:checked + label {
+				@include box-shadow($boxshadow);
+				background-color: $flag_active_background;
+				color: $flag_active_foreground;
+
+				.access-key {
+					color: $flag_active_key_foreground;
+				}
+			}
+
+			input:focus + label {
+				background-color: transparentize(lighten($input_focus_foreground, 10%), .65);
+				color: contrast-color($section-title_background);
+			}
+
+			input:checked:focus + label {
+				@include box-shadow(
+					0 1px 1px 0 transparentize($input_focus_foreground, .7) inset,
+					0 0 0 1px transparentize($input_focus_foreground, .3) inset,
+					$boxshadow
+				);
+				background-color: transparentize($input_focus_foreground, .65);
+			}
+		}
+	}
+}

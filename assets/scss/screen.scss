@@ -31,7 +31,7 @@ a {
 }
 
 b, strong {
-	font-weight: 700;
+	font-weight: bold;
 }
 
 i, em {
@@ -42,8 +42,8 @@ pre, code, kbd, samp, textarea {
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
 	font: {
-		family: $font-family_code;
-		size: inherit;
+		family: $code_font-family;
+		size: $code_font-size;
 	}
 }
 
@@ -73,16 +73,17 @@ pre, code, kbd, samp, textarea {
 	z-index: 1;
 
 	.section-title {
+		@include box-shadow(0 1px 0 rgba(0,0,0,.1), 0 -1px 0 rgba(0,0,0,.05));
+		@include box-sizing(border-box);
+		@include text-shadow(0 1px 0 rgba(255,255,255,.5));
+		@include user-select(none);
 		background: {
-			// color: $section-title_background;
+			color: $section-title_background;
 			image: image-url("section-title.png");
 			repeat: repeat-x;
 			position: 0 0;
 		}
 		@include background-image(linear-gradient(top, lighten($section-title_background, 3%), darken($section-title_background, 2%)));
-		@include box-shadow(0 1px 0 rgba(0,0,0,.1), 0 -1px 0 rgba(0,0,0,.05));
-		@include box-sizing(border-box);
-		@include text-shadow(0 1px 0 rgba(255,255,255,.5));
 		border: {
 			bottom: 1px solid darken($section-title_background, 20%);
 			top: 1px solid darken($section-title_background, 12%);
@@ -119,7 +120,7 @@ pre, code, kbd, samp, textarea {
 	@include transition(box-shadow .1s);
 	background-color: $input_background;
 	border: 0;
-	color: $input;
+	color: $input_foreground;
 	display: block;
 	height: 100%;
 	margin: 0;
@@ -128,7 +129,7 @@ pre, code, kbd, samp, textarea {
 	width: 100%;
 
 	&:focus {
-		@include box-shadow(0 0 1px 1px $input_focus inset);
+		@include box-shadow(0 0 1px 1px $input_focus_foreground inset);
 		// background-color: $input_focus_background;
 	}
 }
@@ -139,98 +140,13 @@ pre, code, kbd, samp, textarea {
 
 	&.invalid {
 		background-color: $input_invalid_background;
-		color: $input_invalid;
+		color: $input_invalid_foreground;
 	}
 
 	&.invalid:focus {
-		@include box-shadow(0 0 1px 1px $input_invalid_focus inset);
+		@include box-shadow(0 0 1px 1px $input_invalid_focus_foreground inset);
 		// background-color: $pattern_background;
-		color: $input;
-	}
-}
-
-/** Flags */
-
-#flags {
-	@include box-sizing(border-box);
-	@include text-shadow(0 1px 0 transparentize(contrast-color($section-title_background, $contrasted-light-default, $contrasted-dark-default), .4));
-	font-size: $font-size - 1;
-	height: $section-title_height;
-	overflow: hidden;
-	position: absolute;
-	right: 0;
-	top: 0;
-	white-space: nowrap;
-	z-index: 20;
-
-	h3 {
-		// @include background-image(linear-gradient(right, rgba(0,0,0,.2) 0, rgba(0,0,0,0) 2px));
-		@include box-shadow(1px 0 3px rgba(0,0,0,.4));
-		color: contrast-color($section-title_background);
-		float: left;
-		font-weight: bold;
-		line-height: $section-title_height;
-		margin: 0 3px 0 0;
-		padding: 0 6px;
-		text-transform: uppercase;
-	}
-
-	ul {
-		-ms-user-select: none;
-		-webkit-user-select: none;
-		display: inline-block;
-		list-style: none;
-
-		li {
-			float: left;
-			overflow: hidden;
-			// height: $section-title_height;
-			padding: 0;
-
-			input {
-				float: left;
-				margin: -30px 0 0 -30px;
-				outline: none;
-			}
-
-			label {
-				-moz-user-select: none;
-				@include border-radius(2px);
-				color: $flag;
-				display: block;
-				float: left;
-				outline: none;
-				line-height: $section-title_height - 6;
-				margin: 3px 2px;
-				padding: 0 6px;
-
-				.access-key {
-					color: $flag_key;
-				}
-			}
-
-			$boxshadow: 0 0 3px rgba(0,0,0,.4) inset, 0 1px 1px rgba(0,0,0,.2) inset, 1px 0 0 rgba(255,255,255,.3), -1px 0 0 rgba(255,255,255,.3), 0 1px 0 rgba(255,255,255,.5);
-
-			input:checked + label {
-				@include box-shadow($boxshadow);
-				background-color: $flag_active_background;
-				color: $flag_active;
-
-				.access-key {
-					color: $flag_active_key;
-				}
-			}
-
-			input:focus + label {
-				background-color: transparentize(lighten($input_focus, 10%), .65);
-				color: contrast-color($section-title_background);
-			}
-
-			input:checked:focus + label {
-				@include box-shadow(0 1px 1px 0 transparentize($input_focus, .7) inset, 0 0 0 1px transparentize($input_focus, .3) inset, $boxshadow);
-				background-color: transparentize($input_focus, .65);
-			}
-		}
+		color: $input_foreground;
 	}
 }
 
@@ -238,169 +154,6 @@ pre, code, kbd, samp, textarea {
 	background-color: $sample_input_background;
 }
 
-#section-result {
-	bottom: 0;
-	height: auto;
-	left: 0;
-	position: absolute;
-	top: 183px;
-	width: 100%;
-	z-index: 1;
-
-	.section-title {
-		display: none;
-	}
-
-	.section-content {
-		height: 100%;
-		padding: 0;
-	}
-}
-
-$match-toggle-layout: vertical;
-$match-toggle-spacing: 4px;
-@import "match-toggle/*.png";
-$toggle_width: match-toggle-sprite-width(expanded) + 2;
-
-#result-list {
-	ol {
-		margin: 0;
-		padding: 0;
-	}
-
-	.empty, .unset {
-		font-style: italic;
-	}
-
-	.empty {
-		color: #888;
-	}
-
-	.unset {
-		color: #b85a5a;
-	}
-
-	.invisible {
-		color: #676a87;
-		font-weight: bold;
-		width: 20px;
-	}
-
-	.string {
-		display: block;
-		overflow: hidden;
-		padding: 2px 4px;
-		white-space: pre-wrap;
-		word-wrap: break-word;
-	}
-
-	.info {
-		color: #777;
-		float: right;
-		font: {
-			size: $font-size - 1;
-			weight: bold;
-		};
-		padding: 2px 3px;
-
-		span {
-			padding: 0 1px;
-		}
-	}
-
-	.character-index {
-		color: #63007b;
-	}
-
-	.match-index {
-		display: none;
-	}
-
-	.match {
-		list-style: none;
-		margin: 8px;
-		position: relative;
-
-		&.hidden .match-result .string {
-			@include ellipsis;
-		}
-
-		&.parent .toggle {
-			@include match-toggle-sprite(expanded);
-			@include border-radius(2px);
-			background: {
-				color: transparent;
-				repeat: no-repeat;
-			};
-			cursor: pointer;
-			float: left;
-			min-height: 19px;
-			width: $toggle_width;
-		}
-
-		&.parent.hidden .toggle {
-			@include match-toggle-sprite(collapsed);
-			background-color: #ededed;
-		}
-
-		.match-result {
-			@include border-radius(2px);
-			background-color: #ededed;
-			margin-left: $toggle_width;
-			min-height: 19px;
-		}
-
-		.submatches {
-			margin-left: $toggle_width + 2;
-		}
-
-		&.hidden .submatches {
-			display: none;
-		}
-
-		.submatch {
-			border-bottom: 1px solid #d5d5d5;
-
-			.submatch-index {
-				@include box-sizing(border-box);
-				color: #c6c6c6;
-				font-size: $font-size - 1;
-				margin-left: -($toggle_width + 9);
-				padding-right: 2px;
-				padding-top: 3px;
-				position: absolute;
-				text-align: right;
-				width: $toggle_width + 9;
-			}
-
-			&:hover .submatch-index {
-				color: $color_foreground;
-			}
-
-			&:first-child:last-child .submatch-index {
-				display: none;
-			}
-		}
-	}
-}
-
-#info-bar {
-	border-left: 1px solid darken($section-title_background, 15%);
-	font-size: $font-size;
-	height: $section-title_height - 2;
-	line-height: $section-title_height - 2;
-	margin: 1px 0;
-	padding: 0 6px;
-	position: absolute;
-	right: 0;
-	top: 0;
-	z-index: 20;
-
-	.total-matches {
-		color: lighten($color_foreground, 15%);
-
-		b {
-			color: $color_foreground;
-		}
-	}
-}
+@import "screen/_flags";
+@import "screen/_result";
+@import "screen/_info-bar";
