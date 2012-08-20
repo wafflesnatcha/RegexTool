@@ -1,4 +1,5 @@
-/*global RegexTool*/
+/*jshint browser:true*/
+/*global $, RegexTool, log*/
 RegexTool.Result = (function () {
 	// Invisible character references (full complement)
 	/* var invisible_characters = {

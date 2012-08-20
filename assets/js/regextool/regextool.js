@@ -6,8 +6,8 @@
  * Copyright (c) 2012 Scott Buchanan
  * Dual licensed under the MIT and GPL licenses.
  */
-
-/*global XRegExp*/
+/*jshint browser:true*/
+/*global $, XRegExp, log*/
 var RegexTool = (function () {
 	var _refresh_timeout, config = {
 		version: 'r1',
@@ -129,8 +129,9 @@ var RegexTool = (function () {
 
 		makeFlags: function () {
 			var i, o = [],
-				flags = ['g', 'i', 'm', 's', 'x'];
-			for (i = 0; i < flags.length; i++) {
+				flags = ['g', 'i', 'm', 's', 'x'],
+				l = flags.length;
+			for (i = 0; i < l; i++) {
 				if (RegexTool.Storage.get('flag-' + flags[i]) == "1") {
 					o.push(flags[i]);
 				}

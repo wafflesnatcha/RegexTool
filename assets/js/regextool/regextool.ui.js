@@ -1,4 +1,5 @@
-/*global RegexTool*/
+/*jshint browser:true*/
+/*global $, RegexTool, log*/
 RegexTool.UI = (function() {
 	var result, layout_input, _resize_timeout;
 
