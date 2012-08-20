@@ -138,7 +138,7 @@ RegexTool.Result = (function () {
 		},
 
 		updateInfo: function () {
-			$('#info-bar .total-matches').html('<b>' + counter + '</b>' + ((counter == 1) ? " match" : " matches"));
+			$('#info-bar .total-matches .value').text(counter);
 		}
 	};
 }());
