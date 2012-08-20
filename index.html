@@ -94,21 +94,24 @@
 <script id="template_match" type="text/x-jquery-tmpl">
 	<li class="match">
 		<a class="toggle"></a>
-		<p class="match-result">
+		<div class="match-result">
 			<span class="match-index">${index}</span>
 			<span class="info">
-				<span class="character-index" title="Character Index">${character_index}</span>:<span class="length" title="String Length">${length}</span>
+				<div class="line"><span class="label">Line </span><span title="Line">${line}</span>,</div>
+				<div class="column"><span class="label">Column </span><span title="Column">${column}</span></div>
+				<div class="offset"><span class="label">Offset </span><span title="Offset">${offset}</span></div>
+				<div class="length">(<span title="Length">${length}</span><span class="label"> characters</span>)</div>
 			</span>
 			<span class="string">{{html string}}</span>
-		</p>
+		</div>
 	</li>
 </script>
 <script id="template_match_submatch" type="text/x-jquery-tmpl">
 	<li class="submatch">
-	    <p class="submatch-result">
+	    <div class="submatch-result">
 			<span class="submatch-index">${index}</span>
 	        <span class="string">{{html string}}</span>
-	    </p>
+	    </div>
 	</li>
 </script>
 <script id="template_match_string_invisible" type="text/x-jquery-tmpl">

@@ -53,13 +53,13 @@ RegexTool.Result = (function () {
 			var prop;
 			for (prop in invisible_characters) {
 				if (invisible_characters.hasOwnProperty(prop)) {
-				invisibles.push([new RegExp('(\\u' + prop + ')', "g"), $('#template_match_string_invisible').tmpl({
-					'char': String.fromCharCode("0x" + prop),
-					'code': prop,
-					'substitute': invisible_characters[prop]
-				}).wrap('<p>').parent().html()]);
+					invisibles.push([new RegExp('(\\u' + prop + ')', "g"), $('#template_match_string_invisible').tmpl({
+						'char': String.fromCharCode("0x" + prop),
+						'code': prop,
+						'substitute': invisible_characters[prop]
+					}).wrap('<p>').parent().html()]);
+				}
 			}
-		}
 		}
 		return invisibles;
 	}
@@ -71,14 +71,16 @@ RegexTool.Result = (function () {
 			this.updateInfo();
 		},
 
-		add: function (result) {
+		add: function (result, sample) {
 			if (!listEl) {
 				this.clear();
 			}
 			counter++;
-
+			var lines = sample.substr(0, result.index).split('\n');
 			var parent = $('#template_match').tmpl({
-				'character_index': result.index,
+				'line': lines.length,
+				'column': lines.pop().length,
+				'offset': result.index,
 				'length': result[0].length,
 				'index': counter,
 				'string': RegexTool.Result.sanitize(result[0])

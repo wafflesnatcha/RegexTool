@@ -106,12 +106,12 @@ var RegexTool = (function () {
 
 			if (RegexTool.Storage.get('flag-g')) {
 				XRegExp.iterate(sample, regex, function (match) {
-					RegexTool.Result.add(match);
+					RegexTool.Result.add(match, sample);
 				});
 			} else {
 				var match = regex.exec(sample);
 				if (match && match.length > 0 && match[0].length > 0) {
-					RegexTool.Result.add(match);
+					RegexTool.Result.add(match, sample);
 				}
 			}
 		},
