@@ -48,7 +48,7 @@ var RegexTool = (function () {
 
 		restore: function () {
 			var version = RegexTool.Storage.get('version');
-			if (version === undefined || version != RegexTool.config('version')) {
+			if (version === undefined || version != RegexTool.config('version') || window.location.hash === "#CLEAR") {
 				RegexTool.Storage.clear();
 				RegexTool.Storage.set('version', RegexTool.config('version'));
 				RegexTool.Storage.set(RegexTool.config('example'));
