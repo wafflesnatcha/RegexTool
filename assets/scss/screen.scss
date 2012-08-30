@@ -75,7 +75,7 @@ pre, code, kbd, samp, textarea {
 	.section-title {
 		@include box-shadow(0 1px 0 rgba(0,0,0,.1), 0 -1px 0 rgba(0,0,0,.05));
 		@include box-sizing(border-box);
-		@include text-shadow(0 1px 0 rgba(255,255,255,.5));
+		@include text-shadow(0 1px 0 darken($section-title_background, 5%));
 		@include user-select(none);
 		background: {
 			color: $section-title_background;
@@ -88,7 +88,7 @@ pre, code, kbd, samp, textarea {
 			bottom: 1px solid darken($section-title_background, 20%);
 			top: 1px solid darken($section-title_background, 12%);
 		}
-		color: contrast-color($section-title_background);
+		color: $section-title_foreground;
 		display: block;
 		font: {
 			size: $section-title_font-size;
@@ -128,8 +128,10 @@ pre, code, kbd, samp, textarea {
 	resize: none;
 	width: 100%;
 
-	&:focus {
+	&:focus,
+	&.dragover {
 		@include box-shadow(0 0 1px 1px $input_focus_foreground inset);
+		@include transition-duration(0s);
 		// background-color: $input_focus_background;
 	}
 }
@@ -143,9 +145,9 @@ pre, code, kbd, samp, textarea {
 		color: $input_invalid_foreground;
 	}
 
-	&.invalid:focus {
+	&.invalid:focus,
+	&.invalid.dragover {
 		@include box-shadow(0 0 1px 1px $input_invalid_focus_foreground inset);
-		// background-color: $pattern_background;
 		color: $input_foreground;
 	}
 }

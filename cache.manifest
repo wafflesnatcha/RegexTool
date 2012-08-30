@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 2012-08-19 18:20:01
+# 2012-08-21 17:36:05
 
 CACHE:
 assets/css/print.css
@@ -11,9 +11,9 @@ assets/img/icon/72x72.png
 assets/img/icon/favicon.ico
 assets/img/section-title.png?1336555512
 assets/js/jquery/jquery-1.7.2.min.js
-assets/js/jquery/jquery.tmpl-beta1.min.js
-assets/js/json2.js
-assets/js/log.js
+assets/js/jquery/plugins/jquery.tmpl-beta1.min.js
+assets/js/json2.min.js
+assets/js/log.min.js
 assets/js/regextool/regextool.js
 assets/js/regextool/regextool.result.js
 assets/js/regextool/regextool.storage.js

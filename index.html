@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="cache.manifest">
+<html lang="en">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
@@ -100,12 +100,12 @@
 			<div class="arrow"></div>
 		</a>
 		<div class="match-result">
-			<span class="match-index">${index}</span>
 			<span class="info">
-				<div class="line"><span class="label">Line </span><span title="Line">${line}</span>,</div>
-				<div class="column"><span class="label">Column </span><span title="Column">${column}</span></div>
-				<div class="offset"><span class="label">Offset </span><span title="Offset">${offset}</span></div>
-				<div class="length">(<span title="Length">${length}</span><span class="label"> characters</span>)</div>
+				<div class="index"><span>#${index}</span></div>
+				<div class="line"><span class="label">Line</span> <span title="Line">${line}</span>,</div>
+				<div class="column"><span class="label">Column</span> <span title="Column">${column}</span></div>
+				<div class="offset"><span class="label">Offset</span> <span title="Offset">${offset}</span></div>
+				<div class="length">(<span title="Length">${length}</span> <span class="label">characters</span>)</div>
 			</span>
 			<span class="string">{{html string}}</span>
 		</div>

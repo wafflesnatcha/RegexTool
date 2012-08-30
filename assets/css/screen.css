@@ -134,7 +134,7 @@ pre, code, kbd, samp, textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-shadow: 0 1px 0 #dddddd;
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
@@ -149,7 +149,7 @@ pre, code, kbd, samp, textarea {
   background-image: linear-gradient(top, #f2f2f2, #e5e5e5);
   border-bottom: 1px solid #b7b7b7;
   border-top: 1px solid #cbcbcb;
-  color: black;
+  color: #282828;
   display: block;
   font-size: 13px;
   font-weight: 600;
@@ -194,11 +194,16 @@ pre, code, kbd, samp, textarea {
   resize: none;
   width: 100%;
 }
-#pattern:focus,
-#sample:focus {
+#pattern:focus, #pattern.dragover,
+#sample:focus,
+#sample.dragover {
   -webkit-box-shadow: 0 0 1px 1px #2182cc inset;
   -moz-box-shadow: 0 0 1px 1px #2182cc inset;
   box-shadow: 0 0 1px 1px #2182cc inset;
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
 }
 
 #pattern {
@@ -207,9 +212,9 @@ pre, code, kbd, samp, textarea {
 }
 #pattern.invalid {
   background-color: #fff8f8;
-  color: red;
+  color: #cc0000;
 }
-#pattern.invalid:focus {
+#pattern.invalid:focus, #pattern.invalid.dragover {
   -webkit-box-shadow: 0 0 1px 1px #cc2323 inset;
   -moz-box-shadow: 0 0 1px 1px #cc2323 inset;
   box-shadow: 0 0 1px 1px #cc2323 inset;
@@ -373,9 +378,27 @@ pre, code, kbd, samp, textarea {
   display: none;
 }
 #result-list .match {
+  -webkit-transition: border 0.1s;
+  -moz-transition: border 0.1s;
+  -o-transition: border 0.1s;
+  transition: border 0.1s;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  border: 2px solid transparent;
   list-style: none;
-  margin: 8px;
+  margin: 6px;
+  padding: 2px;
   position: relative;
+}
+#result-list .match:hover {
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+  border-color: #2182cc;
 }
 #result-list .match.hidden .match-result .string {
   white-space: nowrap;
@@ -448,13 +471,13 @@ pre, code, kbd, samp, textarea {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   color: #c6c6c6;
-  font-size: 11px;
-  margin-left: -23px;
+  font-size: 80%;
+  margin-left: -21px;
   padding-right: 2px;
   padding-top: 3px;
-  position: absolute;
+  float: right;
   text-align: right;
-  width: 23px;
+  width: 21px;
 }
 #result-list .match .submatch:hover .submatch-index {
   color: black;
