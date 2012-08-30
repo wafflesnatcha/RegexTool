@@ -25,17 +25,7 @@ var RegexTool = (function () {
 			RegexTool.UI.init();
 			this.restore();
 			this.save();
-
-			$('#pattern, #sample').on('keyup change', this.changeHandler);
-			$('#flags input[type="checkbox"]').on('change', this.changeHandler);
-			$('#flags label').on('click', function (event) {
-				if (event.which && event.which != 1) {
-					return;
-				}
-				event.preventDefault();
-				$('#' + $(this).prop("for")).trigger('click');
-			});
-
+			RegexTool.UI.initInput();
 			this.refresh();
 		},
 
