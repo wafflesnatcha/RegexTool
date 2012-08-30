@@ -16,7 +16,7 @@ RegexTool.UI = (function() {
 				autofocus_el.focus();
 			}
 
-			if (RegexTool.config('ui_refresh')) {
+			if (RegexTool.Config.ui_refresh) {
 				$(window).on('resize', function () {
 					if (_resize_timeout) {
 						clearTimeout(_resize_timeout);

@@ -130,7 +130,7 @@ RegexTool.Result = (function () {
 
 			text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-			if (RegexTool.config('show_invisibles')) {
+			if (RegexTool.Config.show_invisibles) {
 				var i, invis = getInvisibles(),
 					l = invis.length;
 				for (i = 0; i < l; i++) {

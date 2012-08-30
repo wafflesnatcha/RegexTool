@@ -9,22 +9,19 @@
 /*jshint browser:true, jquery:true*/
 /*global XRegExp, log*/
 var RegexTool = (function () {
-	var _refresh_timeout, config = {
-		version: 'r1',
-		storage_prefix: 'RegexTool.',
-		example: {
-			'pattern': '([a-zA-Z]{4,})',
-			'sample': 'The quick brown fox jumps over the lazy dog.',
-			'flag-g': true
-		},
-		show_invisibles: false,
-		refresh_delay: 200,
-		ui_refresh: false,
-		ui_refresh_delay: 100
-	};
+	var _refresh_timeout;
 
 	return {
-		init: function () {
+		init: function (conf) {
+			if (typeof conf === "object") {
+				var prop;
+				for (prop in conf) {
+					if (conf.hasOwnProperty(prop)) {
+						RegexTool.Config[prop] = conf[prop];
+					}
+				}
+			}
+
 			RegexTool.UI.init();
 			this.restore();
 			this.save();
@@ -48,10 +45,10 @@ var RegexTool = (function () {
 
 		restore: function () {
 			var version = RegexTool.Storage.get('version');
-			if (version === undefined || version != RegexTool.config('version') || window.location.hash === "#CLEAR") {
+			if (version === undefined || version != RegexTool.Config.version || window.location.hash === "#CLEAR") {
 				RegexTool.Storage.clear();
-				RegexTool.Storage.set('version', RegexTool.config('version'));
-				RegexTool.Storage.set(RegexTool.config('example'));
+				RegexTool.Storage.set('version', RegexTool.Config.version);
+				RegexTool.Storage.set(RegexTool.Config.example);
 			}
 			$(this.getFormElements()).each(function () {
 				RegexTool.Storage.restoreElement(this);
@@ -64,31 +61,13 @@ var RegexTool = (function () {
 			});
 		},
 
-		config: function (property, value) {
-			if (property) {
-				if (arguments.length > 1) {
-					config[property] = value;
-				}
-				return config[property];
-			}
-			return config;
-		},
-
-		changeHandler: function (event) {
-			if ($(event.target).val() != RegexTool.Storage.get(event.target)) {
-				RegexTool.Storage.saveElement(event.target);
-				RegexTool.triggerRefresh();
-				RegexTool.makeRegex();
-			}
-		},
-
 		triggerRefresh: function () {
 			if (_refresh_timeout) {
 				clearTimeout(_refresh_timeout);
 			}
 			_refresh_timeout = setTimeout(function () {
 				RegexTool.refresh.call(RegexTool);
-			}, RegexTool.config('refresh_delay'));
+			}, RegexTool.Config.refresh_delay);
 		},
 
 		refresh: function () {

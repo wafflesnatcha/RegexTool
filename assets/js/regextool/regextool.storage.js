@@ -55,10 +55,10 @@ RegexTool.Storage = (function () {
 
 	proxy.cookie = (function () {
 		var set = function (key, value) {
-				var ex_date = new Date();
-				ex_date.setDate(ex_date.getDate() + 365);
-				document.cookie = key + "=" + window.escape(value) + "; expires=" + ex_date.toUTCString();
-			};
+			var ex_date = new Date();
+			ex_date.setDate(ex_date.getDate() + 365);
+			document.cookie = key + "=" + window.escape(value) + "; expires=" + ex_date.toUTCString();
+		};
 
 		return {
 			set: set,
@@ -108,7 +108,7 @@ RegexTool.Storage = (function () {
 				}
 			}
 			if (key) {
-				key = String(RegexTool.config('storage_prefix') + key);
+				key = String(RegexTool.Config.storage_prefix + key);
 				var value = proxy[_proxy].get(key);
 				return value ? JSON.parse(value) : undefined;
 			}
@@ -125,15 +125,15 @@ RegexTool.Storage = (function () {
 				}
 				return;
 			}
-			return proxy[_proxy].set(RegexTool.config('storage_prefix') + key, JSON.stringify(value));
+			return proxy[_proxy].set(RegexTool.Config.storage_prefix + key, JSON.stringify(value));
 		},
 
 		remove: function (key) {
-			return proxy[_proxy].remove(RegexTool.config('storage_prefix') + key);
+			return proxy[_proxy].remove(RegexTool.Config.storage_prefix + key);
 		},
 
 		clear: function () {
-			var prop, prefix = RegexTool.config('storage_prefix'),
+			var prop, prefix = RegexTool.Config.storage_prefix,
 				data = this.get();
 			for (prop in data) {
 				if (data.hasOwnProperty(prop) && prop.indexOf(prefix) === 0) {
