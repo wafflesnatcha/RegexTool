@@ -1,25 +1,30 @@
+require "rake"
+require "compass"
+
 CONFIG = {
 	'root'            => File.dirname(__FILE__),
 	'compass_project' => 'assets/scss',
-	'images_dir'      => 'assets/img',
 	'index_file'      => 'index.html',
 	'manifest_file'   => 'cache.manifest',
 	'offline_file'    => 'offline.html',
 }
 
 task :default do
-	exec("rake --rakefile '#{__FILE__}' --tasks")
+	exec "rake -sT"
 end
 
-desc 'Switch to the production environment'
+desc "Switch to the production environment"
 task :production => ["compass:clean", "compass:production", "optipng", "manifest:update", "manifest:add"]
 
-desc 'Switch to the development environment'
+desc "Switch to the development environment"
 task :development => ["compass:clean", "compass:development", "manifest:remove"]
 
-desc 'Optimize PNG files with optipng'
+desc "Optimize PNG images"
 task :optipng do
-	system("find '" + File.join(CONFIG['root'], CONFIG['images_dir']) + "' -type f -name '*.png' | xargs optipng -quiet -preserve")
+	if dir = compassConfig('images_dir') then
+		path = File.expand_path(dir, File.join(CONFIG['root'], CONFIG['compass_project']))
+		system("find '#{path}' -type f -name '*.png' | xargs optipng -quiet -preserve")
+	end
 end
 
 def htmlManifest(add)
@@ -33,6 +38,7 @@ def htmlManifest(add)
 end
 
 namespace :manifest do
+
 	desc "Add the 'manifest' attribute to the opening <html> tag in '#{CONFIG['index_file']}'"
 	task :add do
 		htmlManifest(true)
@@ -74,21 +80,37 @@ namespace :manifest do
 		f.write("CACHE MANIFEST\n# #{`date "+%Y-%m-%d %H:%M:%S"`.chomp}\n\nCACHE:\n#{resources.uniq.sort.join("\n")}\n\nFALLBACK:\n#{CONFIG['offline_file']}\n\nNETWORK:\n*")
 		f.close()
 	end
+
+end
+
+def compassConfig(param)
+	Compass.configuration_for(File.join(CONFIG['root'], CONFIG['compass_project'], 'config.rb')).instance_variable_get('@' + param)
 end
 
 namespace :compass do
-	desc 'Remove generated files and the sass cache'
+
+	desc "Remove generated files and the sass cache"
 	task :clean do
-		system("cd '" + File.join(CONFIG['root'], CONFIG['compass_project']) + "' &>/dev/null && compass clean")
+		Dir.chdir(File.join(CONFIG['root'], CONFIG['compass_project']))
+		system "compass clean"
 	end
-	
-	desc 'Compass compile with `-e development`'
+
+	desc "Compass compile with '--environment development'"
 	task :development do
-		system("cd '" + File.join(CONFIG['root'], CONFIG['compass_project']) + "' &>/dev/null && compass compile --time -e development")
+		Dir.chdir(File.join(CONFIG['root'], CONFIG['compass_project']))
+		system "compass compile --environment development"
 	end
-	
-	desc 'Compass compile with `-e production --force`'
+
+	desc "Compass compile with '--environment production --force'"
 	task :production do
-		system("cd '" + File.join(CONFIG['root'], CONFIG['compass_project']) + "' &>/dev/null && compass compile --time -e production --force")
+		Dir.chdir(File.join(CONFIG['root'], CONFIG['compass_project']))
+		system "compass compile --environment production --force"
 	end
+
+	desc "Watch the compass project for changes and recompile when they occur"
+	task :watch do
+		Dir.chdir(File.join(CONFIG['root'], CONFIG['compass_project']))
+		exec "compass watch --environment development"
+	end
+
 end
