@@ -1,5 +1,5 @@
-/*jshint browser:true*/
-/*global $, RegexTool, log*/
+/*jshint browser:true, jquery:true*/
+/*global RegexTool, log*/
 RegexTool.Storage = (function () {
 	var proxy = {}, _proxy = "memory";
 

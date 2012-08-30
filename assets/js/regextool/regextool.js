@@ -6,8 +6,8 @@
  * Copyright (c) 2012 Scott Buchanan
  * Dual licensed under the MIT and GPL licenses.
  */
-/*jshint browser:true*/
-/*global $, XRegExp, log*/
+/*jshint browser:true, jquery:true*/
+/*global XRegExp, log*/
 var RegexTool = (function () {
 	var _refresh_timeout, config = {
 		version: 'r1',
