@@ -14,16 +14,16 @@ task :default do
 end
 
 desc "Switch to the production environment"
-task :production => ["compass:clean", "compass:production", "optipng", "manifest:update", "manifest:add"]
+task :production => ["compass:clean", "compass:production", "optipng", "manifest:add", "manifest:update"]
 
 desc "Switch to the development environment"
 task :development => ["compass:clean", "compass:development", "manifest:remove"]
 
-desc "Optimize PNG images"
+desc "Optimize images with OptiPNG (.gif, .png)"
 task :optipng do
 	if dir = compassConfig('images_dir') then
 		path = File.expand_path(dir, File.join(CONFIG['root'], CONFIG['compass_project']))
-		system("find '#{path}' -type f -name '*.png' | xargs optipng -quiet -preserve")
+		system "find '#{path}' -type f -iname '*.png' -or -iname '*.gif' | while read f; do optipng -quiet -preserve \"$f\" && echo \"$f\"; done"
 	end
 end
 
