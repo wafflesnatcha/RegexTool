@@ -10,7 +10,7 @@ CONFIG = {
 }
 
 task :default do
-	exec "rake -sT"
+	exec "rake -sf '#{__FILE__}' -T"
 end
 
 desc "Switch to the production environment"
