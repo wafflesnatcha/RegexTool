@@ -36,7 +36,8 @@ $pattern_input_background: #f6fff6;
 $sample_input_background: #fffff7;
 
 $result_margin: 6px;
-$result_toggle_width: 15px;
+$result_toggle_width: 16px;
+$result_min-height: 19px;
 
 $contrasted-dark-default: $color_foreground;
 $contrasted-light-default: invert-lightness($color_foreground);

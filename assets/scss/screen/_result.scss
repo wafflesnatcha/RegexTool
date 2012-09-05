@@ -113,7 +113,7 @@
 			@include box-sizing(border-box);
 			cursor: pointer;
 			float: left;
-			min-height: 19px;
+			min-height: $result_min-height;
 			padding: 7px 0 0 4px;
 			text-align: center;
 			width: $result_toggle_width;
@@ -133,7 +133,6 @@
 		}
 
 		&.parent.hidden .toggle {
-			background-color: #d6d6d6;
 			padding: {
 				left: 5px;
 				top: 6px;
@@ -150,7 +149,7 @@
 		.match-result {
 			@include border-radius(2px);
 			background-color: #ededed;
-			min-height: 19px;
+			min-height: $result_min-height;
 		}
 
 		.submatches {
@@ -169,12 +168,11 @@
 				color: #c6c6c6;
 				font-size: 80%;
 				margin-left: -($result_toggle_width + $result_margin);
-				padding-right: 2px;
-				padding-top: 3px;
+				line-height: $result_min-height;
+				padding: 0 3px;
 				// position: absolute;
 				float: right;
 				text-align: right;
-				width: ($result_toggle_width + $result_margin);
 			}
 
 			&:hover .submatch-index {

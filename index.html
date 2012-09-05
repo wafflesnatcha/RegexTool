@@ -29,7 +29,7 @@
 	<script type="text/javascript">
 		jQuery(function() {
 			RegexTool.init({
-				version: 'r1'
+				version: 'r1_1346810709'
 			});
 		});
 	</script>
@@ -94,6 +94,7 @@
 			</div>
 		</section>
 	</form>
+
 <script id="template_match" type="text/x-jquery-tmpl">
 	<li class="match">
 		<a class="toggle">
@@ -111,6 +112,7 @@
 		</div>
 	</li>
 </script>
+
 <script id="template_match_submatch" type="text/x-jquery-tmpl">
 	<li class="submatch">
 	    <div class="submatch-result">
@@ -119,12 +121,15 @@
 	    </div>
 	</li>
 </script>
+
 <script id="template_match_string_invisible" type="text/x-jquery-tmpl">
 	<span class="invisible invisible-code-${code}">${substitute}${char}</span>
 </script>
+
 <script id="template_match_string_empty" type="text/x-jquery-tmpl">
 	<span class="empty">empty</span>
 </script>
+
 <script id="template_match_string_unset" type="text/x-jquery-tmpl">
 	<span class="unset">undefined</span>
 </script>
