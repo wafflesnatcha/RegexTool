@@ -72,12 +72,12 @@ RegexTool.Result = (function () {
 			this.updateInfo();
 		},
 
-		add: function (result, sample) {
+		add: function (result) {
 			if (!listEl) {
 				this.clear();
 			}
 			counter++;
-			var lines = sample.substr(0, result.index).split('\n');
+			var lines = result.input.substr(0, result.index).split('\n');
 			var parent = $('#template_match').tmpl({
 				'line': lines.length,
 				'column': lines.pop().length,

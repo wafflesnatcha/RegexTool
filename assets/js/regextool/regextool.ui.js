@@ -4,16 +4,15 @@ RegexTool.UI = (function () {
 	var result, layout_input, _resize_timeout;
 
 	function changeHandler(event) {
-		// log("changeHandler(%o)", event);
 		if ($(event.target).val() !== RegexTool.Storage.get(event.target)) {
 			RegexTool.Storage.saveElement(event.target);
-			RegexTool.triggerRefresh();
-			RegexTool.makeRegex();
+			if(RegexTool.Pattern.getExp()) {
+				RegexTool.triggerRefresh();
+			}
 		}
 	}
 
 	function dropHandler(event) {
-		log("dropHandler(%o)", event);
 		var el = $(this);
 		el.removeClass('dragover').focus();
 		if (event.dataTransfer.files.length < 1) {

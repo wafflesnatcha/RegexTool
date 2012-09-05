@@ -61,8 +61,8 @@ var RegexTool = (function () {
 		},
 
 		refresh: function () {
-			var regex = this.makeRegex();
-			if (!regex) {
+			var exp = RegexTool.Pattern.getExp();
+			if (!exp) {
 				return false;
 			}
 
@@ -74,38 +74,17 @@ var RegexTool = (function () {
 			}
 
 			if (RegexTool.Storage.get('flag-g')) {
-				XRegExp.iterate(sample, regex, function (match) {
+				XRegExp.forEach(sample, exp, function (match) {
 					RegexTool.Result.add(match, sample);
 				});
+
 			} else {
-				var match = regex.exec(sample);
+				var match = XRegExp.exec(sample, exp);
 				if (match && match.length > 0 && match[0].length > 0) {
 					RegexTool.Result.add(match, sample);
 				}
 			}
-		},
 
-		makeRegex: function () {
-			try {
-				var regex = XRegExp.cache(RegexTool.Storage.get('pattern'), this.makeFlags());
-				$('#pattern').removeClass('invalid');
-				return regex;
-			} catch (e) {
-				$('#pattern').addClass('invalid');
-				return false;
-			}
-		},
-
-		makeFlags: function () {
-			var i, o = [],
-				flags = ['g', 'i', 'm', 's', 'x'],
-				l = flags.length;
-			for (i = 0; i < l; i++) {
-				if (RegexTool.Storage.get('flag-' + flags[i]) == "1") {
-					o.push(flags[i]);
-				}
-			}
-			return o.join('');
 		}
 	};
 }());
