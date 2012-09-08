@@ -39,12 +39,12 @@ end
 
 namespace :manifest do
 
-	desc "Add the 'manifest' attribute to the opening <html> tag in '#{CONFIG['index_file']}'"
+	# desc "Add the 'manifest' attribute to the opening <html> tag in '#{CONFIG['index_file']}'"
 	task :add do
 		htmlManifest(true)
 	end
 
-	desc "Remove the 'manifest' attribute to the opening <html> tag in '#{CONFIG['index_file']}'"
+	# desc "Remove the 'manifest' attribute to the opening <html> tag in '#{CONFIG['index_file']}'"
 	task :remove do
 		htmlManifest(false)
 	end
@@ -56,9 +56,7 @@ namespace :manifest do
 			text = File.read(File.join(root_dir, filename))
 			match = text.scan(/<(?:script [^>]*?src|link [^>]*?href)=["']((?!["']).+?)["'][^>]*\/?>/i) { |m|
 				files.push(m[0])
-				if (m[0].match(/^(?!http).*.css$/i))
-					files += scan_css(m[0], root_dir)
-				end
+				files += scan_css(m[0], root_dir) if (m[0].match(/^.*\.css$/i))
 			}
 			return files
 		end
@@ -70,6 +68,7 @@ namespace :manifest do
 			match = text.scan(/url\(['"]?([^\)]+?)['"]?\)/i) { |m|
 				name = File.expand_path(File.join(File.dirname(path), m[0]), root_dir)
 				files.push(name.sub(File.expand_path(root_dir) + "/", ""))
+				files += scan_css(m[0], root_dir) if (m[0].match(/^.*\.css$/i))
 			}
 			return files
 		end
