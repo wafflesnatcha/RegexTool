@@ -23,6 +23,12 @@ var RegexTool = (function () {
 			}
 
 			RegexTool.UI.init();
+
+			if(window.location.hash === "#CLEAR") {
+				window.location.hash = '';
+				RegexTool.Storage.clear();
+			}
+				
 			this.restore();
 			this.save();
 			RegexTool.UI.initInput();
@@ -35,7 +41,7 @@ var RegexTool = (function () {
 
 		restore: function () {
 			var version = RegexTool.Storage.get('version');
-			if (version === undefined || version != RegexTool.Config.version || window.location.hash === "#CLEAR") {
+			if (version === undefined || version != RegexTool.Config.version) {
 				RegexTool.Storage.clear();
 				RegexTool.Storage.set('version', RegexTool.Config.version);
 				RegexTool.Storage.set(RegexTool.Config.example);
