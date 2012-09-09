@@ -1,0 +1,46 @@
+
+
+// Needed for RegexTool.UI to properly test for flexbox support
+#regextool {
+	@include display-box;
+}
+
+body.flexbox {
+	#regextool {
+		@include box-orient(block-axis);
+	}
+	
+	.section {
+		@include display-box;
+		@include box-align(stretch);
+		@include box-flex(1);
+		@include box-orient(block-axis);
+		
+		.section-title {
+			@include box-flex(0);
+		}
+		
+		.section-content {
+			@include box-flex(1);
+			textarea {
+				resize: vertical;
+				height: auto;
+			}
+		}
+	}
+	
+	#section-result {
+		position: relative;
+		top: auto;
+		left: auto;
+		right: auto;
+		bottom: auto;
+	}
+
+	.layout-input {
+		@include display-box;
+		@include box-flex(0);
+		@include box-orient(vertical);
+	}
+}
+

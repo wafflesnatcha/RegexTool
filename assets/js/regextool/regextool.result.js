@@ -67,7 +67,7 @@ RegexTool.Result = (function () {
 
 	return {
 		clear: function () {
-			listEl = $('<ol class="matches" />').appendTo($('#result-list').empty());
+			listEl = $('<ol class="matches" />').appendTo($('#result').empty());
 			counter = 0;
 			this.updateInfo();
 		},

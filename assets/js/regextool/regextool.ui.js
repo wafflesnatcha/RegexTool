@@ -41,26 +41,18 @@ RegexTool.UI = (function () {
 
 	return {
 		init: function () {
-			result = $('#section-result');
-			layout_input = $('#regextool > .layout-input');
-
-			this.refresh();
+			// Flexbox supported
+			if(['box', '-moz-box', '-ms-box', '-webkit-box'].indexOf(window.getComputedStyle($('#regextool')[0]).display) >= 0) {
+				$('body').addClass('flexbox');
+			} else {
+				var layout_input = $('#regextool > .layout-input');
+				$('#section-result').css('top', layout_input.offset().top + layout_input.height() + 'px');
+			}
 
 			// Autofocus support
 			var autofocus_el = $('form input[autofocus], form textarea[autofocus]').first();
 			if (autofocus_el) {
 				autofocus_el.focus();
-			}
-
-			if (RegexTool.Config.ui_refresh) {
-				$(window).on('resize', function () {
-					if (_resize_timeout) {
-						clearTimeout(_resize_timeout);
-					}
-					_resize_timeout = setTimeout(function () {
-						RegexTool.UI.refresh();
-					}, RegexTool.Config.ui_refresh_delay);
-				});
 			}
 		},
 
@@ -95,10 +87,6 @@ RegexTool.UI = (function () {
 					this.ondrop = dropHandler;
 				});
 			}
-		},
-
-		refresh: function () {
-			$(result).css('top', layout_input.offset().top + layout_input.outerHeight() + 'px');
 		}
 	};
 }());

@@ -10,7 +10,5 @@ RegexTool.Config = {
 	},
 	drop_files: true,
 	show_invisibles: false,
-	refresh_delay: 200,
-	ui_refresh: false,
-	ui_refresh_delay: 100
+	refresh_delay: 200
 };

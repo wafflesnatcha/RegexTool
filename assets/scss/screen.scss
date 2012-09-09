@@ -47,10 +47,6 @@ pre, code, kbd, samp, textarea {
 	}
 }
 
-.access-key {
-	font-weight: bold;
-}
-
 #regextool {
 	@include box-sizing(border-box);
 	height: 100%;
@@ -58,13 +54,13 @@ pre, code, kbd, samp, textarea {
 	position: absolute;
 	top: 0;
 	width: 100%;
+}
 
-	.layout-input {
-		@include box-shadow(0 1px 0 0 rgba(0, 0, 0, 0.1), 0 2px 0 0 rgba(0, 0, 0, 0.05));
-		border-bottom: 1px solid darken($section-title_background, 25%);
-		position: relative;
-		z-index: 10;
-	}
+.layout-input {
+	@include box-shadow(0 1px 0 0 rgba(0, 0, 0, 0.1), 0 2px 0 0 rgba(0, 0, 0, 0.05));
+	border-bottom: 1px solid darken($section-title_background, 25%);
+	position: relative;
+	z-index: 10;
 }
 
 .section {
@@ -110,29 +106,30 @@ pre, code, kbd, samp, textarea {
 		overflow: auto;
 		padding: 0;
 		width: 100%;
-	}
-}
+		
+		textarea {
+			@include box-shadow(0 0 1px 1px transparent inset);
+			@include box-sizing(border-box);
+			@include transition(box-shadow .1s);
+			background-color: $input_background;
+			border: 0;
+			color: $input_foreground;
+			display: block;
+			height: 100%;
+			margin: 0;
+			max-width: 100%;
+			min-width: 100%;
+			outline: 0;
+			resize: none;
+			width: 100%;
 
-#pattern,
-#sample {
-	@include box-shadow(0 0 1px 1px transparent inset);
-	@include box-sizing(border-box);
-	@include transition(box-shadow .1s);
-	background-color: $input_background;
-	border: 0;
-	color: $input_foreground;
-	display: block;
-	height: 100%;
-	margin: 0;
-	outline: 0;
-	resize: none;
-	width: 100%;
-
-	&:focus,
-	&.dragover {
-		@include box-shadow(0 0 1px 1px $input_focus_foreground inset);
-		@include transition-duration(0s);
-		// background-color: $input_focus_background;
+			&:focus,
+			&.dragover {
+				@include box-shadow(0 0 1px 1px $input_focus_foreground inset);
+				@include transition-duration(0s);
+				// background-color: $input_focus_background;
+			}
+		}
 	}
 }
 
@@ -159,3 +156,4 @@ pre, code, kbd, samp, textarea {
 @import "screen/_flags";
 @import "screen/_result";
 @import "screen/_info-bar";
+@import "screen/_flexbox";
