@@ -24,7 +24,7 @@ var RegexTool = (function () {
 
 			RegexTool.UI.init();
 
-			if(window.location.hash === "#CLEAR") {
+			if(String(window.location.hash).toLowerCase() === "#clear") {
 				window.location.hash = '';
 				RegexTool.Storage.clear();
 			}

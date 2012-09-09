@@ -1,12 +1,10 @@
 /*jshint browser:true, jquery:true*/
 /*global RegexTool, log*/
 RegexTool.UI = (function () {
-	var result, layout_input, _resize_timeout;
-
 	function changeHandler(event) {
 		if ($(event.target).val() !== RegexTool.Storage.get(event.target)) {
 			RegexTool.Storage.saveElement(event.target);
-			if(RegexTool.Pattern.getExp()) {
+			if (RegexTool.Pattern.getExp()) {
 				RegexTool.triggerRefresh();
 			}
 		}
@@ -31,18 +29,10 @@ RegexTool.UI = (function () {
 		reader.readAsText(event.dataTransfer.files[0]);
 	}
 
-	function pasteHandler(event) {
-		var el = this;
-		event.stopPropagation();
-		setTimeout(function () {
-			log($(el).val(), event);
-		}, 1);
-	}
-
 	return {
 		init: function () {
 			// Flexbox supported
-			if(['box', '-moz-box', '-ms-box', '-webkit-box'].indexOf(window.getComputedStyle($('#regextool')[0]).display) >= 0) {
+			if (window.getComputedStyle && ['box', '-moz-box', '-ms-box', '-webkit-box'].indexOf(window.getComputedStyle($('#regextool')[0]).display, null) >= 0) {
 				$('body').addClass('flexbox');
 			} else {
 				var layout_input = $('#regextool > .layout-input');
@@ -57,9 +47,15 @@ RegexTool.UI = (function () {
 		},
 
 		initInput: function () {
-			// $('#pattern').on('paste', pasteHandler);
-			$('#pattern, #sample').on('keyup change', changeHandler);
 
+			$('#pattern, #sample').on('change', changeHandler);
+			$('#pattern, #sample').on('keyup keydown', function (event) {
+				setTimeout(function () {
+					$(event.target).trigger('change');
+				}, 1);
+			});
+
+			// Toggle flag
 			$('#flags input[type="checkbox"]').on('change', changeHandler);
 			$('#flags label').on('click', function (event) {
 				if (event.which && event.which != 1) {
@@ -68,6 +64,18 @@ RegexTool.UI = (function () {
 				event.preventDefault();
 				$('#' + $(this).prop("for")).trigger('click');
 			});
+
+			// Watch for paste and fix pattern
+			if (RegexTool.Config.fix_pasted_pattern) {
+				$('#pattern').on('paste', function (event) {
+					event.stopPropagation();
+					setTimeout(function () {
+						if (RegexTool.Pattern.fix($(event.target).val())) {
+							RegexTool.triggerRefresh();
+						}
+					}, 0);
+				});
+			}
 
 			// Setup drag/drop events
 			$('#sample, #pattern').each(function () {
@@ -82,7 +90,7 @@ RegexTool.UI = (function () {
 				this.ondrop = end;
 			});
 
-			if (RegexTool.Config.drop_files) {
+			if (RegexTool.Config.allow_drop_files) {
 				$('#sample').each(function () {
 					this.ondrop = dropHandler;
 				});
