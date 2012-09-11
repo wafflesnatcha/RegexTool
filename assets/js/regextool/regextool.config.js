@@ -1,17 +1,19 @@
 /*jshint browser:true, jquery:true*/
 /*global RegexTool, log*/
 RegexTool.Config = {
-	version: null,
-	storage_prefix: 'RegexTool.',
-	example: {
-		'pattern': '([a-zA-Z]{4,})',
-		'sample': 'The quick brown fox jumps over the lazy dog.',
-		'flag-g': true
-	},
-	allow_drop_files: true,
-	refresh_delay: 200,
-	show_invisibles: false,
-	fix_pasted_pattern: false
+	'allow_drop_files': true,
+	'fix_pasted_pattern': true,
+	'refresh_delay': 200,
+	'show_invisibles': false,
+	'storage_prefix': 'RegexTool.',
+	'version': null
+};
+
+// Initial data used if no saved data is found.
+RegexTool.Config.example = {
+	'pattern': '([a-zA-Z]{4,})',
+	'sample': 'The quick brown fox jumps over the lazy dog.',
+	'flag-g': true
 };
 
 // Invisible character references (just the basics)
