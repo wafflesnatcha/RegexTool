@@ -26,33 +26,33 @@ textarea {
 	font-weight: inherit;
 }
 
-.regextool {
+#regextool {
 	display: inline;
 	height: auto;
 	width: auto;
-	
-	section {
-		display: block;
+
+}
+
+section {
+	display: block;
+	position: static;
+	& > h2 {
+		background: none;
+		border: none;
+		font: {
+			size: 16px;
+			weight: normal;
+		}
+		min-height: 0;
+		line-height: normal;
+		margin: 1em 0;
 		position: static;
 	}
-}
 
-.section-title {
-	background: none;
-	border: none;
-	font: {
-		size: 16px;
-		weight: normal;
+	.section-content {
+		background: none;
+		max-width: none;
+		overflow: auto;
+		padding: 3px;
 	}
-	min-height: 0;
-	line-height: normal;
-	margin: 1em 0;
-	position: static;
-}
-
-.section-content {
-	background: none;
-	max-width: none;
-	overflow: auto;
-	padding: 3px;
 }
