@@ -1,22 +1,16 @@
-
-
-// Needed for RegexTool.UI to properly test for flexbox support
-#regextool {
-	@include display-box;
-}
-
-body.flexbox {
+html.flexbox {
 	#regextool {
+		@include display-box;
 		@include box-orient(block-axis);
 	}
 	
-	.section {
+	section {
 		@include display-box;
 		@include box-align(stretch);
 		@include box-flex(1);
 		@include box-orient(block-axis);
 		
-		.section-title {
+		& > h2 {
 			@include box-flex(0);
 		}
 		
@@ -24,7 +18,6 @@ body.flexbox {
 			@include box-flex(1);
 			textarea {
 				resize: vertical;
-				height: auto;
 			}
 		}
 	}
@@ -41,6 +34,7 @@ body.flexbox {
 		@include display-box;
 		@include box-flex(0);
 		@include box-orient(vertical);
+		width: 100%;
 	}
 }
 

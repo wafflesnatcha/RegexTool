@@ -1,6 +1,12 @@
 /*jshint browser:true, jquery:true*/
 /*global RegexTool, log*/
 RegexTool.UI = (function () {
+	
+	// Add noflexbox class as soon as jQuery is available
+	jQuery(function() {
+		$('html').addClass('noflexbox');
+	});
+	
 	function changeHandler(event) {
 		if ($(event.target).val() !== RegexTool.Storage.get(event.target)) {
 			RegexTool.Storage.saveElement(event.target);
@@ -32,9 +38,10 @@ RegexTool.UI = (function () {
 	return {
 		init: function () {
 			// Flexbox supported
-			if (window.getComputedStyle && ['box', '-moz-box', '-ms-box', '-webkit-box'].indexOf(window.getComputedStyle($('#regextool')[0]).display, null) >= 0) {
-				$('body').addClass('flexbox');
+			if ($('body').css('boxDirection')) {
+				$('html').removeClass('noflexbox').addClass('flexbox');
 			} else {
+				$('html').removeClass('flexbox').addClass('noflexbox');
 				var layout_input = $('#regextool > .layout-input');
 				$('#section-result').css('top', layout_input.offset().top + layout_input.height() + 'px');
 			}
