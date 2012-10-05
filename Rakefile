@@ -2,11 +2,11 @@ require "rake"
 require "compass"
 
 CONFIG = {
-	'root'            => File.dirname(__FILE__),
-	'compass_project' => 'assets/scss',
-	'index_file'      => 'index.html',
-	'manifest_file'   => 'cache.manifest',
-	'offline_file'    => 'offline.html',
+	'root'              => File.dirname(__FILE__),
+	'compass_project'   => 'assets/scss',
+	'index_file'        => 'index.html',
+	'manifest_file'     => 'cache.manifest',
+	'manifest_fallback' => 'offline.html',
 }
 
 task :default do
@@ -41,7 +41,7 @@ namespace :manifest do
 		htmlManifest(false)
 	end
 
-	desc "Update the application cache manifest '#{CONFIG['manifest_file']}'"
+	desc "Update the application cache manifest"
 	task :update do
 		def scan_html(filename, root_dir)
 			files = []
@@ -65,10 +65,22 @@ namespace :manifest do
 			return files
 		end
 
-		puts "Updating cache.manifest..."
+		puts "Updating application cache manifest"
 		resources = scan_html(CONFIG['index_file'], CONFIG['root'])
 		f = File.open(File.join(CONFIG['root'], CONFIG['manifest_file']), "w")
-		f.write("CACHE MANIFEST\n# #{`date "+%Y-%m-%d %H:%M:%S"`.chomp}\n\nCACHE:\n#{resources.uniq.sort.join("\n")}\n\nFALLBACK:\n#{CONFIG['offline_file']}\n\nNETWORK:\n*")
+		f.write(<<-EOF)
+CACHE MANIFEST
+# #{`date "+%Y-%m-%d %H:%M:%S"`.chomp}
+
+CACHE:
+#{resources.uniq.sort.join("\n")}
+
+FALLBACK:
+/ #{CONFIG['manifest_fallback']}
+
+NETWORK:
+*
+EOF
 		f.close()
 	end
 
