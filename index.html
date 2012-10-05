@@ -38,10 +38,14 @@
 <body>
 	<form id="regextool">
 		<div class="layout-input">
-			<section id="section-pattern" class="section">
-				<h2 class="section-title">
+			<section id="section-pattern">
+				<h2>
 					<label for="pattern"><span class="access-key">P</span>attern</label>
 				</h2>
+				<div class="section-content">
+					<textarea id="pattern" name="pattern" tabindex="1" accesskey="p" autofocus></textarea>
+				</div>
+
 				<div id="flags">
 					<h3>Flags</h3>
 					<ul>
@@ -67,23 +71,21 @@
 						</li>
 					</ul>
 				</div>
-				<div class="section-content">
-					<textarea id="pattern" name="pattern" tabindex="1" accesskey="p" rows="3" autofocus></textarea>
-				</div>
 			</section>
 
-			<section id="section-sample" class="section">
-				<h2 class="section-title">
+			<section id="section-sample">
+				<h2>
 					<label for="sample">Sample <span class="access-key">T</span>ext</label>
 				</h2>
+				<div class="section-content">
+					<textarea id="sample" name="sample" tabindex="2" accesskey="t"></textarea>
+				</div>
+
 				<div id="info-bar">
 					<div class="total-matches">
-						<span class="label">Matches:</span>
+						<label>Matches:</label>
 						<span class="value"></span>
 					</div>
-				</div>
-				<div class="section-content">
-					<textarea id="sample" name="sample" tabindex="2" accesskey="t" rows="4"></textarea>
 				</div>
 			</section>
 		</div>

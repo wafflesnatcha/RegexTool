@@ -25,6 +25,7 @@ a {
 	&:visited {
 		color: #680094;
 	}
+
 	&:hover {
 		text-decoration: underline;
 	}
@@ -57,19 +58,13 @@ pre, code, kbd, samp, textarea {
 	width: 100%;
 }
 
-.layout-input {
-	@include box-shadow(0 1px 0 0 rgba(0, 0, 0, 0.1), 0 2px 0 0 rgba(0, 0, 0, 0.05));
-	border-bottom: 1px solid darken($section-title_background, 25%);
-	position: relative;
-	z-index: 10;
-}
-
-.section {
+section {
 	@include box-sizing(border-box);
+	min-height: 4em;
 	position: relative;
 	z-index: 1;
 
-	.section-title {
+	& > h2 {
 		@include box-shadow(0 1px 0 rgba(0,0,0,.1), 0 -1px 0 rgba(0,0,0,.05));
 		@include box-sizing(border-box);
 		@include text-shadow(0 1px 0 darken($section-title_background, 5%));
@@ -79,21 +74,21 @@ pre, code, kbd, samp, textarea {
 			image: image-url("section-title.png");
 			repeat: repeat-x;
 			position: 0 0;
-		}
+		};
 		@include background-image(linear-gradient(top, lighten($section-title_background, 3%), darken($section-title_background, 2%)));
 		border: {
 			bottom: 1px solid darken($section-title_background, 20%);
 			top: 1px solid darken($section-title_background, 12%);
-		}
+		};
 		color: $section-title_foreground;
 		display: block;
 		font: {
 			size: $section-title_font-size;
 			weight: 600;
-		}
+		};
+		height: $section-title_height;
 		line-height: $section-title_height - 2;
 		margin: 0;
-		max-height: $section-title_height;
 		padding: 0 6px;
 		position: relative;
 		z-index: 10;
@@ -118,7 +113,9 @@ pre, code, kbd, samp, textarea {
 			display: block;
 			height: 100%;
 			margin: 0;
+			max-height: 10em;
 			max-width: 100%;
+			min-height: 2em;
 			min-width: 100%;
 			outline: 0;
 			resize: none;
@@ -126,12 +123,18 @@ pre, code, kbd, samp, textarea {
 
 			&:focus,
 			&.dragover {
-				@include box-shadow(0 0 1px 1px $input_focus_foreground inset);
+				@include box-shadow(0 0 1px 1px $input_focus inset);
 				@include transition-duration(0s);
-				// background-color: $input_focus_background;
 			}
 		}
 	}
+}
+
+.layout-input {
+	@include box-shadow(0 1px 0 0 rgba(0, 0, 0, 0.1), 0 2px 0 0 rgba(0, 0, 0, 0.05));
+	border-bottom: 1px solid darken($section-title_background, 25%);
+	position: relative;
+	z-index: 10;
 }
 
 #pattern {

@@ -1,6 +1,7 @@
 #flags {
 	@include box-sizing(border-box);
 	@include text-shadow(0 1px 0 transparentize(contrast-color($section-title_background, $contrasted-light-default, $contrasted-dark-default), .4));
+	@include user-select(none);
 	font-size: $flag_font-size;
 	height: $section-title_height;
 	overflow: hidden;
@@ -30,7 +31,6 @@
 
 		li {
 			float: left;
-			overflow: hidden;
 			padding: 0;
 
 			input {
@@ -44,7 +44,6 @@
 				@include border-radius(2px);
 				color: $flag_foreground;
 				display: block;
-				float: left;
 				outline: none;
 				line-height: $section-title_height - 6;
 				margin: 3px 2px;
@@ -74,18 +73,18 @@
 
 			input:focus + label,
 			input + label:focus {
-				background-color: transparentize(lighten($input_focus_foreground, 10%), .65);
+				background-color: transparentize(lighten($input_focus, 10%), .65);
 				color: contrast-color($section-title_background);
 			}
 
 			input:checked:focus + label,
 			input:checked + label:focus {
 				@include box-shadow(
-					0 1px 1px 0 transparentize($input_focus_foreground, .7) inset,
-					0 0 0 1px transparentize($input_focus_foreground, .3) inset,
+					0 1px 1px 0 transparentize($input_focus, .7) inset,
+					0 0 0 1px transparentize($input_focus, .3) inset,
 					$boxshadow
 				);
-				background-color: transparentize($input_focus_foreground, .65);
+				background-color: transparentize($input_focus, .65);
 			}
 		}
 	}
