@@ -39,26 +39,27 @@ RegexTool.Result = (function () {
 				'offset': result.index,
 				'length': result[0].length,
 				'index': counter,
-				'string': RegexTool.Result.sanitize(result[0])
+				'string': this.sanitize(result[0])
 			}).appendTo(listEl);
 
 			this.updateInfo();
+			
+			// Result has submatches
 			if (result.length > 1) {
-				// Result has submatches
 				result.shift();
 				$(parent).addClass('parent');
 				var i, l = result.length,
-					sublist = $('<ol class="submatches" />').appendTo($(parent));
+					t = $('#template_match_submatch'),
+					sublist = $('ol', parent);
 
 				// Configure toggle button
-				$('.toggle', parent).click(function () {
-					// sublist.toggle();
-					$(this).parent().toggleClass('hidden');
+				$('.toggle', parent).click(function (event) {
+					$(parent).toggleClass('hidden');
 				});
 
 				// Add submatches
 				for (i = 0; i < l; i++) {
-					$('#template_match_submatch').tmpl({
+					t.tmpl({
 						'index': (i + 1),
 						'string': this.sanitize(result[i])
 					}).appendTo(sublist);

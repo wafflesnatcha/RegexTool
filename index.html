@@ -88,8 +88,8 @@
 			</section>
 		</div>
 
-		<section id="section-result" class="section">
-			<h2 class="section-title"><span>Results</span></h2>
+		<section id="section-result">
+			<h2><span>Results</span></h2>
 			<div class="section-content">
 				<div id="result"></div>
 			</div>
@@ -98,19 +98,18 @@
 
 	<script id="template_match" type="text/x-jquery-tmpl">
 		<li class="match">
-			<a class="toggle">
-				<div class="arrow"></div>
-			</a>
 			<div class="match-result">
+				<a class="toggle"><div></div></a>
 				<span class="info">
-					<div class="index"><span>#${index}</span></div>
-					<div class="line"><span class="label">Line</span> <span title="Line">${line}</span>,</div>
-					<div class="column"><span class="label">Column</span> <span title="Column">${column}</span></div>
-					<div class="offset"><span class="label">Offset</span> <span title="Offset">${offset}</span></div>
-					<div class="length">(<span title="Length">${length}</span> <span class="label">characters</span>)</div>
+					<span class="index"><span>#${index}</span></span>
+					<span class="line"><label>Line</label> <span title="Line">${line}</span>,</span>
+					<span class="column"><label>Column</label> <span title="Column">${column}</span></span>
+					<span class="offset"><label>Offset</label> <span title="Offset">${offset}</span></span>
+					<span class="length">(<span title="Length">${length}</span> <label>characters</label>)</span>
 				</span>
 				<span class="string">{{html string}}</span>
 			</div>
+			<ol class="submatches"></ol>
 		</li>
 	</script>
 

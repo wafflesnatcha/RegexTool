@@ -1,13 +1,13 @@
-#section-result {
+section#section-result {
 	bottom: 0;
 	height: auto;
 	left: 0;
 	position: absolute;
-	top: 183px;
+	// top: 183px;
 	width: 100%;
 	z-index: 1;
 
-	.section-title {
+	& > h2 {
 		display: none;
 	}
 
@@ -58,12 +58,11 @@
 		};
 		padding: 2px 3px;
 
-		div {
-			display: inline;
+		& > span {
 			padding: 0 1px;
 		}
 
-		.label {
+		label {
 			color: #bbb;
 			font: {
 				size: $font-size - 2;
@@ -72,14 +71,19 @@
 			text-transform: uppercase;
 		}
 
-		.line {}
-		.column {}
+		.line {
+		}
+
+		.column {
+		}
+
 		.offset {
 			display: none;
 		}
+
 		.length {
 			color: #63007b;
-			.label {
+			label {
 				display: none;
 			}
 		}
@@ -89,7 +93,7 @@
 		display: none;
 	}
 
-	.match {
+	.matches > li {
 		@include transition(border .1s);
 		@include border-radius(4px);
 		border: 2px solid transparent;
@@ -100,25 +104,31 @@
 
 		&:hover {
 			@include transition-duration(0s);
-			border-color: $input_focus_foreground;
+			border-color: $input_focus;
 		}
 
 		&.hidden .match-result .string {
 			@include ellipsis;
 		}
 
-		&.parent .toggle {
-			@include user-select(none);
+		.match-result {
+			@include border-radius(2px);
+			background-color: #ededed;
+			min-height: $result_min-height;
+		}
+
+		.toggle {
 			@include border-radius(2px 0 0 2px);
 			@include box-sizing(border-box);
+			@include user-select(none);
 			cursor: pointer;
+			display: none;
 			float: left;
 			min-height: $result_min-height;
 			padding: 7px 0 0 4px;
 			text-align: center;
 			width: $result_toggle_width;
-
-			.arrow {
+			& > div {
 				border-left: 4px solid transparent;
 				border-right: 4px solid transparent;
 				border-top: 5px solid #000;
@@ -127,29 +137,23 @@
 				width: 0;
 			}
 
-			&:hover .arrow {
+			&:hover > div {
 				opacity: .9;
 			}
 		}
 
+		&.parent .toggle {
+			display: block;
+		}
+
 		&.parent.hidden .toggle {
-			padding: {
-				left: 5px;
-				top: 6px;
-			};
-			
-			.arrow {
+			padding: 6px 0 0 5px;
+			& > div {
 				border-bottom: 4px solid transparent;
 				border-left: 5px solid #000;
 				border-right: 0;
 				border-top: 4px solid transparent;
 			}
-		}
-
-		.match-result {
-			@include border-radius(2px);
-			background-color: #ededed;
-			min-height: $result_min-height;
 		}
 
 		.submatches {
@@ -166,12 +170,10 @@
 			.submatch-index {
 				@include box-sizing(border-box);
 				color: #c6c6c6;
+				float: right;
 				font-size: 80%;
-				margin-left: -($result_toggle_width + $result_margin);
 				line-height: $result_min-height;
 				padding: 0 3px;
-				// position: absolute;
-				float: right;
 				text-align: right;
 			}
 
