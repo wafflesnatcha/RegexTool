@@ -37,7 +37,7 @@ RegexTool.UI = (function () {
 
 	return {
 		init: function () {
-			// Flexbox supported
+			// Flexbox support
 			if ($('body').css('boxDirection')) {
 				$('html').removeClass('noflexbox').addClass('flexbox');
 			} else {
@@ -54,7 +54,6 @@ RegexTool.UI = (function () {
 		},
 
 		initInput: function () {
-
 			$('#pattern, #sample').on('change', changeHandler);
 			$('#pattern, #sample').on('keyup keydown', function (event) {
 				setTimeout(function () {

@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 2012-10-03 17:24:23
+# 2012-10-05 16:05:57
 
 CACHE:
 assets/css/print.css
@@ -10,16 +10,16 @@ assets/img/icon/57x57.png
 assets/img/icon/72x72.png
 assets/img/icon/favicon.ico
 assets/img/section-title.png?1347147012
+assets/js/RegexTool.js
+assets/js/RegexTool/Config.js
+assets/js/RegexTool/Pattern.js
+assets/js/RegexTool/Result.js
+assets/js/RegexTool/Storage.js
+assets/js/RegexTool/UI.js
 assets/js/jquery/jquery-1.8.1.min.js
 assets/js/jquery/plugins/jquery.tmpl-beta1.min.js
 assets/js/json2.min.js
 assets/js/log.js
-assets/js/regextool/regextool.config.js
-assets/js/regextool/regextool.js
-assets/js/regextool/regextool.pattern.js
-assets/js/regextool/regextool.result.js
-assets/js/regextool/regextool.storage.js
-assets/js/regextool/regextool.ui.js
 assets/js/xregexp-2.0.0-all.min.js
 
 FALLBACK:
