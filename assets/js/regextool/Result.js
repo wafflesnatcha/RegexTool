@@ -40,7 +40,7 @@ RegexTool.Result = (function () {
 				'length': result[0].length,
 				'index': counter,
 				'string': this.sanitize(result[0])
-			}).appendTo(listEl);
+			});
 
 			this.updateInfo();
 			
@@ -65,6 +65,8 @@ RegexTool.Result = (function () {
 					}).appendTo(sublist);
 				}
 			}
+			
+			$(parent).appendTo(listEl);
 		},
 
 		sanitize: function (text) {
