@@ -1,6 +1,14 @@
 /*jshint browser:true, jquery:true*/
 /*global RegexTool, log*/
 RegexTool.Result = (function () {
+
+	// Setup event handler for toggle arrows
+	jQuery(function () {
+		$('#result').on('click', '.toggle', function (event) {
+			$(this).closest('.match').toggleClass('hidden');
+		});
+	});
+
 	var listEl, invisibles, template_cache = {}, counter = 0;
 
 	function getInvisibles() {
@@ -43,7 +51,7 @@ RegexTool.Result = (function () {
 			});
 
 			this.updateInfo();
-			
+
 			// Result has submatches
 			if (result.length > 1) {
 				result.shift();
@@ -51,11 +59,6 @@ RegexTool.Result = (function () {
 				var i, l = result.length,
 					t = $('#template_match_submatch'),
 					sublist = $('ol', parent);
-
-				// Configure toggle button
-				$('.toggle', parent).click(function (event) {
-					$(parent).toggleClass('hidden');
-				});
 
 				// Add submatches
 				for (i = 0; i < l; i++) {
@@ -65,7 +68,7 @@ RegexTool.Result = (function () {
 					}).appendTo(sublist);
 				}
 			}
-			
+
 			$(parent).appendTo(listEl);
 		},
 
