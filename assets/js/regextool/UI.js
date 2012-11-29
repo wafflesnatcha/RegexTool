@@ -46,11 +46,10 @@ RegexTool.UI = (function () {
 				$('#section-result').css('top', layout_input.offset().top + layout_input.height() + 'px');
 			}
 
-			// Autofocus support
-			var autofocus_el = $('form input[autofocus], form textarea[autofocus]').first();
-			if (autofocus_el) {
-				autofocus_el.focus();
-			}
+			// Autofocus backwards compatibility
+			$('button[autofocus], input[autofocus], select[autofocus], textarea[autofocus]').last().each(function () {
+				this.focus();
+			});
 		},
 
 		initInput: function () {
