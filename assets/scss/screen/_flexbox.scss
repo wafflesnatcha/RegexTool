@@ -10,7 +10,7 @@ html.flexbox {
 		@include box-flex(1);
 		@include box-orient(block-axis);
 		
-		& > h2 {
+		& > header {
 			@include box-flex(0);
 		}
 		

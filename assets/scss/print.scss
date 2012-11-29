@@ -36,7 +36,8 @@ textarea {
 section {
 	display: block;
 	position: static;
-	& > h2 {
+
+	& > header {
 		background: none;
 		border: none;
 		font: {
