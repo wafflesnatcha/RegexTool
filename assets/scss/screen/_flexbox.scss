@@ -1,21 +1,19 @@
 html.flexbox {
 	#regextool {
-		@include display-box;
-		@include box-orient(block-axis);
+		@include flexbox((
+			display: flex,
+			flex-direction: column
+		));
 	}
 	
 	section {
-		@include display-box;
-		@include box-align(stretch);
-		@include box-flex(1);
-		@include box-orient(block-axis);
-		
-		& > header {
-			@include box-flex(0);
-		}
-		
+		@include flexbox((
+			display: flex,
+			flex-direction: column,
+			align-items: stretch
+		));
+				
 		.section-content {
-			@include box-flex(1);
 			textarea {
 				resize: vertical;
 			}
@@ -31,9 +29,10 @@ html.flexbox {
 	}
 
 	.layout-input {
-		@include display-box;
-		@include box-flex(0);
-		@include box-orient(vertical);
+		@include flexbox((
+			display: inline,
+			flex-direction: column
+		));
 		width: 100%;
 	}
 }

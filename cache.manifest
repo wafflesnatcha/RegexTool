@@ -1,15 +1,15 @@
 CACHE MANIFEST
-# 2012-10-30 18:31:13
+# 2016-10-29 20:38:37
 
 CACHE:
 assets/css/print.css
 assets/css/screen.css
-assets/img/icon/114x114.png
-assets/img/icon/144x144.png
-assets/img/icon/57x57.png
-assets/img/icon/72x72.png
+assets/img/icon/114.png
+assets/img/icon/144.png
+assets/img/icon/256.png
+assets/img/icon/57.png
+assets/img/icon/72.png
 assets/img/icon/favicon.ico
-assets/img/section-title.png?1347147012
 assets/js/RegexTool.js
 assets/js/RegexTool/Config.js
 assets/js/RegexTool/Pattern.js
@@ -21,6 +21,7 @@ assets/js/jquery/plugins/jquery.tmpl-beta1.min.js
 assets/js/json2.min.js
 assets/js/log.js
 assets/js/xregexp-2.0.0-all.min.js
+https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Open+Sans:400,400i,700,700i
 
 FALLBACK:
 / offline.html

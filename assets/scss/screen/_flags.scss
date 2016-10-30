@@ -1,6 +1,6 @@
 #flags {
 	@include box-sizing(border-box);
-	@include text-shadow(0 1px 0 transparentize(contrast-color($section-title_background, $contrasted-light-default, $contrasted-dark-default), .4));
+	@include text-shadow(0 1px 0 transparentize(contrast-color($section-title_background, $contrasted-light-default, $contrasted-dark-default), .9));
 	@include user-select(none);
 	font-size: $flag_font-size;
 	height: $section-title_height;
@@ -12,7 +12,6 @@
 	z-index: 20;
 
 	h3 {
-		// @include background-image(linear-gradient(right, rgba(0,0,0,.2) 0, rgba(0,0,0,0) 2px));
 		@include box-shadow(1px 0 3px rgba(0,0,0,.3));
 		color: contrast-color($section-title_background);
 		float: left;

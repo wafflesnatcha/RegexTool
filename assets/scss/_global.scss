@@ -10,7 +10,7 @@
 	-webkit-user-select: $select;
 }
 
-$font-family: "Lucida Grande", "Segoe UI", "Ubuntu", "Tahoma", "Arial", sans-serif;
+$font-family: "Open Sans", "Lucida Grande", "Segoe UI", "Ubuntu", "Tahoma", "Arial", sans-serif;
 $font-size: 12px;
 
 $color_foreground: #000;
@@ -45,6 +45,6 @@ $contrasted-lightness-threshold: 50%;
 $flag_foreground: contrast-color($section-title_background, #555, #ccc);
 $flag_active_background: darken($section-title_background, 12%);
 $flag_active_foreground: contrast-color($flag_active_background);
-$flag_key_foreground: #222;
+$flag_key_foreground: #000;
 $flag_active_key_foreground: $color_foreground;
 $flag_font-size: $font-size - 1;

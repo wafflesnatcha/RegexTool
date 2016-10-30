@@ -1,12 +1,12 @@
 /*jshint browser:true, jquery:true*/
 /*global RegexTool, log*/
 RegexTool.UI = (function () {
-	
+
 	// Add noflexbox class as soon as jQuery is available
-	jQuery(function() {
+	jQuery(function () {
 		$('html').addClass('noflexbox');
 	});
-	
+
 	function changeHandler(event) {
 		if ($(event.target).val() !== RegexTool.Storage.get(event.target)) {
 			RegexTool.Storage.saveElement(event.target);
@@ -98,6 +98,23 @@ RegexTool.UI = (function () {
 			if (RegexTool.Config.allow_drop_files) {
 				$('#sample').each(function () {
 					this.ondrop = dropHandler;
+				});
+			}
+
+			// Save/restore textarea sizes if CSS 'resize' is supported
+			if (RegexTool.Config.save_textarea_size && $('body').css('resize')) {
+				$('textarea[id]').each(function () {
+					var n, el = $(this),
+						id = "textarea#" + el.attr('id'),
+						h = RegexTool.Storage.get(id) || el.height();
+					el.height(h);
+					el.on('mouseenter mouseleave mouseup', function (event) {
+						n = el.height();
+						if (n != h) {
+							RegexTool.Storage.set(id, n);
+							h = n;
+						}
+					});
 				});
 			}
 		}

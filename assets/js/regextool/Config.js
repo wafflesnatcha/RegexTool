@@ -4,6 +4,7 @@ RegexTool.Config = {
 	'allow_drop_files': true,
 	'fix_pasted_pattern': true,
 	'refresh_delay': 200,
+	'save_textarea_size': false, // buggy, use at your own risk
 	'show_invisibles': false,
 	'storage_prefix': 'RegexTool.',
 	'version': null

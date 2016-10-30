@@ -67,12 +67,10 @@ section {
 	& > header {
 		@include box-shadow(0 1px 0 rgba(0,0,0,.1), 0 -1px 0 rgba(0,0,0,.05));
 		@include box-sizing(border-box);
-		@include text-shadow(0 1px 0 darken($section-title_background, 5%));
+		@include text-shadow(0 1px 0  transparentize(contrast-color($section-title_background, $contrasted-light-default, $contrasted-dark-default), .9));
 		@include user-select(none);
 		background: {
 			color: $section-title_background;
-			image: image-url("section-title.png");
-			repeat: repeat-x;
 			position: 0 0;
 		};
 		@include background-image(linear-gradient(top, lighten($section-title_background, 3%), darken($section-title_background, 2%)));
@@ -84,7 +82,7 @@ section {
 		display: block;
 		font: {
 			size: $section-title_font-size;
-			weight: 600;
+			weight: 700;
 		};
 		height: $section-title_height;
 		line-height: $section-title_height - 2;
@@ -102,7 +100,7 @@ section {
 		overflow: auto;
 		padding: 0;
 		width: 100%;
-		
+
 		textarea {
 			@include box-shadow(0 0 1px 1px transparent inset);
 			@include box-sizing(border-box);
@@ -118,6 +116,7 @@ section {
 			min-height: 2em;
 			min-width: 100%;
 			outline: 0;
+			overflow: auto;
 			resize: none;
 			width: 100%;
 
@@ -125,6 +124,7 @@ section {
 			&.dragover {
 				@include box-shadow(0 0 1px 1px $input_focus inset);
 				@include transition-duration(0s);
+				background-color: $input_focus;
 			}
 		}
 	}
@@ -155,6 +155,10 @@ section {
 
 #sample {
 	background-color: $sample_input_background;
+}
+
+.access-key {
+	color: $flag_key_foreground;
 }
 
 @import "screen/_flags";
