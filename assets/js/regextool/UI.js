@@ -38,7 +38,8 @@ RegexTool.UI = (function () {
 	return {
 		init: function () {
 			// Flexbox support
-			if ($('body').css('boxDirection')) {
+			// Safari aint workin brah
+			if ($('body').css('boxDirection') && (navigator.userAgent.indexOf("Safari") <= 0)) {
 				$('html').removeClass('noflexbox').addClass('flexbox');
 			} else {
 				$('html').removeClass('flexbox').addClass('noflexbox');
